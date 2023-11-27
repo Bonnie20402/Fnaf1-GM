@@ -14,7 +14,6 @@
     {"name":"inst_6EB7299E","path":"rooms/rm_mainmenu/rm_mainmenu.yy",},
     {"name":"inst_13DFCA38","path":"rooms/rm_mainmenu/rm_mainmenu.yy",},
     {"name":"inst_4B92B5D7","path":"rooms/rm_mainmenu/rm_mainmenu.yy",},
-    {"name":"inst_1C8C013A","path":"rooms/rm_mainmenu/rm_mainmenu.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -27,7 +26,6 @@
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"layerEstatica","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_4B92B5D7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_static","path":"objects/obj_static/obj_static.yy",},"properties":[],"rotation":0.0,"scaleX":1.0671875,"scaleY":1.0666667,"x":683.0,"y":384.00003,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1C8C013A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_buffer_test","path":"objects/obj_buffer_test/obj_buffer_test.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1600.0,"y":96.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"layerFrederico","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_13DFCA38","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":0.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_freddyGif","path":"objects/obj_freddyGif/obj_freddyGif.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":704.0,"y":402.0,},

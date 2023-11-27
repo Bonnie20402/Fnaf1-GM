@@ -1,15 +1,16 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_buffer_test",
+  "name": "obj_office_scroller_right",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":10,"eventType":6,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "room_mainmenu",
-    "path": "folders/Objects/room_mainmenu.yy",
+    "name": "office",
+    "path": "folders/Objects/room_office/office.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -27,7 +28,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_hitbox_scroll",
+    "path": "sprites/spr_hitbox_scroll/spr_hitbox_scroll.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }
