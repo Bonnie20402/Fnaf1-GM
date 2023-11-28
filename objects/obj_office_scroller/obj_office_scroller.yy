@@ -4,6 +4,7 @@
   "name": "obj_office_scroller",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -27,10 +28,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "spr_hitbox_scroll",
-    "path": "sprites/spr_hitbox_scroll/spr_hitbox_scroll.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }
