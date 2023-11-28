@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "office",
-    "path": "folders/Objects/room_office/office.yy",
+    "name": "scroller",
+    "path": "folders/Objects/room_office/office/scroller.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -29,9 +29,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_hitbox_scroll_left",
-    "path": "sprites/spr_hitbox_scroll_left/spr_hitbox_scroll_left.yy",
+    "name": "spr_hitbox_scroll_slow",
+    "path": "sprites/spr_hitbox_scroll_slow/spr_hitbox_scroll_slow.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }

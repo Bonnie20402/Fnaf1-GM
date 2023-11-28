@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "office",
-    "path": "folders/Objects/room_office/office.yy",
+    "name": "scroller",
+    "path": "folders/Objects/room_office/office/scroller.yy",
   },
   "parentObjectId": null,
   "persistent": false,
