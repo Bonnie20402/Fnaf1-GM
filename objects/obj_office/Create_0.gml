@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Office game variables
 // optimise whatever that shit is
 shader_reset()
 application_surface_draw_enable(false)

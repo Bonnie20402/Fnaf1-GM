@@ -14,7 +14,7 @@ if( !obj_office.right_door && !obj_office.right_light ) {
 
 //door1light0
 if( obj_office.right_door && !obj_office.right_light) {
-	_sprite = spr_panel_left_light0door1;
+	_sprite = spr_panel_right_light0door1;
 }
 
 //door0light1
