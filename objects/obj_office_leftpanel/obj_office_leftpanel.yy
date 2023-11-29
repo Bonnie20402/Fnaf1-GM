@@ -2,12 +2,14 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_office_leftpanel",
-  "eventList": [],
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+  ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "office",
-    "path": "folders/Objects/room_office/office.yy",
+    "name": "panel",
+    "path": "folders/Objects/room_office/office/panel.yy",
   },
   "parentObjectId": null,
   "persistent": false,

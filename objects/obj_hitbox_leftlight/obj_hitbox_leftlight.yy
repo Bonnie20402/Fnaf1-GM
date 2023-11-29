@@ -1,15 +1,15 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_office_rightpanel",
+  "name": "obj_hitbox_leftlight",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "panel",
-    "path": "folders/Objects/room_office/office/panel.yy",
+    "name": "hitbox",
+    "path": "folders/Objects/room_office/hitbox.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -28,9 +28,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_panel_right_light0door0",
-    "path": "sprites/spr_panel_right_light0door0/spr_panel_right_light0door0.yy",
+    "name": "spr_hitbox_blue",
+    "path": "sprites/spr_hitbox_blue/spr_hitbox_blue.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }
