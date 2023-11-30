@@ -31,6 +31,8 @@ if (sprite_index == spr_office && !audio_is_paused(snd_light) ) {
 }
 else if (sprite_index != spr_office )  {
 	audio_resume_sound(snd_light);
+	
+	
 }
 #endregion
 
