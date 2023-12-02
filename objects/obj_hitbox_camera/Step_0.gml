@@ -2,7 +2,10 @@
 // You can write your code in this editor
 var _camera_up = obj_office.camera_up;
 
-self.x = camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0])) - (sprite_width * 1.4);
+//Reminder - booleans are 0 (false) or 1 (true).
+
+// Our camera scroll view is view camera 1, and our office scroll view is view camera 0. So we just use the bool as index :)
+self.x = camera_get_view_x(view_camera[_camera_up]) + (camera_get_view_width(view_camera[_camera_up])) - (sprite_width * 1.4);
 y = room_height -  ((sprite_height / 2) + 7)
 if(camera_lock) {
 	if(_camera_up && image_index == image_number-1 && image_speed == 0) {

@@ -17,6 +17,7 @@ left_door = false;
 right_door = false;
 
 camera_up = false;
+current_camera = "2A";
 light_flickering = false;
 
 

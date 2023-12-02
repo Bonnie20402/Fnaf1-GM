@@ -1,0 +1,78 @@
+function scr_on_camera_open_start(){
+	audio_play_sound(snd_camera_up,0,false);
+}
+
+function scr_on_camera_open_finish() {
+	view_visible[0] = false;
+	view_visible[1] = true;
+	scr_toggle_camera_buttons_visibility();
+}
+
+function scr_on_camera_close_start() {
+	view_visible[0] = true;
+	view_visible[1] = false;
+	scr_toggle_camera_buttons_visibility();
+	audio_play_sound(snd_camera_down,0,false);
+	audio_stop_sound(snd_camera_up);
+}
+
+
+function scr_on_camera_close_finish() {
+
+}
+
+
+function scr_on_camera_change_start() {
+}
+
+
+function on_camera_change_finish() {
+	
+}
+
+function on_camera_ui_update() {
+}
+
+
+function scr_camera_setup() {
+	camera_button_1a.set_camera_button("1A");
+	camera_button_1a.set_camera_text("Show Stage");
+	camera_button_1b.set_camera_button("1B");
+	camera_button_1b.set_camera_text("Dinning Area");
+	camera_button_1c.set_camera_button("1C");
+	camera_button_1c.set_camera_text("Mewo's Cove");
+	camera_button_2a.set_camera_button("2A");
+	camera_button_2a.set_camera_text("West Hall");
+	camera_button_2b.set_camera_button("2B");
+	camera_button_2b.set_camera_text("West Hall Corner");
+	camera_button_4a.set_camera_button("4A");
+	camera_button_4a.set_camera_text("East Hall");
+	camera_button_4b.set_camera_button("4B");
+	camera_button_4b.set_camera_text("East Hal Corner");
+	camera_button_3.set_camera_button("3");
+	camera_button_3.set_camera_text("Supply Closet");
+	camera_button_5.set_camera_button("5");
+	camera_button_5.set_camera_text("Backstage");
+	camera_button_7.set_camera_button("7");
+	camera_button_7.set_camera_text("Restroom");
+	//TODO: Update this value
+	camera_button_6.set_camera_button("LARA");
+	camera_button_6.set_camera_text("Cozinha da Lara");
+}
+
+/*
+	DEBUG FUNCTIONS
+						*/
+function scr_toggle_camera_buttons_visibility() {
+	for( var _i =0; _i < instance_number(obj_camera_button);_i++ )  {
+		var _inst = instance_find(obj_camera_button,_i);
+		_inst.visible = !_inst.visible;
+	}
+}
+
+function scr_disable_camera_buttons() {
+		for( var _i =0; _i < instance_number(obj_camera_button);_i++ )  {
+		var _inst = instance_find(obj_camera_button,_i);
+		_inst.active = false;
+	}
+}
