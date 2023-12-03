@@ -135,6 +135,7 @@ function on_animatronic_attack() {
 function on_animatronic_jumpscare() {
 	obj_office.jumpscared = true;
 	obj_office.on_office_jumpscare();
+	audio_play_sound(snd_jumpscare,0,false);
 
 
 	alarm_set(1,jumpscare_time*game_get_speed(gamespeed_fps));

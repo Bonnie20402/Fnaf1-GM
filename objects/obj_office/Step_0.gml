@@ -8,7 +8,7 @@ if( jumpscared ) return;
 var _sprite;
 
 var _left_light_sprite = obj_ai_bonnie.current_camera == "LeftWindow" ? spr_office_left_bonnie : spr_office_left_empty;
-
+var _right_light_sprite = obj_ai_chica.current_camera == "RightWindow" ? spr_office_right_chica : spr_office_right_empty;
 if(!self.left_light && !self.right_light) {
 	_sprite = spr_office;
 	
@@ -19,7 +19,7 @@ if (self.left_light ) {
 
 if (self.right_light ) {
 	//TODO: Change when adding animatronics!
-	_sprite = self.light_flickering ? spr_office : spr_office_right_empty;
+	_sprite = self.light_flickering ? spr_office : _right_light_sprite;
 }
 
 

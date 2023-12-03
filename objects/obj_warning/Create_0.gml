@@ -5,6 +5,8 @@ warning_msg = string_concat(
 "You have been warned!\n" +
 "Made with love in GameMaker"
 );
+
+room_to_go = rm_main_menu;
 draw_set_color(c_white)
 draw_set_font(fnt_warning)
 draw_set_halign(fa_center)

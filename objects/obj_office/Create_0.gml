@@ -4,8 +4,8 @@
 
 office_surface = -1;
 alarm_set(0,0.1*game_get_speed(gamespeed_fps));
-application_surface_draw_enable(false)
 
+application_surface_draw_enable(false);
 //setup sounds
 audio_play_sound(snd_light,0,true);
 
@@ -25,8 +25,9 @@ right_door_blocked = false;
 jumpscared = false;
 
 camera_up = false;
-current_camera = "2A";
+current_camera = "1A";
 light_flickering = false;
+can_scroll = true;
 
 function on_office_jumpscare() {	
 	instance_destroy(obj_office_door_left);

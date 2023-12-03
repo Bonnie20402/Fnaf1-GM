@@ -5,6 +5,7 @@ function scr_on_camera_open_start(){
 function scr_on_camera_open_finish() {
 	view_visible[0] = false;
 	view_visible[1] = true;
+	obj_office.can_scroll = false;
 	obj_camera_hud._camera_change_effect_frame = 0;
 	scr_toggle_camera_buttons_visibility();
 }
@@ -12,6 +13,7 @@ function scr_on_camera_open_finish() {
 function scr_on_camera_close_start() {
 	view_visible[0] = true;
 	view_visible[1] = false;
+	obj_office.can_scroll = true;
 	scr_toggle_camera_buttons_visibility();
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
@@ -23,8 +25,15 @@ function scr_on_camera_close_start() {
 			self.image_index = 0;
 			self.image_speed = 1;
 		}
-		audio_play_sound(snd_jumpscare,0,0);
 		obj_ai_bonnie.on_animatronic_jumpscare();
+	}
+	else if(obj_ai_chica.current_camera == "AttackSuccess") {
+		with(obj_office) {
+			self.sprite_index = spr_office_jumpscare_chica;
+			self.image_index = 0;
+			self.image_speed = 1;
+		}
+		obj_ai_chica.on_animatronic_jumpscare();
 	}
 }
 
@@ -83,6 +92,9 @@ function scr_camera_setup() {
 	//TODO: Update this value 
 	camera_button_6.set_camera_button("LARA");
 	camera_button_6.set_camera_text("Cozinha da Lara");
+	
+	obj_camera_string.set_camera_current_string("Show Stage");
+	obj_camera_current_spr.update_current_camera_sprite();
 }
 
 /*

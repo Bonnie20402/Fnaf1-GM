@@ -1,5 +1,5 @@
 if ( draw_get_alpha() == 0 ) {
-	room_goto(rm_mainmenu);
+	room_goto(room_to_go);
 	return;
 }
 

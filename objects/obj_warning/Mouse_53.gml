@@ -1,1 +1,1 @@
-room_goto(rm_mainmenu)
+room_goto(room_to_go)

@@ -9,7 +9,7 @@ function update_current_camera_sprite() {
 	var _guard_cam = obj_office.current_camera;
 	var _freddy_cam = obj_ai_bonnie.current_camera;
 	var _bonnie_cam = obj_ai_bonnie.current_camera;
-	var _chica_cam = obj_ai_bonnie.current_camera;
+	var _chica_cam = obj_ai_chica.current_camera;
 	var _new_index = spr_cameras_6_empty;
 	if(_guard_cam == "6") {
 		sprite_index = spr_cameras_6_empty;
@@ -30,14 +30,25 @@ function update_current_camera_sprite() {
 		}
 	}
 	if (_guard_cam == "1B") {
+		// all of them
 	    if (_freddy_cam == "1B" && _bonnie_cam == "1B" && _chica_cam == "1B") {
 	        _new_index = spr_cameras_1b_bonnie1freddy0chica1;
+		//freddy and bonnie
 	    } else if (_freddy_cam == "1B" && _bonnie_cam == "1B" && _chica_cam != "1B") {
 	        _new_index = spr_cameras_1b_bonnie1freddy0chica0;
+		//freddy and chica
 	    } else if (_freddy_cam == "1B" && _bonnie_cam != "1B" && _chica_cam == "1B") {
 	        _new_index = spr_cameras_1b_bonnie0freddy0chica1;
+		//freddy only
 	    } else if (_freddy_cam == "1B" && _bonnie_cam != "1B" && _chica_cam != "1B") {
 	        _new_index = spr_cameras_1b_bonnie0freddy1chica0;
+		//chica only
+		} else if (_freddy_cam != "1B" && _bonnie_cam != "1B" && _chica_cam == "1B") {
+	        _new_index = spr_cameras_1b_bonnie0freddy0chica1;
+		// bonnie and chica
+		} else if (_freddy_cam != "1B" && _bonnie_cam == "1B" && _chica_cam == "1B") {
+	        _new_index = spr_cameras_1b_bonnie1freddy0chica1;
+	    //empty
 		} else if (_freddy_cam != "1B" && _bonnie_cam != "1B" && _chica_cam != "1B") {
 	        _new_index = spr_cameras_1b_bonnie0freddy0chica0;
 	    }
