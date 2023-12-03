@@ -9,5 +9,6 @@ function scr_loading(){
 	sprite_prefetch(spr_office_ventilator_gif);
 	sprite_prefetch(spr_office_door_left);
 	sprite_prefetch(spr_office_door_right);
-	global.game_loading = false;
+	sprite_prefetch(spr_office_jumpscare_bonnie);
+	
 }

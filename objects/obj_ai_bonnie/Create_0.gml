@@ -1,18 +1,18 @@
-/// @description Insert description here
+/// @description Bonnie class :)
 // You can write your code in this editor
 
 start_camera = "1A";
 current_camera = start_camera;
 use_ai = true;
-first_move = true;
 ai_level = 10;
 ai_chance_time = 4.97;
+jumpscare_time = 0.8;
+
 alarm_set(0,ai_chance_time*game_get_speed(gamespeed_fps));
+show_debug_message("Bonnie AI created - using ai? " + string(use_ai) );
 
 
 
-
-//TODO: Complete robot AI.
 forward_cameras = ["1B"];
 backward_cameras = ["N/A"];
 
@@ -65,16 +65,18 @@ function animatronic_is_valid_move(_cam) {
 
 
 #region On animatronic move - Setup forward and backwards cameras. 
-// NOTE: "LeftWindow" is for appearing on the window and "Attacked" is for door blocking/going back
-// NOTE: "N/A" for no backward cameras available.
+// NOTE: "LeftWindow" is for appearing on the window
+// NOTE: "N/A" for no  cameras available - guranteed to not go to that direction.
 // Bonnie version
 function on_animatronic_move() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
+	obj_camera_current_spr.update_current_camera_sprite();
 	
 	if(current_camera == "1A") {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("1B");
+		animatronic_add_forward_camera("5");
 	}
 	if(current_camera == "1B") {
 		animatronic_add_backward_camera("N/A");
@@ -83,31 +85,26 @@ function on_animatronic_move() {
 	}
 	if(current_camera == "5") {
 		animatronic_add_backward_camera("1B");
-		animatronic_add_forward_camera("1B");
 		animatronic_add_forward_camera("2A");
 		animatronic_add_forward_camera("3");
 	}
 	if(current_camera == "2A") {
 		animatronic_add_backward_camera("5");
 		animatronic_add_backward_camera("1B");
-		animatronic_add_forward_camera("5");
-		animatronic_add_forward_camera("1B");
 		animatronic_add_forward_camera("2B");
 		animatronic_add_forward_camera("3");
 	}
 	if(current_camera == "2B") {
 		animatronic_add_backward_camera("5");
 		animatronic_add_backward_camera("1B");
-		
-		animatronic_add_forward_camera("2A");
-		animatronic_add_backward_camera("3");
+		animatronic_add_backward_camera("2A");
+		animatronic_add_forward_camera("3");
 		animatronic_add_forward_camera("LeftWindow");
 	}
 	if(current_camera == "3") {
 		animatronic_add_backward_camera("5");
 		animatronic_add_backward_camera("1B");
 		animatronic_add_backward_camera("2A");
-		animatronic_add_forward_camera("2A");
 		animatronic_add_forward_camera("LeftWindow");
 		animatronic_add_forward_camera("2B");
 	}	
@@ -115,22 +112,33 @@ function on_animatronic_move() {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("Attack");
 	}
-	if(current_camera == "Attack") {
-		on_animatronic_attack();
-	}
+	animatronic_shuffle_moves()
 }
 
 function on_animatronic_attack() {
-	if(obj_office.left_door) {
+	animatronic_flush_backward_cameras();
+	animatronic_flush_forward_cameras();
+	if(current_camera == "AttackFail") {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("1B");
 		animatronic_add_forward_camera("5");
+		animatronic_shuffle_moves();
+		obj_office.left_light_scare = false;
+		current_camera = forward_cameras[0];
 	}
 	else {
-		//TODO: Code to block left door
-		current_camera = "Attacked";
-		return;
+		animatronic_add_backward_camera("N/A");
+		animatronic_add_forward_camera("N/A");
 	}
+}
+
+function on_animatronic_jumpscare() {
+	obj_office.jumpscared = true;
+	obj_office.on_office_jumpscare();
+
+
+	alarm_set(1,jumpscare_time*game_get_speed(gamespeed_fps));
+	
 }
 #endregion
 

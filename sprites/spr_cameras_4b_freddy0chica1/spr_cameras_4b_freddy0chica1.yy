@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_cameras_4b_chica0freddy0",
+  "name": "spr_cameras_4b_freddy0chica1",
   "bbox_bottom": 719,
   "bbox_left": 0,
   "bbox_right": 1599,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c54f7d67-a6b4-4b8a-9851-f40fc7739231",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"737a2d21-aa35-40fb-af08-3822c4d93f37",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 720,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"504b1e40-ee85-4189-a170-b0950efdd06e","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"6fc23a79-6e0e-4bd6-98f3-d59754c7fb8a","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_cameras_4b_chica0freddy0",
+    "name": "spr_cameras_4b_freddy0chica1",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c54f7d67-a6b4-4b8a-9851-f40fc7739231","path":"sprites/spr_cameras_4b_chica0freddy0/spr_cameras_4b_chica0freddy0.yy",},},},"Disabled":false,"id":"c4105180-cb0e-452a-80da-230cec1494ad","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"737a2d21-aa35-40fb-af08-3822c4d93f37","path":"sprites/spr_cameras_4b_freddy0chica1/spr_cameras_4b_freddy0chica1.yy",},},},"Disabled":false,"id":"28f4745a-873f-4a8a-8d92-b4958c7e151e","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

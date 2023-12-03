@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_cameras_4b_chica0freddy1",
+  "name": "spr_cameras_4b_freddy1chica0",
   "bbox_bottom": 719,
   "bbox_left": 0,
   "bbox_right": 1599,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_cameras_4b_chica0freddy1",
+    "name": "spr_cameras_4b_freddy1chica0",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c1873e8b-1b40-4ee1-8016-89947675ab1c","path":"sprites/spr_cameras_4b_chica0freddy1/spr_cameras_4b_chica0freddy1.yy",},},},"Disabled":false,"id":"0b5d54ea-950c-4204-94b6-bce0be597253","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c1873e8b-1b40-4ee1-8016-89947675ab1c","path":"sprites/spr_cameras_4b_freddy1chica0/spr_cameras_4b_freddy1chica0.yy",},},},"Disabled":false,"id":"0b5d54ea-950c-4204-94b6-bce0be597253","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

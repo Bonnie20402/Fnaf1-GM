@@ -15,6 +15,17 @@ function scr_on_camera_close_start() {
 	scr_toggle_camera_buttons_visibility();
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
+	
+	
+	if(obj_ai_bonnie.current_camera == "AttackSuccess") {
+		with(obj_office) {
+			self.sprite_index = spr_office_jumpscare_bonnie;
+			self.image_index = 0;
+			self.image_speed = 1;
+		}
+		audio_play_sound(snd_jumpscare,0,0);
+		obj_ai_bonnie.on_animatronic_jumpscare();
+	}
 }
 
 
@@ -25,6 +36,8 @@ function scr_on_camera_close_finish() {
 
 function scr_on_camera_change_start() {
 	obj_camera_hud._camera_change_effect_frame = 0;
+	obj_camera_current_spr.update_current_camera_sprite();
+	show_debug_message("Guard CAM:" + obj_office.current_camera);
 	audio_play_sound(snd_blop,0,0);
 	
 }
@@ -37,6 +50,14 @@ function on_camera_change_finish() {
 function on_camera_ui_update() {
 }
 
+function scr_camera_force_down() {
+	if(obj_office.camera_up) obj_office.camera_up = false;
+	if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
+}
+
+function scr_camera_is_camera_up () {
+	return obj_office.camera_up && !obj_hitbox_camera.camera_lock;
+}
 
 function scr_camera_setup() {
 	camera_button_1a.set_camera_button("1A");

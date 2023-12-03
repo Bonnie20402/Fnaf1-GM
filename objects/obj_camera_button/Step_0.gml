@@ -5,6 +5,9 @@ mouse_gui_x = device_mouse_x_to_gui(0);
 mouse_gui_y = device_mouse_y_to_gui(0);
 self.active = obj_office.current_camera == camera_button;
 #region CLICK HANDLING
+
+if (!obj_office.camera_up) return;
+// cant click same camera
 if (obj_office.camera_up && !obj_hitbox_camera.camera_lock && obj_office.current_camera == self.camera_button) return;
 
 if (mouse_check_button_pressed(mb_left)) {

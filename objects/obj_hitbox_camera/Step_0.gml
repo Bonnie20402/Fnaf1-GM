@@ -1,5 +1,8 @@
 /// @description Only make hitbox appear when user puts mouse in something else
 // You can write your code in this editor
+
+if(obj_office.jumpscared) return;
+
 var _camera_up = obj_office.camera_up;
 var _mouse_gui_x = device_mouse_x_to_gui(0);
 var _mouse_gui_y = device_mouse_y_to_gui(0)

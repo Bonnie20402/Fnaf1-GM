@@ -44,7 +44,6 @@
     {"name":"inst_6A513251","path":"rooms/rm_office/rm_office.yy",},
     {"name":"inst_5035F4B3","path":"rooms/rm_office/rm_office.yy",},
     {"name":"inst_2A8314D2","path":"rooms/rm_office/rm_office.yy",},
-    {"name":"inst_96BEFFB","path":"rooms/rm_office/rm_office.yy",},
     {"name":"inst_C820B7D","path":"rooms/rm_office/rm_office.yy",},
   ],
   "isDnd": false,
@@ -90,7 +89,6 @@
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"current_camera","depth":600,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2A8314D2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_camera_current_spr","path":"objects/obj_camera_current_spr/obj_camera_current_spr.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":2.0,"y":0.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_96BEFFB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_ai_bonnie","path":"objects/obj_ai_bonnie/obj_ai_bonnie.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-414.0,"y":445.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Office","depth":700,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_615C38D8","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_office","path":"objects/obj_office/obj_office.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0020833,"x":800.0,"y":359.7228,},

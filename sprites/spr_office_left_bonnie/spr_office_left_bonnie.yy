@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_office_rightLight_empty",
+  "name": "spr_office_left_bonnie",
   "bbox_bottom": 719,
   "bbox_left": 0,
   "bbox_right": 1599,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"76b2a1e2-a4ff-4062-82c5-5d04fafb23cd",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ad8ffd27-ca35-494d-9818-e08943bea085",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 720,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"c6aee1f0-fe6b-4b56-93f7-29c50d361b35","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"8253d9c7-a367-4983-a694-9e01fe5e8d6b","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 4,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_office_rightLight_empty",
+    "name": "spr_office_left_bonnie",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"76b2a1e2-a4ff-4062-82c5-5d04fafb23cd","path":"sprites/spr_office_rightLight_empty/spr_office_rightLight_empty.yy",},},},"Disabled":false,"id":"c4cf3946-595b-4065-bbd4-a3b92f670e16","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ad8ffd27-ca35-494d-9818-e08943bea085","path":"sprites/spr_office_left_bonnie/spr_office_left_bonnie.yy",},},},"Disabled":false,"id":"adee9505-8c6a-4e09-80ff-657a74f230a3","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
