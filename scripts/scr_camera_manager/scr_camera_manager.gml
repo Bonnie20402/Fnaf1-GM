@@ -5,6 +5,7 @@ function scr_on_camera_open_start(){
 function scr_on_camera_open_finish() {
 	view_visible[0] = false;
 	view_visible[1] = true;
+	obj_camera_hud._camera_change_effect_frame = 0;
 	scr_toggle_camera_buttons_visibility();
 }
 
@@ -23,6 +24,9 @@ function scr_on_camera_close_finish() {
 
 
 function scr_on_camera_change_start() {
+	obj_camera_hud._camera_change_effect_frame = 0;
+	audio_play_sound(snd_blop,0,0);
+	
 }
 
 
@@ -48,14 +52,14 @@ function scr_camera_setup() {
 	camera_button_4a.set_camera_button("4A");
 	camera_button_4a.set_camera_text("East Hall");
 	camera_button_4b.set_camera_button("4B");
-	camera_button_4b.set_camera_text("East Hal Corner");
+	camera_button_4b.set_camera_text("East Hall Corner");
 	camera_button_3.set_camera_button("3");
 	camera_button_3.set_camera_text("Supply Closet");
 	camera_button_5.set_camera_button("5");
 	camera_button_5.set_camera_text("Backstage");
 	camera_button_7.set_camera_button("7");
 	camera_button_7.set_camera_text("Restroom");
-	//TODO: Update this value
+	//TODO: Update this value 
 	camera_button_6.set_camera_button("LARA");
 	camera_button_6.set_camera_text("Cozinha da Lara");
 }

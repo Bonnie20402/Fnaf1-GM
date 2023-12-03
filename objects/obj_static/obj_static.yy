@@ -28,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_static",
-    "path": "sprites/spr_static/spr_static.yy",
+    "name": "spr_office_camera_static",
+    "path": "sprites/spr_office_camera_static/spr_office_camera_static.yy",
   },
   "spriteMaskId": null,
   "visible": true,

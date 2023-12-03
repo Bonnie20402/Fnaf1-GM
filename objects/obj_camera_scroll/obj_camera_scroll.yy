@@ -33,5 +33,5 @@
     "path": "sprites/spr_hitbox_scroll_med/spr_hitbox_scroll_med.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }
