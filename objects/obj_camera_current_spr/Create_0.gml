@@ -10,6 +10,7 @@ function update_current_camera_sprite() {
 	var _freddy_cam = obj_ai_freddy.current_camera;
 	var _bonnie_cam = obj_ai_bonnie.current_camera;
 	var _chica_cam = obj_ai_chica.current_camera;
+	var _foxy_cam = obj_ai_foxy.current_camera;
 	var _new_index = spr_cameras_6_empty;
 	if(_guard_cam == "6") {
 		sprite_index = spr_cameras_6_empty;
@@ -48,11 +49,25 @@ function update_current_camera_sprite() {
 		// bonnie and chica
 		} else if (_freddy_cam != "1B" && _bonnie_cam == "1B" && _chica_cam == "1B") {
 	        _new_index = spr_cameras_1b_bonnie1freddy0chica1;
+		//bonnie only
+		} else if (_freddy_cam != "1B" && _bonnie_cam == "1B" && _chica_cam != "1B") {
+	        _new_index = spr_cameras_1b_bonnie1freddy0chica0;
 	    //empty
 		} else if (_freddy_cam != "1B" && _bonnie_cam != "1B" && _chica_cam != "1B") {
 	        _new_index = spr_cameras_1b_bonnie0freddy0chica0;
 	    }
 	} 
+	if (_guard_cam == "1C") {
+		if( _foxy_cam == "1C_0" ) {
+			_new_index = spr_cameras_1c_foxy1_phase0;
+		} else if( _foxy_cam == "1C_1" ) {
+			_new_index = spr_cameras_1c_foxy1_phase1;
+		} else if( _foxy_cam == "1C_2" ) {
+			_new_index = spr_cameras_1c_foxy1_phase2;
+		} else {
+			_new_index = spr_cameras_1c_foxy0;
+		}
+	}
 	if (_guard_cam == "5") {
 	    if (_bonnie_cam == "5") {
 	        var _creepy = random(10);
@@ -68,13 +83,19 @@ function update_current_camera_sprite() {
 	        _new_index = spr_cameras_3_bonnie0;
 	    }
 	}
-		//TODO: Add Foxy
 	if (_guard_cam == "2A") {
 	    if (_bonnie_cam == "2A") {
 	        _new_index = spr_cameras_2a_bonnie1foxy0;
 	    } else if(_bonnie_cam != "2A") {
 	        _new_index = spr_cameras_2a_bonnie0foxy0;
 	    }
+		if(_foxy_cam == "2A" && obj_office.camera_up && !obj_ai_foxy.is_running) {
+			obj_ai_foxy.is_running = true;
+			_new_index = spr_cameras_2a_bonnie0foxy1;
+			image_index = 0;
+			image_speed = 1;
+			obj_ai_foxy.run_sound=audio_play_sound(snd_foxy_run,0,false);
+		}
 	}
 		//TODO: Add golden freddy
 	if (_guard_cam == "2B") {

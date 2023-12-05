@@ -59,6 +59,10 @@ function animatronic_flush_backward_cameras() {
 
 //NOTE: Check for foxy here
 function animatronic_is_valid_move(_cam) {
+
+	if(_cam == "2A" || _cam == "LeftWindow") {
+		if(obj_ai_foxy.current_camera == "2A")return false;
+	}
 	return true;
 }
 

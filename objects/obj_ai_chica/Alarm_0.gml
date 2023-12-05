@@ -45,6 +45,6 @@ if(obj_ai_chica.ai_level >= _move) {
 	
 	}
 }
-else if (obj_ai_chica.current_camera == "AttackSuccess") {
+else if (obj_ai_chica.current_camera == "AttackSuccess" && scr_camera_is_camera_up() && obj_ai_bonnie.current_camera != "AttackSuccess") {
 	obj_ai_chica.animtronic_breath();
 }

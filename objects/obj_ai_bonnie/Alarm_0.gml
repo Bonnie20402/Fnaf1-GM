@@ -51,7 +51,7 @@ if(obj_ai_bonnie.ai_level >= _move) {
 	}
 }
 //If succesfully attacked but missed the chance to flip monitor down, play breath sound
-else if (obj_ai_bonnie.current_camera == "AttackSuccess") {
+else if (obj_ai_bonnie.current_camera == "AttackSuccess" && scr_camera_is_camera_up()) {
 	obj_ai_bonnie.animtronic_breath();
 }
 
