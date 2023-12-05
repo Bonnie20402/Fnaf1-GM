@@ -7,7 +7,7 @@ self.depth = -5;
 function update_current_camera_sprite() {
 	//TODO: Add foxy and golden freddy
 	var _guard_cam = obj_office.current_camera;
-	var _freddy_cam = obj_ai_bonnie.current_camera;
+	var _freddy_cam = obj_ai_freddy.current_camera;
 	var _bonnie_cam = obj_ai_bonnie.current_camera;
 	var _chica_cam = obj_ai_chica.current_camera;
 	var _new_index = spr_cameras_6_empty;

@@ -13,7 +13,7 @@ if(obj_ai_chica.ai_level >= _move) {
 	// go back 2 in a 5 chance.
 	var _forward = irandom(5) < 2 && obj_ai_chica.backward_cameras[0] != "N/A" ? false : true;
 	
-	
+	if (obj_ai_chica.current_camera == "AttackSuccess") scr_camera_force_down();
 	//if on right window and right door is closed, always go forward. Else go backwards.
 	if(obj_ai_chica.current_camera == "RightWindow")  {
 		_forward = !obj_office.right_door;
@@ -44,4 +44,7 @@ if(obj_ai_chica.ai_level >= _move) {
 		
 	
 	}
+}
+else if (obj_ai_chica.current_camera == "AttackSuccess") {
+	obj_ai_chica.animtronic_breath();
 }

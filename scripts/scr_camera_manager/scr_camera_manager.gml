@@ -14,32 +14,17 @@ function scr_on_camera_close_start() {
 	view_visible[0] = true;
 	view_visible[1] = false;
 	obj_office.can_scroll = true;
-	scr_toggle_camera_buttons_visibility();
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
+	scr_toggle_camera_buttons_visibility();
 	
-	
-	if(obj_ai_bonnie.current_camera == "AttackSuccess") {
-		with(obj_office) {
-			self.sprite_index = spr_office_jumpscare_bonnie;
-			self.image_index = 0;
-			self.image_speed = 1;
-		}
-		obj_ai_bonnie.on_animatronic_jumpscare();
-	}
-	else if(obj_ai_chica.current_camera == "AttackSuccess") {
-		with(obj_office) {
-			self.sprite_index = spr_office_jumpscare_chica;
-			self.image_index = 0;
-			self.image_speed = 1;
-		}
-		obj_ai_chica.on_animatronic_jumpscare();
-	}
+	if(obj_ai_bonnie.current_camera == "AttackSuccess") obj_ai_bonnie.on_animatronic_jumpscare();
+	else if(obj_ai_chica.current_camera == "AttackSuccess") obj_ai_chica.on_animatronic_jumpscare();
 }
 
 
 function scr_on_camera_close_finish() {
-
+	
 }
 
 
@@ -90,8 +75,8 @@ function scr_camera_setup() {
 	camera_button_7.set_camera_button("7");
 	camera_button_7.set_camera_text("Restroom");
 	//TODO: Update this value 
-	camera_button_6.set_camera_button("LARA");
-	camera_button_6.set_camera_text("Cozinha da Lara");
+	camera_button_6.set_camera_button("6");
+	camera_button_6.set_camera_text("Sulartzo's Kitchen");
 	
 	obj_camera_string.set_camera_current_string("Show Stage");
 	obj_camera_current_spr.update_current_camera_sprite();

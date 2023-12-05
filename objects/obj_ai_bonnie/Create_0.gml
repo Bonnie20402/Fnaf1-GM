@@ -61,6 +61,14 @@ function animatronic_flush_backward_cameras() {
 function animatronic_is_valid_move(_cam) {
 	return true;
 }
+
+function animtronic_breath() {
+	var _sound = irandom(3);
+	if(_sound == 0) audio_play_sound(snd_breath_0,0,false,0.2);
+	if(_sound == 1) audio_play_sound(snd_breath_1,0,false,0.2);
+	if(_sound == 2) audio_play_sound(snd_breath_2,0,false,0.2);
+	if(_sound == 3) audio_play_sound(snd_breath_3,0,false,0.2);
+}
 #endregion
 
 
@@ -136,6 +144,11 @@ function on_animatronic_jumpscare() {
 	obj_office.jumpscared = true;
 	obj_office.on_office_jumpscare();
 	audio_play_sound(snd_jumpscare,0,false);
+	with(obj_office) {
+			self.sprite_index = spr_office_jumpscare_bonnie;
+			self.image_index = 0;
+			self.image_speed = 1;
+		}
 
 
 	alarm_set(1,jumpscare_time*game_get_speed(gamespeed_fps));

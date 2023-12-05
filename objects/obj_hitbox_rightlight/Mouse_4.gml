@@ -9,7 +9,7 @@ if(obj_ai_chica.current_camera == "AttackSuccess") {
 }
 
 // Window scare sound
-if(obj_office.right_light && obj_ai_chica.current_camera == "RightWindow" && !obj_office.right_light_scare) {
+if(!obj_office.right_light && obj_ai_chica.current_camera == "RightWindow" && !obj_office.right_light_scare) {
 	obj_office.right_light_scare = true;
 	audio_play_sound(snd_window_scare,0,false);
 }

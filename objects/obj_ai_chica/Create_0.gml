@@ -57,8 +57,22 @@ function animatronic_flush_backward_cameras() {
 	backward_cameras = array_create(1);
 }
 
+function animtronic_breath() {
+	var _sound = irandom(3);
+	if(_sound == 0) audio_play_sound(snd_breath_0,0,false,0.2);
+	if(_sound == 1) audio_play_sound(snd_breath_1,0,false,0.2);
+	if(_sound == 2) audio_play_sound(snd_breath_2,0,false,0.2);
+	if(_sound == 3) audio_play_sound(snd_breath_3,0,false,0.2);
+}
+
 //NOTE: Check for freddy's ass here
 function animatronic_is_valid_move(_cam) {
+	if(_cam == "4A") {
+		if(obj_ai_freddy.current_camera == "4A") return false;
+	}
+	if(_cam == "4B") {
+		if(obj_ai_freddy.current_camera == "4B") return false;
+	}
 	return true;
 }
 #endregion
@@ -91,6 +105,7 @@ function on_animatronic_move() {
 		animatronic_add_backward_camera("7");
 		animatronic_add_backward_camera("1B");
 		animatronic_add_forward_camera("4B");
+		animatronic_add_forward_camera("RightWindow");
 	}
 	if(current_camera == "4B") {
 		animatronic_add_backward_camera("6");
@@ -132,8 +147,11 @@ function on_animatronic_jumpscare() {
 	audio_play_sound(snd_jumpscare,0,false);
 	obj_office.jumpscared = true;
 	obj_office.on_office_jumpscare();
-
-
+	with(obj_office) {
+			self.sprite_index = spr_office_jumpscare_chica;
+			self.image_index = 0;
+			self.image_speed = 1;
+		}
 	alarm_set(1,jumpscare_time*game_get_speed(gamespeed_fps));
 	
 }
