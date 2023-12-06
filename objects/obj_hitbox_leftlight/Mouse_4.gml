@@ -16,6 +16,8 @@ if(obj_office.left_light && obj_ai_bonnie.current_camera == "LeftWindow" && !obj
 }
 obj_office.right_light = false;
 
+obj_night.update_power_usage();
+
 
 
 

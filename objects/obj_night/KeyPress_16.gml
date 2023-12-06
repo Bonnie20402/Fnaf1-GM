@@ -1,0 +1,15 @@
+/// @description Insert description here
+// You can write your code in this editor
+
+if(room == rm_main_menu) {
+	obj_night.current_night = 6;
+}
+
+
+
+
+
+
+
+
+

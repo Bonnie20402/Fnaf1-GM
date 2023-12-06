@@ -9,6 +9,7 @@ if(obj_ai_chica.current_camera == "AttackSuccess") {
 if(!obj_hitbox_rightdoor.door_lock) {
 	obj_office.right_door = !obj_office.right_door;
 	play_door_sound();
+	obj_night.update_power_usage();
 	
 }
 

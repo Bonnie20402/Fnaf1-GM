@@ -16,6 +16,7 @@ if(!obj_office.right_light && obj_ai_chica.current_camera == "RightWindow" && !o
 
 obj_office.right_light = !obj_office.right_light;
 obj_office.left_light = false;
+obj_night.update_power_usage();
 
 
 

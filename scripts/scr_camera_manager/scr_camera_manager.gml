@@ -7,13 +7,16 @@ function scr_on_camera_open_finish() {
 	view_visible[1] = true;
 	obj_office.can_scroll = false;
 	obj_camera_hud._camera_change_effect_frame = 0;
+	obj_night.update_power_usage();
 	scr_toggle_camera_buttons_visibility();
+	
 }
 
 function scr_on_camera_close_start() {
 	view_visible[0] = true;
 	view_visible[1] = false;
 	obj_office.can_scroll = true;
+	obj_night.update_power_usage();
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
 	scr_toggle_camera_buttons_visibility();

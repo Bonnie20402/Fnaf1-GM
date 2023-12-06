@@ -51,6 +51,7 @@
     {"name":"right","order":2,"path":"folders/Sprites/room_office/panel/right.yy",},
     {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":7,"path":"folders/Timelines.yy",},
+    {"name":"night","order":7,"path":"folders/Objects/room_office/night.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_cameras_1a_bonnie0freddy1chica0","order":2,"path":"sprites/spr_cameras_1a_bonnie0freddy1chica0/spr_cameras_1a_bonnie0freddy1chica0.yy",},
