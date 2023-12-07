@@ -6,6 +6,7 @@ warning_msg = string_concat(
 "Made with love in GameMaker"
 );
 
+global.debug = false;
 room_to_go = rm_main_menu;
 draw_set_color(c_white)
 draw_set_font(fnt_warning)

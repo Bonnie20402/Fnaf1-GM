@@ -3,7 +3,6 @@
 
 
 
-
-obj_night.current_power = 11;
+global.debug = !global.debug;
 
 

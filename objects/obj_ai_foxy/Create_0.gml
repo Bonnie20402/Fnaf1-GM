@@ -122,6 +122,8 @@ function on_animatronic_attack() {
 	if(current_camera == "AttackFail") {
 		audio_play_sound(snd_foxy_door_pounding,0,false);
 		current_camera = "1C_0";
+		//Subtract 1-4% from current power.
+		obj_night.current_power-= irandom_range(10,40);
 		obj_ai_foxy.is_running = false;
 		animatronic_add_forward_camera("1C_1");
 		animatronic_add_backward_camera("N/A");
