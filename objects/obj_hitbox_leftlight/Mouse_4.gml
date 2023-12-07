@@ -1,4 +1,4 @@
-if(obj_office.camera_up) return;
+if(obj_office.camera_up || obj_night.current_power == 0) return;
 
 
 //if you have been fucked by bonnie

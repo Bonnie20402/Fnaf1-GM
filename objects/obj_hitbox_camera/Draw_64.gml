@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(camera_lock || mouse_in || ui_lock) return;
+if(camera_lock || mouse_in || ui_lock || obj_office.jumpscared || obj_night.current_power == 0) return;
 
 
 

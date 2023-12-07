@@ -15,6 +15,7 @@ mouse_out = !mouse_in && _mouse_gui_y < initial_y + sprite_height;
 
 #region Hover event
 if(!ui_lock && mouse_in) {
+	if(obj_office.jumpscared || obj_night.current_power == 0) return;
 	camera_lock = true;
 	ui_lock = true;
 	obj_office.camera_up = !obj_office.camera_up;
@@ -23,8 +24,8 @@ if(!camera_lock && mouse_out) {
 	ui_lock = false;
 }
 #endregion
-#endregion
-#endregion
+
+
 #region Appear after mouse leaves
 if(camera_lock) {
 	if(_camera_up && image_index == image_number-1 && image_speed == 0) {

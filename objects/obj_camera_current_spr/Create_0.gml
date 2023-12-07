@@ -3,7 +3,15 @@
 
 self.depth = -5;
 
+disabled = false;
 
+
+function disable_camera() {
+	if(disabled)return;
+	disabled=true;
+	scr_play_camera_disable_sound();
+	alarm_set(0,random_range(3,9)*game_get_speed(gamespeed_fps));
+}
 function update_current_camera_sprite() {
 	//TODO: Add foxy and golden freddy
 	var _guard_cam = obj_office.current_camera;
@@ -12,7 +20,7 @@ function update_current_camera_sprite() {
 	var _chica_cam = obj_ai_chica.current_camera;
 	var _foxy_cam = obj_ai_foxy.current_camera;
 	var _new_index = spr_cameras_6_empty;
-	if(_guard_cam == "6") {
+	if(_guard_cam == "6" || disabled) {
 		sprite_index = spr_cameras_6_empty;
 		return;
 	}

@@ -5,7 +5,7 @@ if(!obj_ai_chica.use_ai) return;
 
 
 
-var _move = irandom(20);
+var _move = 1 + irandom(20);
 
 //Check for movement opportunity.
 if(obj_ai_chica.ai_level >= _move) {
@@ -32,6 +32,7 @@ if(obj_ai_chica.ai_level >= _move) {
 	//shuffle
 	obj_ai_chica.animatronic_shuffle_moves();
 	
+	if( scr_camera_is_camera_up() && obj_office.current_camera == obj_ai_chica.current_camera) obj_camera_current_spr.disable_camera();
 	//Set the current camera
 	if( obj_ai_chica.animatronic_is_valid_move(_forward ? obj_ai_chica.forward_cameras[0] : obj_ai_chica.backward_cameras[0] ) ) {
 		if(obj_ai_chica.forward_cameras[0] == "N/A") return;

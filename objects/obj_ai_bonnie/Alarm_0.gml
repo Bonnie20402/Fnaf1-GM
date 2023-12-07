@@ -5,7 +5,7 @@ if(!obj_ai_bonnie.use_ai) return;
 
 
 
-var _move = irandom(20);
+var _move = 1 + irandom(20);
 
 show_debug_message(obj_ai_bonnie.current_camera);
 
@@ -39,6 +39,7 @@ if(obj_ai_bonnie.ai_level >= _move) {
 	obj_ai_bonnie.animatronic_shuffle_moves();
 	
 	//Set the current camera
+	if( scr_camera_is_camera_up() && obj_office.current_camera == obj_ai_bonnie.current_camera) obj_camera_current_spr.disable_camera();
 	if( obj_ai_bonnie.animatronic_is_valid_move(_forward ? obj_ai_bonnie.forward_cameras[0] : obj_ai_bonnie.backward_cameras[0] ) ) {
 		if(obj_ai_bonnie.forward_cameras[0] == "N/A") return;
 

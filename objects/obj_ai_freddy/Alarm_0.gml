@@ -5,7 +5,7 @@ if(!obj_ai_freddy.use_ai) return;
 
 
 
-var _move = irandom(20);
+var _move = 1 + irandom(20);
 
 
 // If freddy is on 4b, and guard is looking at 4b, freeze.

@@ -154,10 +154,15 @@ function on_night_finish() {
 }
 
 function on_power_update() {
-
+	if(current_power == 0) {
+		on_power_out();
+	}
 }
 
 function on_power_out() {
+	scr_camera_force_down();
+	obj_office.on_office_power_out();
+	obj_ai_freddy_power_out.on_power_out();
 }
 
 function on_power_usage_update() {

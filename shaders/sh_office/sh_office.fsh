@@ -15,7 +15,7 @@ float fPixelHeight = 0.001;
 //Vertical - 0 means no and 1 means yes.
 float pDir = 0.0;
 //Self explanatory. Increase this value to make it stronger or weaker.
-float zoom = 230.0;
+float zoom = 300.0;
 //No black edges (Keep either 0.0 or 1.0)
 float noWrap = 1.0;
 

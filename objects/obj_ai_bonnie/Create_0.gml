@@ -83,6 +83,7 @@ function animtronic_breath() {
 function on_animatronic_move() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
+	if(scr_camera_is_camera_up() && obj_office.current_camera == current_camera) obj_camera_current_spr.disable_camera();
 	obj_camera_current_spr.update_current_camera_sprite();
 	
 	if(current_camera == "1A") {

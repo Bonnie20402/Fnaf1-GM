@@ -14,5 +14,6 @@ function scr_loading(){
 	sprite_prefetch(spr_office_jumpscare_freddy);
 	sprite_prefetch(spr_cameras_2a_bonnie0foxy1);
 	sprite_prefetch(spr_office_jumpscare_foxy);
+	sprite_prefetch(spr_office_jumpscare_freddy_powerout);
 	
 }

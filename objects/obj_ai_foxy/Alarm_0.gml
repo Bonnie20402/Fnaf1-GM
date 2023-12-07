@@ -5,7 +5,7 @@ if(!obj_ai_foxy.use_ai) return;
 
 
 
-var _move = irandom(20);
+var _move = 1 + irandom(20);
 
 //Check for movement opportunity.
 if(obj_ai_foxy.ai_level >= _move && obj_ai_foxy.camera_down_time == 0.0) {
