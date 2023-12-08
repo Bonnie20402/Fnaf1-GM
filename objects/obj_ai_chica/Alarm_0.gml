@@ -11,7 +11,7 @@ var _move = 1 + irandom(20);
 if(obj_ai_chica.ai_level >= _move) {
 
 	// go back 2 in a 5 chance.
-	var _forward = irandom(5) < 2 && obj_ai_chica.backward_cameras[0] != "N/A" ? false : true;
+	var _forward = random(1) <= backwards_chance && obj_ai_chica.backward_cameras[0] != "N/A" ? false : true;
 	
 	if (obj_ai_chica.current_camera == "AttackSuccess") scr_camera_force_down();
 	//if on right window and right door is closed, always go forward. Else go backwards.

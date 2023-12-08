@@ -2,8 +2,13 @@
 // You can write your code in this editor
 
 
-audio_stop_all();
-audio_play_sound(snd_main_menu0,0,true,0.3);
+if(async_load[? "asset_id"] == snd_6_am) {
+
+	room_goto(rm_main_menu);
+}
+
+
+
 
 
 

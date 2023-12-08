@@ -7,6 +7,7 @@ use_ai = true;
 ai_level = 10;
 ai_chance_time = 4.98;
 jumpscare_time = 0.8;
+backwards_chance = 0.10;
 
 alarm_set(0,ai_chance_time*game_get_speed(gamespeed_fps));
 show_debug_message("Chica AI created - using ai? " + string(use_ai) );
@@ -103,21 +104,15 @@ function on_animatronic_move() {
 	}
 	if(current_camera == "4A") {
 		animatronic_add_backward_camera("6");
-		animatronic_add_backward_camera("7");
-		animatronic_add_backward_camera("1B");
 		animatronic_add_forward_camera("4B");
 		animatronic_add_forward_camera("RightWindow");
 	}
 	if(current_camera == "4B") {
-		animatronic_add_backward_camera("6");
-		animatronic_add_backward_camera("7");
-		animatronic_add_backward_camera("1B");
 		animatronic_add_backward_camera("4A");
 		animatronic_add_forward_camera("RightWindow");
 	}
 	if(current_camera == "6") {
 		animatronic_add_backward_camera("7");
-		animatronic_add_backward_camera("1B");
 		animatronic_add_forward_camera("4A");
 	}	
 	if(current_camera == "RightWindow") {

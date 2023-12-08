@@ -36,6 +36,7 @@ function halt_animatronic_ai() {
 }
 
 function on_power_out() {
+	audio_stop_sound(snd_freddy_song);
 	halt_animatronic_ai();
 	current_phase = 0;
 	on_phase_update();

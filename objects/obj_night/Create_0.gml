@@ -57,18 +57,24 @@ function update_animatronic_ai() {
 			obj_ai_bonnie.animatronic_set_ai_level(0);
 			obj_ai_chica.animatronic_set_ai_level(0);
 			obj_ai_foxy.animatronic_set_ai_level(0);
+			obj_ai_goldenfreddy.use_ai = false;
+			obj_ai_goldenfreddy.agressive_mode = false;
 			break;
 		case 2:
 			obj_ai_freddy.animatronic_set_ai_level(0);
 			obj_ai_bonnie.animatronic_set_ai_level(3);
 			obj_ai_chica.animatronic_set_ai_level(1);
 			obj_ai_foxy.animatronic_set_ai_level(1);
+			obj_ai_goldenfreddy.use_ai = true;
+			obj_ai_goldenfreddy.agressive_mode = false;
 			break;
 		case 3:
 			obj_ai_freddy.animatronic_set_ai_level(1);
 			obj_ai_bonnie.animatronic_set_ai_level(0);
 			obj_ai_chica.animatronic_set_ai_level(5);
 			obj_ai_foxy.animatronic_set_ai_level(2);
+			obj_ai_goldenfreddy.use_ai = true;
+			obj_ai_goldenfreddy.agressive_mode = false;
 			break;
 		case 4:
 			// (Freddy's activity is randomized between 1 or 2)
@@ -76,18 +82,24 @@ function update_animatronic_ai() {
 			obj_ai_bonnie.animatronic_set_ai_level(2);
 			obj_ai_chica.animatronic_set_ai_level(4);
 			obj_ai_foxy.animatronic_set_ai_level(6);
+			obj_ai_goldenfreddy.use_ai = true;
+			obj_ai_goldenfreddy.agressive_mode = true;
 			break;
 		case 5:
 			obj_ai_freddy.animatronic_set_ai_level(3);
 			obj_ai_bonnie.animatronic_set_ai_level(5);
 			obj_ai_chica.animatronic_set_ai_level(7);
 			obj_ai_foxy.animatronic_set_ai_level(5);
+			obj_ai_goldenfreddy.use_ai = true;
+			obj_ai_goldenfreddy.agressive_mode = true;
 			break;
 		case 6:
 			obj_ai_freddy.animatronic_set_ai_level(4);
 			obj_ai_bonnie.animatronic_set_ai_level(10);
 			obj_ai_chica.animatronic_set_ai_level(12);
 			obj_ai_foxy.animatronic_set_ai_level(6);
+			obj_ai_goldenfreddy.use_ai = true;
+			obj_ai_goldenfreddy.agressive_mode = true;
 			break;
 	}
 }
@@ -149,8 +161,10 @@ function on_night_start() {
 }
 
 function on_night_finish() {
-	obj_night.run_night = false;
-	room_goto(rm_game_over);
+	run_night = false;
+	if(current_night < 6) current_night++;
+	io_save();
+	room_goto(rm_6_am);
 }
 
 function on_power_update() {
@@ -168,6 +182,27 @@ function on_power_out() {
 function on_power_usage_update() {
 }
 
+#endregion
+
+#region I/O OPERATIONS
+function io_boot() {
+	ini_open("config.ini");
+	if(!ini_key_exists("night","level") ) {
+		ini_write_real("night","level",1);
+	}
+	ini_close();
+	
+}
+function io_load() {
+	ini_open("config.ini");
+	current_night = ini_read_real("night","level",1);
+	ini_close();
+}
+function io_save() {
+	ini_open("config.ini");
+	ini_write_real("night","level",current_night);
+	ini_close();
+}
 #endregion
 
 

@@ -1,5 +1,6 @@
 function scr_on_camera_open_start(){
 	audio_play_sound(snd_camera_up,0,false);
+	obj_ai_goldenfreddy.scr_on_camera_open_start();
 
 }
 
@@ -58,7 +59,7 @@ function scr_on_camera_close_finish() {
 function scr_on_camera_change_start() {
 	obj_camera_hud._camera_change_effect_frame = 0;
 	obj_camera_current_spr.update_current_camera_sprite();
-	show_debug_message("Guard CAM:" + obj_office.current_camera);
+	obj_ai_goldenfreddy.scr_on_camera_change_start();
 	audio_play_sound(snd_blop,0,0);
 	
 }

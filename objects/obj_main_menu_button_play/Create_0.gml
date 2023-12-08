@@ -1,7 +1,7 @@
 /// @description Cool stuff
 // You can write your code in this editor
 
-button_text = "Play (night 6)";
+button_text = "Play";
 
 goto_room = rm_loading;
 

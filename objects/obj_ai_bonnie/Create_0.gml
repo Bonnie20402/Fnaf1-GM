@@ -7,6 +7,7 @@ use_ai = true;
 ai_level = 10;
 ai_chance_time = 4.97;
 jumpscare_time = 0.8;
+backwards_chance = 0.15;
 
 alarm_set(0,ai_chance_time*game_get_speed(gamespeed_fps));
 show_debug_message("Bonnie AI created - using ai? " + string(use_ai) );
@@ -102,21 +103,16 @@ function on_animatronic_move() {
 		animatronic_add_forward_camera("3");
 	}
 	if(current_camera == "2A") {
-		animatronic_add_backward_camera("5");
 		animatronic_add_backward_camera("1B");
 		animatronic_add_forward_camera("2B");
 		animatronic_add_forward_camera("3");
 	}
 	if(current_camera == "2B") {
-		animatronic_add_backward_camera("5");
-		animatronic_add_backward_camera("1B");
 		animatronic_add_backward_camera("2A");
 		animatronic_add_forward_camera("3");
 		animatronic_add_forward_camera("LeftWindow");
 	}
 	if(current_camera == "3") {
-		animatronic_add_backward_camera("5");
-		animatronic_add_backward_camera("1B");
 		animatronic_add_backward_camera("2A");
 		animatronic_add_forward_camera("LeftWindow");
 		animatronic_add_forward_camera("2B");

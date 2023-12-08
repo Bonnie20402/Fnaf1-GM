@@ -15,7 +15,7 @@ show_debug_message(obj_ai_bonnie.current_camera);
 if(obj_ai_bonnie.ai_level >= _move) {
 
 	// go back 2 in a 5 chance.
-	var _forward = irandom(5) < 2 && obj_ai_bonnie.backward_cameras[0] != "N/A" ? false : true;
+	var _forward = random(1) <= backwards_chance && obj_ai_bonnie.backward_cameras[0] != "N/A" ? false : true;
 	
 	
 	if(obj_ai_bonnie.current_camera == "AttackSuccess") { scr_camera_force_down();

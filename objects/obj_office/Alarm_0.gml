@@ -8,7 +8,6 @@ if( !self.left_light && !self.right_light ) return;
 var _number = irandom(20);
 
 if (_number <= 3) {
-	sprite_index = obj_office;
 	self.light_flickering = !self.light_flickering;
 }
 else light_flickering = false;
