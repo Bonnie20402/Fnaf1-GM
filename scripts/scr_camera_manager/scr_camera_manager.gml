@@ -1,4 +1,5 @@
 function scr_on_camera_open_start(){
+	audio_sound_gain(snd_fan,0.3,250);
 	audio_play_sound(snd_camera_up,0,false);
 	obj_ai_goldenfreddy.scr_on_camera_open_start();
 
@@ -39,6 +40,7 @@ function scr_on_camera_close_start() {
 	view_visible[0] = true;
 	view_visible[1] = false;
 	obj_office.can_scroll = true;
+	audio_sound_gain(snd_fan,0.8,250);
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
 	scr_stop_camera_disable_sound();

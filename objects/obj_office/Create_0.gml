@@ -7,6 +7,7 @@ alarm_set(0,0.1*game_get_speed(gamespeed_fps));
 application_surface_draw_enable(false);
 //setup sounds
 audio_play_sound(snd_light,0,true);
+audio_play_sound(snd_fan,0,true,0.8);
 
 /*
 	Office variables
@@ -29,6 +30,7 @@ light_flickering = false;
 can_scroll = true;
 
 function on_office_jumpscare() {	
+	audio_stop_sound(snd_fan);
 	instance_destroy(obj_office_door_left);
 	instance_destroy(obj_office_door_right);
 	instance_destroy(obj_office_ventilator_gif);
@@ -41,6 +43,7 @@ function on_office_jumpscare() {
 }
 
 function on_office_power_out() {
+	audio_stop_sound(snd_fan);
 	instance_destroy(obj_office_ventilator_gif);
 	instance_destroy(obj_office_leftpanel);
 	instance_destroy(obj_office_rightpanel);
