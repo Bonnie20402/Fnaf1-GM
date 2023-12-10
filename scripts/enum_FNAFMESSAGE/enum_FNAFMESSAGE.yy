@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "client",
-    "path": "folders/Scripts/client.yy",
+    "name": "client-server",
+    "path": "folders/Scripts/client-server.yy",
   },
 }

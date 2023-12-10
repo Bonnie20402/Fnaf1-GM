@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_client_GuardPlayer",
+  "name": "scr_buffer_abstraction",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "client",
-    "path": "folders/Scripts/client.yy",
+    "name": "client-server",
+    "path": "folders/Scripts/client-server.yy",
   },
 }

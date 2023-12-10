@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "room_boot",
-    "path": "folders/Objects/room_boot.yy",
+    "name": "client",
+    "path": "folders/Objects/client.yy",
   },
   "parentObjectId": null,
   "persistent": true,
