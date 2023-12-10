@@ -10,6 +10,27 @@ server_connection = -1;
 client_os = os_type;
 client_id = -1;
 
+keep_alive_timestamp = current_time;
+timeout = 6000;
+
+//Server-side client variables
+left_door = false;
+right_door = false;
+left_light = false;
+right_light = false;
+camera_up = false;
+current_camera = "N/A"
+current_hours = 12;
+power_left = 100;
+power_usage = 1;
+jumpscared = false;
+
+
+
+
+
+alarm_set(0,0.1*game_get_speed(gamespeed_fps));
+
 client_state = CLIENTSTATE.WAITING;
 
 
@@ -40,11 +61,21 @@ on_client_connect = function() {
  * Called when the client disconnects.
  */
 on_client_disconnect = function() {
+	username = "Player";
+	server_connection = -1;
+	client_os = os_type;
+	client_id = -1;
+	client_state = CLIENTSTATE.WAITING;
+	show_debug_message("Lost connection to the server.")
 }
 
 
 on_client_out_of_date = function() {
 	show_debug_message("This client is out of date!");
+}
+
+on_client_clientid_recieved = function() {
+	show_debug_message("Recieved my client id: " + string(obj_client.client_id));
 }
 
 on_client_up_to_date = function() {
@@ -54,7 +85,9 @@ on_client_up_to_date = function() {
 	
 	obj_client.send_client_platform();
 	
-	obj_client.send_client_string();
+	show_debug_message("Init complete. - Requesting  my client id...");
+	obj_client.request_client_clientid();
+	
 }
 
 
@@ -71,6 +104,8 @@ on_state_update = function() {
 	show_debug_message("Client state updated.")
 }
 
+#endregion
+#region Data recieved from server
 on_server_message_recieved = function(_message_type,_message) {
 	#region DEBUG
 	if(global.CLIENT_DEBUG) {
@@ -86,10 +121,22 @@ on_server_message_recieved = function(_message_type,_message) {
 			var _version = _message;
 			if(global.CLIENT_PROTOCOL_VERSION == _version) obj_client.on_client_up_to_date();
 			else obj_client.on_client_out_of_date();
+	}
 	
+	#endregion
+	#region Client id
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_CLIENT_ID) {
+		var _id = _message;
+		obj_client.client_id = _id;
+		obj_client.on_client_clientid_recieved();
+	}
+		
+	#region Keep-alive
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.KEEP_ALIVE) {
+		if(_message == 1) keep_alive_timestamp = current_time;
 	}
 	#endregion
-	
+	#endregion
 	
 }
 #endregion
@@ -105,10 +152,56 @@ send_client_platform = function () {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_OS,obj_client.client_os)
 }
 
-send_client_string = function() {
-	buffer_fnaf_create_and_send(server_connection,123,"just a test !");
+send_leftdoor_state = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LEFTDOOR_UPDATE,obj_office.left_door);
 }
 
+send_rightdoor_state = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.RIGHTDOOR_UPDATE,obj_office.right_door);
+}
+
+send_cameraup_state = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CAMERAUP_UPDATE,obj_office.camera_up);
+}
+
+send_currentcamera_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CURRENTCAMERA_UPDATE,obj_office.current_camera);
+}
+
+send_powerleft_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERLEFT_UPDATE,round(obj_night.current_power/10));
+}
+
+send_powerusage_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERUSAGE_UPDATE,obj.night.current_power_usage);
+}
+
+send_night_time_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
+}
+
+
+
+send_powerout = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWEROUT,1);
+}
+
+send_night_lose = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_LOSE,1);
+}
+send_night_win = function () {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1)
+}
+
+
+
+
+#endregion
+
+#region Reqeust data from server prefix: request_client_...
+request_client_clientid = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.REQUEST_CLIENT_ID,1);
+}
 #endregion
 
 #region Boot

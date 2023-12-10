@@ -55,6 +55,7 @@ function scr_on_camera_close_start() {
 
 function scr_on_camera_close_finish() {
 	obj_night.update_power_usage();
+	
 }
 
 

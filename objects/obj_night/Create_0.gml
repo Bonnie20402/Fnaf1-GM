@@ -168,6 +168,7 @@ function on_night_finish() {
 }
 
 function on_power_update() {
+	obj_client.send_powerleft_update();
 	if(current_power == 0) {
 		on_power_out();
 	}
@@ -180,6 +181,7 @@ function on_power_out() {
 }
 
 function on_power_usage_update() {
+	obj_client.send_leftdoor_state();
 }
 
 #endregion
