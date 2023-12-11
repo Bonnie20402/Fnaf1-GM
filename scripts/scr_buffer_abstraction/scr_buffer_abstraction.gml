@@ -9,6 +9,8 @@ enum FNAFBUFFER {
 	INT = 0
 }
 
+
+///@desc SERVER-SIDE and CLIENT-SIDE.
 function buffer_fnaf_create_and_send(_socket,_message_type,_message) {
 	var _buffer = buffer_fnaf_create(_message_type,_message);
 	buffer_fnaf_send(_socket,_buffer);
@@ -18,6 +20,24 @@ function buffer_fnaf_create_and_send(_socket,_message_type,_message) {
 function buffer_fnaf_create_and_send_to_all(_message_type,_message) {
 	for(var _i =0; _i < array_length(obj_server.clients) ; _i++) {
 		if(obj_server.clients[_i].client_state != CLIENTSTATE.OFFLINE) {
+			buffer_fnaf_create_and_send(_i,_message_type,_message)
+		}
+	}
+}
+
+///@DESC SERVER-SIDE ONLY.
+function buffer_fnaf_create_and_send_to_lobby(_lobby,_message_type,_message) {
+	for(var _i =0; _i < array_length(obj_server.clients) ; _i++) {
+		if(obj_server.clients[_i].client_state != CLIENTSTATE.OFFLINE && obj_server.clients[_i].current_lobby == _lobby) {
+			buffer_fnaf_create_and_send(_i,_message_type,_message)
+		}
+	}
+}
+
+///@DESC SERVER-SIDE ONLY.
+function buffer_fnaf_create_and_send_to_lobby_except(_lobby,_message_type,_message,_except) {
+	for(var _i =0; _i < array_length(obj_server.clients) ; _i++) {
+		if(obj_server.clients[_i].client_state != CLIENTSTATE.OFFLINE && obj_server.clients[_i].current_lobby == _lobby && _i != _except) {
 			buffer_fnaf_create_and_send(_i,_message_type,_message)
 		}
 	}

@@ -113,7 +113,7 @@ This explains why those three activate when set to 0.
 It also explains why Bonnie doesn't become active until about 2 AM on Night 1.
 */
 function on_hour_update() {
-	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
 	if(current_hours == 2) {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
 	}
@@ -182,32 +182,32 @@ function disable_animatronic_ai() {
 }
 function on_night_finish() {
 	run_night = false;
-	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1);
 	if(current_night < 6) current_night++;
 	io_save();
 	room_goto(rm_6_am);
 }
 
 function on_power_update() {
-	obj_client.send_powerleft_update();
+	obj_fnafguard_client.send_powerleft_update();
 	if(current_power == 0) {
 		on_power_out();
 	}
 }
 
 function on_power_out() {
-	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.POWEROUT,1);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.POWEROUT,1);
 	scr_camera_force_down();
 	obj_office.on_office_power_out();
 	obj_ai_freddy_power_out.on_power_out();
 }
 
 function on_power_usage_update() {
-	obj_client.send_leftdoor_state();
-	obj_client.send_rightdoor_state();
-	obj_client.send_cameraup_state();
-	obj_client.send_leftlight_update();
-	obj_client.send_rightlight_update();
+	obj_fnafguard_client.send_leftdoor_state();
+	obj_fnafguard_client.send_rightdoor_state();
+	obj_fnafguard_client.send_cameraup_state();
+	obj_fnafguard_client.send_leftlight_update();
+	obj_fnafguard_client.send_rightlight_update();
 }
 
 #endregion

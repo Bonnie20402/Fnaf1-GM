@@ -2,8 +2,11 @@
 // You can write your code in this editor
 
 
-on_night_start(6);
-obj_fnafguard_client.send_client_state();
+
+in_lobby = false;
+lobby_name = "ERROR";
+lobby_master = -1;
+lobby_state = LOBBYSTATE.ERROR
 
 
 

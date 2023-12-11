@@ -1,34 +1,23 @@
 /// @description Declare Global Protocol Variables and Client-specific variables.
 // You can write your code in this editor
 global.CLIENT_DEBUG = true;
-global.IS_CLIENT = true;
 global.CLIENT_PROTOCOL_VERSION = 1;
 global.SERVER_GAME_PROTOCOL = "ERICO E LARA LINDOS";
 
 
-username = "Player";
-server_connection = -1;
-client_os = os_type;
-client_id = -1;
 
-keep_alive_timestamp = current_time;
-timeout = 6000;
-
-//Server-side client variables
-left_door = false;
-right_door = false;
-left_light = false;
-right_light = false;
-camera_up = false;
-current_camera = "N/A"
-current_hours = 12;
-power_left = 100;
-power_usage = 1;
-jumpscared = false;
-target_client_id = 0;
 
 //Client-side client variables.
+keep_alive_timestamp = current_time;
+timeout = 3000 + 15000;
+username = "Player";
+client_id = -1;
+server_connection = -1;
+client_state = CLIENTSTATE.OFFLINE;
 guards_alive = 0;
+in_lobby = false;
+joining_lobby = "";
+actual_lobby = "";
 
 
 
@@ -73,45 +62,32 @@ on_client_connect = function() {
  * Called when the client disconnects.
  */
 on_client_disconnect = function() {
-	username = "Player";
-	server_connection = -1;
-	client_os = os_type;
-	client_id = -1;
-	client_state = CLIENTSTATE.OFFLINE;
-	//Server-side client variables
-	left_door = false;
-	right_door = false;
-	left_light = false;
-	right_light = false;
-	camera_up = false;
-	current_camera = "N/A"
-	current_hours = 12;
-	power_left = 100;
-	power_usage = 1;
-	jumpscared = false;
-
 	//Client-side client variables.
+	username = "Player";
+	client_id = -1;
+	server_connection = -1;
+	client_state = CLIENTSTATE.OFFLINE;
 	guards_alive = 0;
-
+	in_lobby = false;
+	joining_lobby = "";
+	actual_lobby = "";
 }
 
 
 on_client_out_of_date = function() {
 	show_debug_message("This client is out of date!");
-	disconnect_client();
-	
+	obj_fnafguard_client.disconnect_client();
 	server_connection = -2;
 }
 
 on_client_clientid_recieved = function() {
-	show_debug_message("Recieved my client id: " + string(obj_client.client_id));
+	show_debug_message("Recieved my client id: " + string(obj_fnafguard_client.client_id));
 }
 
 on_client_up_to_date = function() {
-	show_debug_message("Client is up to date. Sending platform...");
-	obj_client.send_client_platform();
-	show_debug_message("Init complete. - Requesting  my client id...");
-	obj_client.request_client_clientid();
+	show_debug_message("Client is up to date. Requesting client id...");
+	obj_fnafguard_client.request_client_clientid();
+	obj_fnafguard_client.send_lobby_join_request("Batata");
 	
 }
 
@@ -144,16 +120,16 @@ on_server_message_recieved = function(_message_type,_message) {
 		show_debug_message("Recieved version from server!")
 			//Check if the version between server and client is the same
 			var _version = _message;
-			if(global.CLIENT_PROTOCOL_VERSION == _version) obj_client.on_client_up_to_date();
-			else obj_client.on_client_out_of_date();
+			if(global.CLIENT_PROTOCOL_VERSION == _version) obj_fnafguard_client.on_client_up_to_date();
+			else obj_fnafguard_client.on_client_out_of_date();
 	}
 	
 	#endregion
 	#region Client id
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_CLIENT_ID) {
 		var _id = _message;
-		obj_client.client_id = _id;
-		obj_client.on_client_clientid_recieved();
+		obj_fnafguard_client.client_id = _id;
+		obj_fnafguard_client.on_client_clientid_recieved();
 	}
 		
 	#region Keep-alive
@@ -171,9 +147,23 @@ on_server_message_recieved = function(_message_type,_message) {
 	}
 	#endregion
 	
+	#region Lobby request response
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_JOIN_RESPONSE) {
+		if(_message == LOBBY_JOIN_RESPONSE.ACCEPT) {
+			in_lobby = true;
+			actual_lobby = joining_lobby;
+		}
+		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {
+			in_lobby = false;
+			actual_lobby = "";
+			joining_lobby = "";
+		}
+	}
+	#endregion
+	
 	#region Alive guards update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_ALIVE_GUARDS) {
-		obj_client.guards_alive = _message;
+		obj_fnafguard_client.guards_alive = _message;
 	}
 	
 }
@@ -183,11 +173,11 @@ on_server_message_recieved = function(_message_type,_message) {
 #region Send data to server prefix: send_client_...
 
 send_client_state = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_STATE,obj_client.client_state);
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_STATE,obj_fnafguard_client.client_state);
 }
 
 send_client_platform = function () {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_OS,obj_client.client_os)
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_OS,obj_fnafguard_client.client_os)
 }
 
 send_leftdoor_state = function() {
@@ -238,6 +228,12 @@ send_night_win = function () {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1)
 }
 
+send_lobby_join_request = function(_lobby_name) {
+	joining_lobby = _lobby_name;
+	show_debug_message("Joining lobby " + _lobby_name + "...");
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_JOIN_REQUEST,_lobby_name);
+}
+
 
 
 
@@ -250,43 +246,15 @@ request_client_clientid = function() {
 #endregion
 
 #region Boot
-if(global.IS_CLIENT) {
-	if(instance_number(obj_client) == 1) {
-		connect_client();
-	}
-	else {
-		disconnect_client();
-		on_client_disconnect();
-		instance_destroy(self);
-	}
+if(instance_number(obj_fnafguard_client) == 1) {
+	connect_client();
 }
+else {
+	disconnect_client();
+	on_client_disconnect();
+	instance_destroy(self);
+	}
 #endregion
 
-#region Util
 
-/// to_String()
-/// Returns a string containing the values of the specified variables.
-
-to_string = function(){
-    var _result = "";
-    // Player variables
-    _result += "username = " + string(username) + ";\n";
-    _result += "client_state = " + string(client_state) + ";\n";
-    _result += "client_id = " + string(client_id) + ";\n";
-	_result += "target_id = " + string(target_client_id) + ";\n";
-    // Server-side client variables
-    _result += "left_door = " + string(left_door) + ";\n";
-    _result += "right_door = " + string(right_door) + ";\n";
-    _result += "left_light = " + string(left_light) + ";\n";
-    _result += "right_light = " + string(right_light) + ";\n";
-    _result += "camera_up = " + string(camera_up) + ";\n";
-    _result += "current_camera = " + string(current_camera) + ";\n";
-    _result += "current_hours = " + string(current_hours) + ";\n";
-    _result += "power_left = " + string(power_left) + ";\n";
-    _result += "power_usage = " + string(power_usage) + ";\n";
-    _result += "jumpscared = " + string(jumpscared) + ";\n";
-    
-    return _result;
-}
-#endregion
 

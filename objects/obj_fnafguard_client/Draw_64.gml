@@ -1,7 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(!global.IS_CLIENT) return;
 
 var _ui_x = 1150;
 var _ui_y = 35;
@@ -19,9 +18,13 @@ else if(self.server_connection == -2) {
 else {
 	draw_set_color(c_lime)
 	_text = "Connected";
-	if(obj_client.client_state == CLIENTSTATE.OFFICE) {
+	if(self.actual_lobby != "") {
+		_text+=" (" + self.actual_lobby + ")";
+		if(self.client_state == CLIENTSTATE.OFFICE) {
 		if(obj_night.run_night) _text+="\n" + string(guards_alive) + " guards left.";
 		else _text+="\nWaiting..."
+	}
+	
 		
 	}
 }

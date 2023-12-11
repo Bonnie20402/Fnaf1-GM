@@ -2,9 +2,9 @@
 // You can write your code in this editor
 
 
-if(obj_client.server_connection == 0) {
-	obj_client.client_state = CLIENTSTATE.LOADING;
-	obj_client.send_client_state();
+if(obj_fnafguard_client.server_connection == 0) {
+	obj_fnafguard_client.client_state = CLIENTSTATE.LOADING;
+	obj_fnafguard_client.send_client_state();
 }
 
 

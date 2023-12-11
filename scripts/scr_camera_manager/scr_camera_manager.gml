@@ -64,7 +64,7 @@ function scr_on_camera_change_start() {
 	obj_camera_current_spr.update_current_camera_sprite();
 	obj_ai_goldenfreddy.scr_on_camera_change_start();
 	audio_play_sound(snd_blop,0,0);
-	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CURRENTCAMERA_UPDATE,obj_office.current_camera);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CURRENTCAMERA_UPDATE,obj_office.current_camera);
 	
 }
 
