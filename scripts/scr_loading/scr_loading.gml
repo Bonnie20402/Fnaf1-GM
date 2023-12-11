@@ -1,5 +1,6 @@
 
 function scr_loading(){
+	
 	sprite_prefetch(spr_office_camera_button);
 	sprite_prefetch(spr_office_camera_layout);
 	sprite_prefetch(spr_office_camera_rec);

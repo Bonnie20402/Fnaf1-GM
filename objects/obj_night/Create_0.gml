@@ -17,7 +17,7 @@ run_night = false;
 current_hours = 12;
 
 //The current night.
-current_night = 1;
+current_night = 0;
 
 //The current power left.
 current_power = 999;
@@ -113,6 +113,7 @@ This explains why those three activate when set to 0.
 It also explains why Bonnie doesn't become active until about 2 AM on Night 1.
 */
 function on_hour_update() {
+	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
 	if(current_hours == 2) {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
 	}
@@ -132,18 +133,22 @@ function on_hour_update() {
 	}
 }
 
-function on_night_start() {
+function on_night_start(_night) {
 	if(room != rm_office) {
 		show_message("Oops!\nThe night has been started outside of the office.\nThe game is going to close.");
 		game_end(1);
 	}
+	run_night = true;
 	// Re-init office variables
 	obj_office.left_door = false;
 	obj_office.right_door = false;
 	obj_office.left_light = false;
 	obj_office.right_light = false;
+	obj_office.can_scroll = true;
+	obj_office.jumpscared = false;
 	scr_camera_force_down();
 	// Re-init night variables
+	current_night = _night;
 	current_hours = 12;
 	current_power = 999;
 	current_power_usage = 1;
@@ -151,6 +156,7 @@ function on_night_start() {
 	
 	//Setup animatronic AI
 	update_animatronic_ai();
+	enable_animatronic_ai();
 	// Current power alarm
 	alarm_set(0,1*game_get_speed(gamespeed_fps));
 	//Time alarm
@@ -160,8 +166,23 @@ function on_night_start() {
 		
 }
 
+function enable_animatronic_ai() {
+	obj_ai_freddy.use_ai = true;
+	obj_ai_bonnie.use_ai = true;
+	obj_ai_chica.use_ai = true;
+	obj_ai_foxy.use_ai = true;
+	//Golden freddy is handled on update animatronic ai
+}
+
+function disable_animatronic_ai() {
+	obj_ai_freddy.use_ai = false;
+	obj_ai_bonnie.use_ai = false;
+	obj_ai_chica.use_ai = false;
+	obj_ai_foxy.use_ai = false;
+}
 function on_night_finish() {
 	run_night = false;
+	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1);
 	if(current_night < 6) current_night++;
 	io_save();
 	room_goto(rm_6_am);
@@ -175,6 +196,7 @@ function on_power_update() {
 }
 
 function on_power_out() {
+	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.POWEROUT,1);
 	scr_camera_force_down();
 	obj_office.on_office_power_out();
 	obj_ai_freddy_power_out.on_power_out();
@@ -182,6 +204,10 @@ function on_power_out() {
 
 function on_power_usage_update() {
 	obj_client.send_leftdoor_state();
+	obj_client.send_rightdoor_state();
+	obj_client.send_cameraup_state();
+	obj_client.send_leftlight_update();
+	obj_client.send_rightlight_update();
 }
 
 #endregion

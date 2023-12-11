@@ -34,5 +34,5 @@
     "path": "sprites/spr_golden_freddy/spr_golden_freddy.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }

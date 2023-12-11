@@ -14,6 +14,14 @@ function buffer_fnaf_create_and_send(_socket,_message_type,_message) {
 	buffer_fnaf_send(_socket,_buffer);
 }
 
+///@desc SERVER-SIDE ONLY.
+function buffer_fnaf_create_and_send_to_all(_message_type,_message) {
+	for(var _i =0; _i < array_length(obj_server.clients) ; _i++) {
+		if(obj_server.clients[_i].client_state != CLIENTSTATE.OFFLINE) {
+			buffer_fnaf_create_and_send(_i,_message_type,_message)
+		}
+	}
+}
 
 /// @desc Creates a buffer for a pre-defined message
 /// @param {any} _message_type The message type (stored in a enum)

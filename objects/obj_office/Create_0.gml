@@ -30,6 +30,7 @@ light_flickering = false;
 can_scroll = true;
 
 function on_office_jumpscare() {	
+	buffer_fnaf_create_and_send(obj_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_LOSE,1);
 	audio_stop_sound(snd_fan);
 	instance_destroy(obj_office_door_left);
 	instance_destroy(obj_office_door_right);

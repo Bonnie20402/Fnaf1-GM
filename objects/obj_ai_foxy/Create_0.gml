@@ -3,7 +3,7 @@
 
 start_camera = "1C_0";
 current_camera = start_camera;
-use_ai = true;
+use_ai = false;
 ai_level = 10;
 ai_chance_time = 5.11;
 jumpscare_time = 0.8;
