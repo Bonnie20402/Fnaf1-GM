@@ -55,6 +55,8 @@
     {"name":"right","order":2,"path":"folders/Sprites/room_office/panel/right.yy",},
     {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":7,"path":"folders/Timelines.yy",},
+    {"name":"room_lobby","order":7,"path":"folders/Sprites/room_lobby.yy",},
+    {"name":"room_lobby","order":12,"path":"folders/Objects/room_lobby.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_cameras_1a_bonnie0freddy1chica0","order":2,"path":"sprites/spr_cameras_1a_bonnie0freddy1chica0/spr_cameras_1a_bonnie0freddy1chica0.yy",},
@@ -121,6 +123,7 @@
     {"name":"spr_cameras_1b_bonnie1freddy0chica1","order":4,"path":"sprites/spr_cameras_1b_bonnie1freddy0chica1/spr_cameras_1b_bonnie1freddy0chica1.yy",},
     {"name":"snd_freddy_hur1","order":11,"path":"sounds/snd_freddy_hur1/snd_freddy_hur1.yy",},
     {"name":"spr_office_ventilator_gif","order":3,"path":"sprites/spr_office_ventilator_gif/spr_office_ventilator_gif.yy",},
+    {"name":"rm_lobby","order":8,"path":"rooms/rm_lobby/rm_lobby.yy",},
     {"name":"snd_6_am","order":28,"path":"sounds/snd_6_am/snd_6_am.yy",},
     {"name":"spr_golden_freddy","order":7,"path":"sprites/spr_golden_freddy/spr_golden_freddy.yy",},
     {"name":"snd_camera_disable1","order":23,"path":"sounds/snd_camera_disable1/snd_camera_disable1.yy",},

@@ -18,8 +18,8 @@ else if(self.server_connection == -2) {
 else {
 	draw_set_color(c_lime)
 	_text = "Connected";
-	if(self.actual_lobby != "") {
-		_text+=" (" + self.actual_lobby + ")";
+	if(self.in_lobby) {
+		_text+=" (" + obj_lobby_client.lobby_name + ")";
 		if(self.client_state == CLIENTSTATE.OFFICE) {
 		if(obj_night.run_night) _text+="\n" + string(guards_alive) + " guards left.";
 		else _text+="\nWaiting..."

@@ -14,6 +14,7 @@ username = "Player";
 client_id = -1;
 server_connection = -1;
 client_state = CLIENTSTATE.OFFLINE;
+server_state = SERVERSTATE.OPEN
 guards_alive = 0;
 in_lobby = false;
 joining_lobby = "";
@@ -151,13 +152,21 @@ on_server_message_recieved = function(_message_type,_message) {
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_JOIN_RESPONSE) {
 		if(_message == LOBBY_JOIN_RESPONSE.ACCEPT) {
 			in_lobby = true;
-			actual_lobby = joining_lobby;
+			obj_lobby_client.lobby_name = joining_lobby;
 		}
 		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {
 			in_lobby = false;
-			actual_lobby = "";
-			joining_lobby = "";
 		}
+	}
+	#region Lobby state update
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_STATE_UPDATE) {
+		obj_lobby_client.lobby_state = _message;
+	}
+	#endregion
+
+	#region Lobby master update
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_MASTER_UPDATE) {
+		obj_lobby_client.lobby_master = _message;
 	}
 	#endregion
 	
@@ -165,7 +174,7 @@ on_server_message_recieved = function(_message_type,_message) {
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_ALIVE_GUARDS) {
 		obj_fnafguard_client.guards_alive = _message;
 	}
-	
+	#endregion
 }
 #endregion
 

@@ -27,19 +27,31 @@ function buffer_fnaf_create_and_send_to_all(_message_type,_message) {
 
 ///@DESC SERVER-SIDE ONLY.
 function buffer_fnaf_create_and_send_to_lobby(_lobby,_message_type,_message) {
-	for(var _i =0; _i < array_length(obj_server.clients) ; _i++) {
-		if(obj_server.clients[_i].client_state != CLIENTSTATE.OFFLINE && obj_server.clients[_i].current_lobby == _lobby) {
-			buffer_fnaf_create_and_send(_i,_message_type,_message)
+	var _index = obj_server.get_lobby_index(_lobby);
+	if(_index != -1) {
+		for(var _i =0;_i<array_length(obj_server.lobbies[_index].lobby_clients); _i++) {
+			buffer_fnaf_create_and_send(obj_server.lobbies[_index].lobby_clients[_i],_message_type,_message)
 		}
+	}
+	else {
+		show_message("FATAL ERROR: Tried to broadcast a message to a non-existent lobby. Please contact the developer about this issue");
+		game_end(0);
 	}
 }
 
-///@DESC SERVER-SIDE ONLY.
+///@DESC SERVER-SIDE ONLY. TODO FIX
 function buffer_fnaf_create_and_send_to_lobby_except(_lobby,_message_type,_message,_except) {
-	for(var _i =0; _i < array_length(obj_server.clients) ; _i++) {
-		if(obj_server.clients[_i].client_state != CLIENTSTATE.OFFLINE && obj_server.clients[_i].current_lobby == _lobby && _i != _except) {
-			buffer_fnaf_create_and_send(_i,_message_type,_message)
+	var _index = obj_server.get_lobby_index(_lobby);
+	if(_index != -1) {
+		for(var _i =0;_i<array_length(obj_server.lobbies[_index].lobby_clients); _i++) {
+			if(obj_server.lobbies[_index].lobby_clients[_i] != _except) {
+				buffer_fnaf_create_and_send(obj_server.lobbies[_index].lobby_clients[_i],_message_type,_message)
+			}
 		}
+	}
+	else {
+		show_message("FATAL ERROR: Tried to broadcast a message (except!) to a non-existent lobby. Please contact the developer about this issue");
+		game_end(0);
 	}
 }
 
@@ -75,6 +87,5 @@ function buffer_fnaf_create(_message_type,_message) {
 function buffer_fnaf_send(_socket,_buffer) {
 	buffer_seek(_buffer,buffer_seek_start,0);
 	_bytes = network_send_packet(_socket,_buffer,buffer_get_size(_buffer));
-	show_debug_message("Sent " + string(_bytes) + " bytes to socket id " + string(_socket) )
 	buffer_delete(_buffer);
 }

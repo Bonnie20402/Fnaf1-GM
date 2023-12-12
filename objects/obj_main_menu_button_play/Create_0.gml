@@ -3,7 +3,7 @@
 
 button_text = "Play";
 
-goto_room = rm_loading;
+goto_room = rm_lobby;
 
 image_alpha = 0.2;
 function on_button_click() {
