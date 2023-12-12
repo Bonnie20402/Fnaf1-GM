@@ -156,6 +156,7 @@ on_server_message_recieved = function(_message_type,_message) {
 		}
 		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {
 			in_lobby = false;
+			obj_lobby_client.lobby_state = LOBBYSTATE.ERROR;
 		}
 	}
 	#region Lobby state update

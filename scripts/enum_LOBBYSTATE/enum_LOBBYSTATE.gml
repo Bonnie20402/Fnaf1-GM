@@ -5,6 +5,7 @@
 enum LOBBYSTATE {
 	ERROR,
 	OPEN,
+	STARTING, 
 	IN_GAME,
 	ENDING
 }
