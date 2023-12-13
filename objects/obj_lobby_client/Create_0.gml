@@ -5,14 +5,16 @@
 
 in_lobby = false;
 lobby_name = "ERROR";
-lobby_master = -1;
 lobby_state = LOBBYSTATE.ERROR
 
-
-
-
-
-
+on_lobby_state_update = function() {
+	if(lobby_state == LOBBYSTATE.WAITING_FOR_LOADED_CLIENTS) {
+		if(room != rm_office && room != rm_loading) room_goto(rm_loading);
+	}
+	if(lobby_state == LOBBYSTATE.IN_GAME) {
+		obj_night.on_night_start(1);
+	}
+}
 
 
 

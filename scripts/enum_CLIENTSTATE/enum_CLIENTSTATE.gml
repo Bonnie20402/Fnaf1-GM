@@ -2,8 +2,10 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 enum CLIENTSTATE {
-	OFFLINE = 250,
-	MAIN_MENU = 251,
-	LOADING = 252,
-	OFFICE= 253
+	OFFLINE,
+	MAIN_MENU,
+	LOBBY_MENU,
+	LOADING,
+	OFFICE,
+	GAME_OVER
 }

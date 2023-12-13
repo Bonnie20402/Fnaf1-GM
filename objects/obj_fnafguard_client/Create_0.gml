@@ -151,17 +151,19 @@ on_server_message_recieved = function(_message_type,_message) {
 	#region Lobby request response
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_JOIN_RESPONSE) {
 		if(_message == LOBBY_JOIN_RESPONSE.ACCEPT) {
-			in_lobby = true;
+			obj_lobby_client.in_lobby = true;
 			obj_lobby_client.lobby_name = joining_lobby;
 		}
 		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {
-			in_lobby = false;
+			obj_lobby_client.in_lobby = false;
 			obj_lobby_client.lobby_state = LOBBYSTATE.ERROR;
+			obj_lobby_client.lobby_name = "ERROR";
 		}
 	}
 	#region Lobby state update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_STATE_UPDATE) {
 		obj_lobby_client.lobby_state = _message;
+		obj_lobby_client.on_lobby_state_update();
 	}
 	#endregion
 
