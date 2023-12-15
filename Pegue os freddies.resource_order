@@ -187,6 +187,7 @@
     {"name":"obj_hitbox_rightdoor","order":3,"path":"objects/obj_hitbox_rightdoor/obj_hitbox_rightdoor.yy",},
     {"name":"spr_office_camera_rec","order":5,"path":"sprites/spr_office_camera_rec/spr_office_camera_rec.yy",},
     {"name":"rm_game_over","order":6,"path":"rooms/rm_game_over/rm_game_over.yy",},
+    {"name":"Sprite78","order":9,"path":"sprites/Sprite78/Sprite78.yy",},
     {"name":"obj_camera_string","order":5,"path":"objects/obj_camera_string/obj_camera_string.yy",},
     {"name":"spr_office_jumpscare_goldenfreddy","order":5,"path":"sprites/spr_office_jumpscare_goldenfreddy/spr_office_jumpscare_goldenfreddy.yy",},
     {"name":"spr_cameras_4a_freddy1chica0","order":1,"path":"sprites/spr_cameras_4a_freddy1chica0/spr_cameras_4a_freddy1chica0.yy",},

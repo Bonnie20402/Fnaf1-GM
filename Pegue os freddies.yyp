@@ -74,7 +74,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.0.121",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"spr_panel_right_light0door0","path":"sprites/spr_panel_right_light0door0/spr_panel_right_light0door0.yy",},},
@@ -245,6 +245,7 @@
     {"id":{"name":"rm_game_over","path":"rooms/rm_game_over/rm_game_over.yy",},},
     {"id":{"name":"spr_cameras_7_freddy0chica1","path":"sprites/spr_cameras_7_freddy0chica1/spr_cameras_7_freddy0chica1.yy",},},
     {"id":{"name":"obj_main_menu_manager","path":"objects/obj_main_menu_manager/obj_main_menu_manager.yy",},},
+    {"id":{"name":"Sprite78","path":"sprites/Sprite78/Sprite78.yy",},},
     {"id":{"name":"obj_camera_string","path":"objects/obj_camera_string/obj_camera_string.yy",},},
     {"id":{"name":"spr_office_jumpscare_goldenfreddy","path":"sprites/spr_office_jumpscare_goldenfreddy/spr_office_jumpscare_goldenfreddy.yy",},},
     {"id":{"name":"spr_cameras_4a_freddy1chica0","path":"sprites/spr_cameras_4a_freddy1chica0/spr_cameras_4a_freddy1chica0.yy",},},
