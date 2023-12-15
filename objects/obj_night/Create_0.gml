@@ -1,11 +1,11 @@
 /// @description Night,  Hour and  Power System
 // You can write your code in this editor
 
-gui_x = 50;
-gui_y = 650;
+gui_time_x = 1100;
+gui_time_y = 650;
 
-gui_time_x = 1030;
-gui_time_y = 30;
+gui_x = 100;
+gui_y = 650;
 
 
 night_seed = randomize();

@@ -16,7 +16,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Fonts","folderPath":"folders/Fonts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Notes","folderPath":"folders/Notes.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"client","folderPath":"folders/Objects/client.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":".client","folderPath":"folders/Objects/.client.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"room_6_am","folderPath":"folders/Objects/room_6_am.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"room_boot","folderPath":"folders/Objects/room_boot.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"room_game_over","folderPath":"folders/Objects/room_game_over.yy",},

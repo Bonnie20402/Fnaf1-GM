@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "client",
-    "path": "folders/Objects/client.yy",
+    "name": ".client",
+    "path": "folders/Objects/.client.yy",
   },
   "parentObjectId": null,
   "persistent": true,

@@ -19,8 +19,8 @@ else if(self.server_connection == -2) {
 else {
 	draw_set_color(c_lime)
 	_text = "Connected";
-	if(self.actual_lobby != "") {
-		_text+=" (" + self.actual_lobby + ")";
+	if(obj_lobby_client.in_lobby) {
+		_text+=" (" + obj_lobby_client.lobby_name + ")";
 		if(obj_lobby_client.lobby_state == LOBBYSTATE.OPEN) {
 			_text+="\nWaiting for master...";
 		}
@@ -31,7 +31,7 @@ else {
 			_text+="\nWaiting for clients...";
 		}
 		else if(obj_lobby_client.lobby_state == LOBBYSTATE.IN_GAME) {
-			_text+= string(obj_fnafguard_client.guards_alive) + " guards left";
+			_text+= "\n" + string(obj_lobby_client.guards_left) + " guards left";
 		}
 		
 	}	

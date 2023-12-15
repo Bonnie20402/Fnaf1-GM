@@ -16,9 +16,7 @@ server_connection = -1;
 client_state = CLIENTSTATE.OFFLINE;
 server_state = SERVERSTATE.OPEN
 guards_alive = 0;
-in_lobby = false;
 joining_lobby = "";
-actual_lobby = "";
 
 
 
@@ -175,7 +173,7 @@ on_server_message_recieved = function(_message_type,_message) {
 	
 	#region Alive guards update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_ALIVE_GUARDS) {
-		obj_fnafguard_client.guards_alive = _message;
+		obj_lobby_client.guards_left = _message;
 	}
 	#endregion
 }
@@ -245,6 +243,8 @@ send_lobby_join_request = function(_lobby_name) {
 	show_debug_message("Joining lobby " + _lobby_name + "...");
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_JOIN_REQUEST,_lobby_name);
 }
+
+
 
 
 
