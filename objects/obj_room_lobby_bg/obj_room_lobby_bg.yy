@@ -1,12 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_room_lobby_startbutton",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
-  ],
+  "name": "obj_room_lobby_bg",
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -30,8 +26,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_lobby_ui_btn_purple",
-    "path": "sprites/spr_lobby_ui_btn_purple/spr_lobby_ui_btn_purple.yy",
+    "name": "spr_lobby_bg0",
+    "path": "sprites/spr_lobby_bg0/spr_lobby_bg0.yy",
   },
   "spriteMaskId": null,
   "visible": true,

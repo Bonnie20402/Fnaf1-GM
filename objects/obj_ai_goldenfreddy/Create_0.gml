@@ -53,7 +53,7 @@ function on_animatronic_jumpscare() {
 	obj_office.jumpscared = true;
 	in_office = false;
 	with(obj_office) {
-		sprite_index = spr_office_jumpscare_goldenfreddy;
+		sprite_index = spr_office_jumpscare_goldenlara;
 		depth = -1987;
 		image_index = 0;
 		image_speed = 0;

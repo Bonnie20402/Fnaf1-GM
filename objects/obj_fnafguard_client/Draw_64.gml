@@ -19,7 +19,7 @@ else if(self.server_connection == -2) {
 else {
 	draw_set_color(c_lime)
 	_text = "Connected";
-	if(obj_lobby_client.in_lobby) {
+	if(obj_lobby_client.in_lobby && room != rm_lobby) {
 		_text+=" (" + obj_lobby_client.lobby_name + ")";
 		if(obj_lobby_client.lobby_state == LOBBYSTATE.OPEN) {
 			_text+="\nWaiting for master...";

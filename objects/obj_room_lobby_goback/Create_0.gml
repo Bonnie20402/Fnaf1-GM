@@ -3,7 +3,7 @@
 initial_x = x;
 initial_y = y-2.5;
 
-text = "START";
+text = "BACK";
 
 
 

@@ -77,6 +77,9 @@ function on_camera_ui_update() {
 }
 
 function scr_camera_force_down() {
+	//prevent infinite loop
+	if(obj_hitbox_camera.camera_lock) return;
+	
 	if(obj_office.camera_up) obj_office.camera_up = false;
 	if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
 }

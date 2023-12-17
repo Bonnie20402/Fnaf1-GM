@@ -19,8 +19,11 @@ if(room = rm_office) {
 	_state = CLIENTSTATE.OFFICE;
 }
 
-obj_fnafguard_client.client_state = _state;
-obj_fnafguard_client.send_client_state();
+if(obj_fnafguard_client.server_connection != -1) {
+	obj_fnafguard_client.client_state = _state;
+	obj_fnafguard_client.send_client_state();
+}
+
 
 
 

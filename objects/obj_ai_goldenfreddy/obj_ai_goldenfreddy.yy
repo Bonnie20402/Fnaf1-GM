@@ -30,8 +30,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_golden_freddy",
-    "path": "sprites/spr_golden_freddy/spr_golden_freddy.yy",
+    "name": "spr_office_jumpscare_goldenlara",
+    "path": "sprites/spr_office_jumpscare_goldenlara/spr_office_jumpscare_goldenlara.yy",
   },
   "spriteMaskId": null,
   "visible": false,
