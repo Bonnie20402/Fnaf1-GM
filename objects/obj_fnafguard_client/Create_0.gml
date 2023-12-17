@@ -26,16 +26,17 @@ joining_lobby = "";
 
 alarm_set(0,0.1*game_get_speed(gamespeed_fps));
 
-client_state = CLIENTSTATE.OFFLINE;
 
 
 
 
 #region General actions (connect,disconnect)
 connect_client = function() {
+	network_destroy(server_connection);
+	server_connection = -1;
 	server_connection = network_create_socket(network_socket_tcp);
-	server_connection = network_connect(server_connection,"localhost",1987);
-	show_debug_message("Connecting to server...");
+	server_connection = network_connect(server_connection,obj_ipconfig_client.ip,obj_ipconfig_client.port);
+	show_debug_message("Connecting to " + obj_ipconfig_client.ip + ":" + string(obj_ipconfig_client.port) + "...");
 }
 
 disconnect_client = function() {
@@ -53,7 +54,6 @@ disconnect_client = function() {
  */
 on_client_connect = function() {
 	show_debug_message("Connected to server")
-	show_debug_message("Waiting the server's version...");
 }
 
 
@@ -79,17 +79,23 @@ on_client_out_of_date = function() {
 	server_connection = -2;
 }
 
+on_client_username_update = function() {
+	return;
+}
 on_client_clientid_recieved = function() {
 	show_debug_message("Recieved my client id: " + string(obj_fnafguard_client.client_id));
+	client_state = CLIENTSTATE.MAIN_MENU;
+	send_client_state();
 }
 
 on_client_up_to_date = function() {
 	show_debug_message("Client is up to date. Requesting client id...");
 	obj_fnafguard_client.request_client_clientid();
-	obj_fnafguard_client.send_lobby_join_request("Batata");
-	
 }
 
+on_client_joining_lobby_update = function() {
+	obj_fnafguard_client.send_lobby_join_request(joining_lobby);
+}
 
 on_server_state_update = function() {
 	show_debug_message("Server state updated!")
@@ -151,6 +157,7 @@ on_server_message_recieved = function(_message_type,_message) {
 		if(_message == LOBBY_JOIN_RESPONSE.ACCEPT) {
 			obj_lobby_client.in_lobby = true;
 			obj_lobby_client.lobby_name = joining_lobby;
+			room_goto(rm_lobby);
 		}
 		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {
 			obj_lobby_client.in_lobby = false;
@@ -239,12 +246,8 @@ send_night_win = function () {
 }
 
 send_lobby_join_request = function(_lobby_name) {
-	joining_lobby = _lobby_name;
-	show_debug_message("Joining lobby " + _lobby_name + "...");
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_JOIN_REQUEST,_lobby_name);
 }
-
-
 
 
 
@@ -257,16 +260,6 @@ request_client_clientid = function() {
 }
 #endregion
 
-#region Boot
-if(instance_number(obj_fnafguard_client) == 1) {
-	connect_client();
-}
-else {
-	disconnect_client();
-	on_client_disconnect();
-	instance_destroy(self);
-	}
-#endregion
 
 
 
