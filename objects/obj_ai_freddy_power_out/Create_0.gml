@@ -47,6 +47,7 @@ function on_power_out() {
 
 function on_phase_update() {
 	misses = 0;
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.FREDDYPOWEROUTPHASE_UPDATE,current_phase)
 	if(current_phase == 0) {
 		with(obj_office) {
 			sprite_index = spr_office_powerless;
@@ -71,6 +72,9 @@ function on_phase_update() {
 		alarm_set(1,2*game_get_speed(gamespeed_fps));
 		
 	}
+	else if(current_phase == 3) {
+		obj_ai_freddy_power_out.on_animatronic_jumpscare();
+	}
 }
 
 function on_miss_update() {
@@ -82,6 +86,17 @@ function on_miss_update() {
 		}
 	}
 	
+}
+
+function on_animatronic_jumpscare() {
+	audio_play_sound(snd_jumpscare,0,false);
+	with (obj_office) {
+		depth = -1987;
+		sprite_index = spr_office_jumpscare_freddy_powerout;
+		image_index = 0;
+		image_speed = 1;
+	}
+	alarm_set(3,0.75*game_get_speed(gamespeed_fps));
 }
 
 

@@ -54,6 +54,10 @@ function on_office_power_out() {
 	obj_office.right_door = false;
 	obj_office.left_light = false;
 	obj_office.right_light = false;
+	obj_fnafguard_client.send_leftdoor_state();
+	obj_fnafguard_client.send_rightdoor_state();
+	obj_fnafguard_client.send_leftlight_update();
+	obj_fnafguard_client.send_rightlight_update();
 	obj_night.update_power_usage();
 	scr_camera_force_down();
 	audio_stop_sound(snd_light);

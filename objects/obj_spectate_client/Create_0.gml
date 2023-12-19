@@ -69,10 +69,16 @@ to_string = function(){
 
 //NOTE: As long as camera up in sync, bonnie and chica attacks are actually automatically done.
 on_bonnie_update = function() {
-	if(room == rm_office)  obj_ai_bonnie.on_animatronic_move();
+	if(room == rm_office)   {
+		if(current_bonnie_cam != "AttackSuccess")obj_ai_bonnie.on_animatronic_move();
+		else obj_ai_bonnie.on_animatronic_jumpscare();
+	}
 }
 on_chica_update = function() {
-	if(room == rm_office) obj_ai_chica.on_animatronic_move();
+	if(room == rm_office) {
+		if(current_chica_cam != "AttackSuccess")obj_ai_chica.on_animatronic_move();
+		else obj_ai_chica.on_animatronic_jumpscare();
+	}
 }
 on_freddy_update = function() {
 	if(room == rm_office) {
@@ -84,6 +90,11 @@ on_freddy_update = function() {
 		}
 	}
 }
+on_door_update = function() {
+	if(room == rm_office) {
+		audio_play_sound(snd_door,0,false);
+	}
+}
 
 on_foxy_update = function() {
 	if(room == rm_office) {
@@ -91,4 +102,33 @@ on_foxy_update = function() {
 		else obj_ai_foxy.on_animatronic_move();
 	}
 	
+}
+
+on_freddy_powerout_update = function() {
+	if(room == rm_office) {
+		obj_ai_freddy_power_out.current_phase = self.current_freddy_powerout_phase;
+		obj_ai_freddy_power_out.on_phase_update();
+	}
+}
+
+on_powerleft_update = function() {
+	if(room == rm_office) {
+		obj_night.current_power = self.power_left;
+		obj_night.on_power_update();
+	}
+}
+
+on_goldenfreddy_update = function() {
+	if(room == rm_office) {
+		if(self.current_goldenfreddy_state == 0) obj_ai_goldenfreddy.on_goldenfreddy_disappear();
+		else if(self.current_goldenfreddy_state == 1) obj_ai_goldenfreddy.on_goldenfreddy_appear();
+		else if (self.current_goldenfreddy_state == 2) obj_ai_goldenfreddy.on_animatronic_jumpscare();
+	}
+}
+
+on_cameraup_update = function() {
+	if(room == rm_office) {
+		if(camera_up) scr_camera_force_up();
+		else scr_camera_force_down();
+	}
 }

@@ -4,6 +4,11 @@
 mouse_gui_x = device_mouse_x_to_gui(0);
 mouse_gui_y = device_mouse_y_to_gui(0);
 self.active = obj_office.current_camera == camera_button;
+
+#region VISIBLE
+visible = view_visible[1] == true;
+#endregion
+
 #region CLICK HANDLING
 
 if (!obj_office.camera_up) return;
@@ -28,4 +33,6 @@ if (mouse_check_button_pressed(mb_left)) {
 }
 
 #endregion
+
+
 

@@ -19,8 +19,9 @@ else if(self.server_connection == -2) {
 else {
 	draw_set_color(c_lime)
 	_text = "Connected";
+	_text+=" (" + string(obj_fnafguard_client.client_id) + ")";
 	if(obj_lobby_client.in_lobby && room != rm_lobby) {
-		_text+=" (" + obj_lobby_client.lobby_name + ")";
+		
 		if(obj_lobby_client.lobby_state == LOBBYSTATE.OPEN) {
 			_text+="\nWaiting for master...";
 		}
@@ -36,6 +37,7 @@ else {
 		
 	}	
 }
+
 draw_text(_ui_x,_ui_y,_text);
 draw_set_halign(fa_center);
 draw_set_color(c_white);

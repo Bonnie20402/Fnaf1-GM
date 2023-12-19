@@ -1,9 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(room == rm_office) {
-	self.flush();
-	obj_fnafguard_client.is_spectating = false;
-}
+obj_night.current_power = 1;
 
 
 

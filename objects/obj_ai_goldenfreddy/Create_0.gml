@@ -4,6 +4,7 @@
 
 visible = false;
 depth = obj_office.depth-1;
+phase = 0;
 in_office = false;
 use_ai = false;
 
@@ -36,24 +37,32 @@ function goldenfreddy_chance() {
     if (!in_office) {
         var _number = random(1);
         if (_number <= appear_chance) {
-            on_goldenfreddy_appear();
+			phase = 1;
+            on_phase_update();
         }
     } else {
         // 30% chance of killing the guard.
         var _number = random(1);
         if (_number <= kill_chance) {
-            // Code for killing the guard goes here
-			on_animatronic_jumpscare();
+			phase = 2;
+			on_phase_update();
         }
     }
 }
-
+function on_phase_update() {
+	if(!obj_fnafguard_client.is_spectating) {
+		obj_fnafguard_client.send_goldenfreddyphase_update();
+		}
+	if(phase == 1) on_goldenfreddy_appear();
+	if(phase == 2) on_animatronic_jumpscare();
+	if(phase == 0) on_goldenfreddy_disappear();
+}
 function on_animatronic_jumpscare() {
 	obj_office.on_office_jumpscare();
 	obj_office.jumpscared = true;
 	in_office = false;
 	with(obj_office) {
-		sprite_index = spr_office_jumpscare_goldenlara;
+		sprite_index = spr_office_jumpscare_goldenfreddy;
 		depth = -1987;
 		image_index = 0;
 		image_speed = 0;
@@ -73,8 +82,9 @@ function scr_on_camera_change_start() {
 }
 
 function scr_on_camera_open_start() {
-	if(in_office) {
-		on_goldenfreddy_disappear();
+	if(phase == 1) {
+		phase = 0;
+		on_phase_update();
 	}
 }
 

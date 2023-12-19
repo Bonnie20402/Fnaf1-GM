@@ -4,7 +4,7 @@
 
 if(obj_fnafguard_client.is_spectating && room == rm_office) {
 	obj_night.current_hours = self.current_hours;
-	obj_night.current_power = self.power_left * 100;
+	obj_night.current_power = self.power_left * 10;
 	obj_night.current_power_usage = self.power_usage;
 	
 	obj_office.left_door = self.left_door;

@@ -15,7 +15,6 @@ function scr_on_camera_open_finish() {
 	view_visible[1] = true;
 	obj_office.can_scroll = false;
 	obj_camera_hud._camera_change_effect_frame = 0;
-	scr_toggle_camera_buttons_visibility();
 	
 }
 
@@ -48,7 +47,6 @@ function scr_on_camera_close_start() {
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
 	scr_stop_camera_disable_sound();
-	scr_toggle_camera_buttons_visibility();
 	if(obj_ai_bonnie.current_camera == "AttackSuccess") obj_ai_bonnie.on_animatronic_jumpscare();
 	else if(obj_ai_chica.current_camera == "AttackSuccess") obj_ai_chica.on_animatronic_jumpscare();
 
@@ -132,6 +130,8 @@ function scr_camera_setup() {
 /*
 	DEBUG FUNCTIONS
 						*/
+						
+///@desc DEPRECTATED
 function scr_toggle_camera_buttons_visibility() {
 	for( var _i =0; _i < instance_number(obj_camera_button);_i++ )  {
 		var _inst = instance_find(obj_camera_button,_i);

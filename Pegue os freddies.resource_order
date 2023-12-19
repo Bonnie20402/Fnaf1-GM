@@ -35,6 +35,7 @@
     {"name":"room_lobby","order":7,"path":"folders/Sprites/room_lobby.yy",},
     {"name":"ui","order":1,"path":"folders/Sprites/room_lobby/ui.yy",},
     {"name":"btn","order":1,"path":"folders/Sprites/room_lobby/ui/btn.yy",},
+    {"name":"ghost","order":2,"path":"folders/Sprites/room_lobby/ui/ghost.yy",},
     {"name":"room_main_menu","order":5,"path":"folders/Sprites/room_main_menu.yy",},
     {"name":"room_office","order":4,"path":"folders/Sprites/room_office.yy",},
     {"name":"camera","order":5,"path":"folders/Sprites/room_office/camera.yy",},
@@ -59,7 +60,6 @@
     {"name":"right","order":2,"path":"folders/Sprites/room_office/panel/right.yy",},
     {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":7,"path":"folders/Timelines.yy",},
-    {"name":"ghost","order":2,"path":"folders/Sprites/room_lobby/ui/ghost.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_cameras_1a_bonnie0freddy1chica0","order":2,"path":"sprites/spr_cameras_1a_bonnie0freddy1chica0/spr_cameras_1a_bonnie0freddy1chica0.yy",},
@@ -175,6 +175,7 @@
     {"name":"spr_office_jumpscare_freddy","order":2,"path":"sprites/spr_office_jumpscare_freddy/spr_office_jumpscare_freddy.yy",},
     {"name":"spr_cameras_5_bonnie0","order":2,"path":"sprites/spr_cameras_5_bonnie0/spr_cameras_5_bonnie0.yy",},
     {"name":"obj_main_menu_button_quit","order":3,"path":"objects/obj_main_menu_button_quit/obj_main_menu_button_quit.yy",},
+    {"name":"obj_main_menu_button_spectate","order":6,"path":"objects/obj_main_menu_button_spectate/obj_main_menu_button_spectate.yy",},
     {"name":"snd_fan","order":30,"path":"sounds/snd_fan/snd_fan.yy",},
     {"name":"snd_6_am_yay","order":29,"path":"sounds/snd_6_am_yay/snd_6_am_yay.yy",},
     {"name":"obj_office_scroller_left_fast","order":5,"path":"objects/obj_office_scroller_left_fast/obj_office_scroller_left_fast.yy",},

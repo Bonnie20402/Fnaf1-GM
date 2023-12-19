@@ -110,6 +110,7 @@ function on_animatronic_move() {
 
 //Called after foxy run animation is complete.
 function on_foxy_run_finish() {
+	if(obj_fnafguard_client.is_spectating) return;
 	current_camera = obj_office.left_door ? "AttackFail" : "AttackSuccess";
 	is_running = false;
 	on_animatronic_attack();

@@ -3,6 +3,8 @@
 
 
 
-self.is_spectating = !self.is_spectating;
 
 
+
+phase = 1;
+on_phase_update();
