@@ -1,6 +1,8 @@
 /// @description Music Box Jingle and Walking to powered-out office
 // You can write your code in this editor
 
+if(obj_fnafguard_client.is_spectating) return;
+
 if(obj_ai_freddy_power_out.current_phase == -1 || obj_ai_freddy_power_out.current_phase == 2) return;
 
 

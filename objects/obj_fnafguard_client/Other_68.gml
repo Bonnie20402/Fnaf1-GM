@@ -21,14 +21,21 @@ if(async_load[? "type"] == network_type_data ) {
 	//Check if that header is the same as client's.
 	if(_game_protocol == global.SERVER_GAME_PROTOCOL) {
 		//Decode the message
-		var _message_type = buffer_read(_buffer,buffer_u8);
-		var _fnafbuffer_type = buffer_read(_buffer,buffer_u8);
+		var _message_type = buffer_read(_buffer,buffer_u16);
+		var _fnafbuffer_type = buffer_read(_buffer,buffer_u16);
 		var _message = "ERROR";
-		if(_fnafbuffer_type == FNAFBUFFER.STRING) {
+		if(_fnafbuffer_type == FNAFBUFFER.ARRAY_STRING) {
+			var _length = buffer_read(_buffer,buffer_u16);
+			var _message = array_create(0,0);
+			for(var _i = 0; _i < _length; _i++) {
+				_message[_i] = buffer_read(_buffer,buffer_string);
+			}
+		}
+		else if(_fnafbuffer_type == FNAFBUFFER.STRING) {
 			_message = buffer_read(_buffer,buffer_string);
 		}
 		else if(_fnafbuffer_type == FNAFBUFFER.INT) {
-			_message = buffer_read(_buffer,buffer_u8);
+			_message = buffer_read(_buffer,buffer_u16);
 		}
 		obj_fnafguard_client.on_server_message_recieved(_message_type,_message);
 	}

@@ -2,7 +2,10 @@ function scr_on_camera_open_start(){
 	audio_sound_gain(snd_fan,0.3,250);
 	audio_play_sound(snd_camera_up,0,false);
 	obj_ai_goldenfreddy.scr_on_camera_open_start();
-
+	if(!obj_fnafguard_client.is_spectating) {
+		obj_fnafguard_client.send_cameraup_state();
+		obj_fnafguard_client.send_currentcamera_update();
+	}
 }
 
 function scr_on_camera_open_finish() {
@@ -39,6 +42,7 @@ function scr_stop_camera_disable_sound() {
 function scr_on_camera_close_start() {
 	view_visible[0] = true;
 	view_visible[1] = false;
+	obj_fnafguard_client.send_cameraup_state();
 	obj_office.can_scroll = true;
 	audio_sound_gain(snd_fan,0.8,250);
 	audio_play_sound(snd_camera_down,0,false);
@@ -64,7 +68,7 @@ function scr_on_camera_change_start() {
 	obj_camera_current_spr.update_current_camera_sprite();
 	obj_ai_goldenfreddy.scr_on_camera_change_start();
 	audio_play_sound(snd_blop,0,0);
-	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CURRENTCAMERA_UPDATE,obj_office.current_camera);
+	if(!obj_fnafguard_client.is_spectating)obj_fnafguard_client.send_currentcamera_update();
 	
 }
 
@@ -81,6 +85,14 @@ function scr_camera_force_down() {
 	if(obj_hitbox_camera.camera_lock) return;
 	
 	if(obj_office.camera_up) obj_office.camera_up = false;
+	if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
+}
+
+function scr_camera_force_up() {
+	//prevent infinite loop
+	if(obj_hitbox_camera.camera_lock) return;
+	
+	if(!obj_office.camera_up) obj_office.camera_up = true;
 	if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
 }
 

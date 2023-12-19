@@ -94,10 +94,10 @@ function update_animatronic_ai() {
 			obj_ai_goldenfreddy.agressive_mode = true;
 			break;
 		case 6:
-			obj_ai_freddy.animatronic_set_ai_level(4);
-			obj_ai_bonnie.animatronic_set_ai_level(10);
-			obj_ai_chica.animatronic_set_ai_level(12);
-			obj_ai_foxy.animatronic_set_ai_level(6);
+			obj_ai_freddy.animatronic_set_ai_level(20);
+			obj_ai_bonnie.animatronic_set_ai_level(20);
+			obj_ai_chica.animatronic_set_ai_level(20);
+			obj_ai_foxy.animatronic_set_ai_level(20);
 			obj_ai_goldenfreddy.use_ai = true;
 			obj_ai_goldenfreddy.agressive_mode = true;
 			break;
@@ -182,7 +182,7 @@ function disable_animatronic_ai() {
 }
 function on_night_finish() {
 	run_night = false;
-	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHTEND_UPDATE,NIGHTEND.WIN);
 	if(current_night < 6) current_night++;
 	io_save();
 	room_goto(rm_6_am);
@@ -196,18 +196,14 @@ function on_power_update() {
 }
 
 function on_power_out() {
-	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.POWEROUT,1);
 	scr_camera_force_down();
 	obj_office.on_office_power_out();
 	obj_ai_freddy_power_out.on_power_out();
 }
 
 function on_power_usage_update() {
-	obj_fnafguard_client.send_leftdoor_state();
-	obj_fnafguard_client.send_rightdoor_state();
-	obj_fnafguard_client.send_cameraup_state();
-	obj_fnafguard_client.send_leftlight_update();
-	obj_fnafguard_client.send_rightlight_update();
+	obj_fnafguard_client.send_powerusage_update();
+	return;
 }
 
 #endregion

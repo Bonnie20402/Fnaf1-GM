@@ -14,15 +14,19 @@ mouse_in = point_in_rectangle(_mouse_gui_x,_mouse_gui_y,initial_x,initial_y,init
 mouse_out = !mouse_in && _mouse_gui_y < initial_y + sprite_height;
 
 #region Hover event
-if(!ui_lock && mouse_in) {
+if(!obj_fnafguard_client.is_spectating) {
+	if(!ui_lock && mouse_in) {
 	if(obj_office.jumpscared || obj_night.current_power == 0) return;
 	camera_lock = true;
 	ui_lock = true;
 	obj_office.camera_up = !obj_office.camera_up;
+	obj_fnafguard_client.send_cameralock_update();
 }
 if(!camera_lock && mouse_out) {
 	ui_lock = false;
 }
+}
+
 #endregion
 
 

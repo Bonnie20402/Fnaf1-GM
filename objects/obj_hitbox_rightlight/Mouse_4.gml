@@ -1,6 +1,6 @@
 
 
-
+if(obj_fnafguard_client.is_spectating) return;
 if(obj_office.camera_up || obj_night.current_power == 0) return;
 
 if(obj_ai_chica.current_camera == "AttackSuccess") {
@@ -17,6 +17,7 @@ if(!obj_office.right_light && obj_ai_chica.current_camera == "RightWindow" && !o
 obj_office.right_light = !obj_office.right_light;
 obj_office.left_light = false;
 obj_night.update_power_usage();
+obj_fnafguard_client.send_rightlight_update();
 
 
 

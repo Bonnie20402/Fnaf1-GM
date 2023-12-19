@@ -20,6 +20,7 @@ if(obj_ai_chica.ai_level >= _move) {
 		if(_forward) {
 			obj_ai_chica.current_camera = "AttackSuccess";
 			obj_office.right_light = false;
+			obj_fnafguard_client.send_rightlight_update();
 			obj_ai_chica.on_animatronic_attack();
 			return;
 		}

@@ -15,8 +15,8 @@ client_id = -1;
 server_connection = -1;
 client_state = CLIENTSTATE.OFFLINE;
 server_state = SERVERSTATE.OPEN
-guards_alive = 0;
 joining_lobby = "";
+is_spectating = false;
 
 
 
@@ -66,10 +66,10 @@ on_client_disconnect = function() {
 	client_id = -1;
 	server_connection = -1;
 	client_state = CLIENTSTATE.OFFLINE;
-	guards_alive = 0;
 	in_lobby = false;
 	joining_lobby = "";
 	actual_lobby = "";
+	is_spectating = false;
 }
 
 
@@ -80,7 +80,7 @@ on_client_out_of_date = function() {
 }
 
 on_client_username_update = function() {
-	return;
+	obj_fnafguard_client.send_client_username();
 }
 on_client_clientid_recieved = function() {
 	show_debug_message("Recieved my client id: " + string(obj_fnafguard_client.client_id));
@@ -101,6 +101,9 @@ on_server_state_update = function() {
 	show_debug_message("Server state updated!")
 	
 }
+
+
+
 
 /**
  * Should be called when there client state updates. ASSIGN THE UPDATE INTO THE VARIABLE BEFORE CALLING THIS!
@@ -152,19 +155,20 @@ on_server_message_recieved = function(_message_type,_message) {
 	}
 	#endregion
 	
-	#region Lobby request response
+	#region Lobby 
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_JOIN_RESPONSE) {
 		if(_message == LOBBY_JOIN_RESPONSE.ACCEPT) {
-			obj_lobby_client.in_lobby = true;
-			obj_lobby_client.lobby_name = joining_lobby;
-			room_goto(rm_lobby);
+			obj_lobby_client.on_lobby_join();
 		}
 		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {
-			obj_lobby_client.in_lobby = false;
-			obj_lobby_client.lobby_state = LOBBYSTATE.ERROR;
-			obj_lobby_client.lobby_name = "ERROR";
+			obj_lobby_client.on_lobby_quit();
 		}
 	}
+	#region Lobby usernames list
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_SEND_USERNAMES_LIST) {
+		obj_lobby_client.usernames_list = _message;
+	}
+	#endregion
 	#region Lobby state update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_STATE_UPDATE) {
 		obj_lobby_client.lobby_state = _message;
@@ -183,6 +187,71 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.guards_left = _message;
 	}
 	#endregion
+	
+	
+	#region Spectating
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_REQUEST_RESPONSE) {
+		if(_message == SPECTATERESPONSE.OK) {
+			obj_fnafguard_client.is_spectating=true;
+			room_goto(rm_loading);
+		}
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECATE_UPDATE_FREDDYPOWEROUTPHASE) {
+		obj_spectate_client.current_freddy_powerout_phase = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_BONNIECAM) {
+		obj_spectate_client.current_bonnie_cam = _message;
+		obj_spectate_client.on_bonnie_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CAMERALOCK) {
+		obj_spectate_client.camera_lock = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CAMERAUP) {
+		obj_spectate_client.camera_up = _message;
+		if(_message == 1 && is_spectating && room == rm_office) scr_camera_force_up();
+		else scr_camera_force_down();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_LEFTDOOR) {
+		obj_spectate_client.left_door = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_RIGHTDOOR) {
+		obj_spectate_client.right_door = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_LEFTLIGHT) {
+		obj_spectate_client.left_light = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_RIGHTLIGHT) {
+		obj_spectate_client.right_light = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CURRENTCAMERA) {
+		obj_spectate_client.current_camera = _message;
+		obj_camera_current_spr.update_current_camera_sprite()
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CHICACAM) {
+		obj_spectate_client.current_chica_cam = _message;
+		obj_spectate_client.on_chica_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_FOXYCAM) {
+		obj_spectate_client.current_foxy_cam = _message;
+		obj_spectate_client.on_foxy_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_FREDDYCAM) {
+		obj_spectate_client.current_freddy_cam = _message;
+		obj_spectate_client.on_freddy_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_GOLDENFREDDYSTATE) {
+		obj_spectate_client.current_goldenfreddy_state = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CURRENTHOURS) {
+		obj_spectate_client.current_hours = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_POWERLEFT) {
+		obj_spectate_client.power_left = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_POWERUSAGE) {
+		obj_spectate_client.power_usage = _message;
+	}
+	#endregion
 }
 #endregion
 
@@ -194,7 +263,10 @@ send_client_state = function() {
 }
 
 send_client_platform = function () {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_OS,obj_fnafguard_client.client_os)
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_OS,os_type)
+}
+send_client_username = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_USERNAME,obj_fnafguard_client.username);
 }
 
 send_leftdoor_state = function() {
@@ -225,28 +297,50 @@ send_powerleft_update = function() {
 }
 
 send_powerusage_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERUSAGE_UPDATE,obj.night.current_power_usage);
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERUSAGE_UPDATE,obj_night.current_power_usage);
 }
+
 
 send_night_time_update = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
 }
 
-
-
-send_powerout = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWEROUT,1);
+send_bonniecam_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.BONNIECAM_UPDATE,obj_ai_bonnie.current_camera);
+}
+send_freddycam_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FREDDYCAM_UPDATE,obj_ai_freddy.current_camera);
+}
+send_chicacam_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CHICACAM_UPDATE,obj_ai_chica.current_camera);
+}
+send_foxycam_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FOXYCAM_UPDATE,obj_ai_foxy.current_camera);
 }
 
-send_night_lose = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_LOSE,1);
+send_goldenfreddyphase_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.GOLDENFREDDYSTATE_UPDATE,obj_ai_goldenfreddy.in_office);
 }
-send_night_win = function () {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_WIN,1)
+
+send_cameralock_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CAMERALOCK_UPDATE,obj_hitbox_camera.camera_lock);
+}
+send_freddypoweroutstate_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FREDDYPOWEROUTPHASE_UPDATE,obj_ai_freddy_power_out.current_phase);
+}
+
+send_spectate_request = function(_target_id) {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SPECTATE_REQUEST,_target_id);
 }
 
 send_lobby_join_request = function(_lobby_name) {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_JOIN_REQUEST,_lobby_name);
+}
+send_lobby_quit_request = function() {
+	if(!obj_lobby_client.in_lobby) {
+		show_message("WARNING: Tried to leave a lobby while there is no lobby to leave\nThe game will must likely crash now");
+	}
+	else buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_LEAVE_REQUEST,1);
 }
 
 

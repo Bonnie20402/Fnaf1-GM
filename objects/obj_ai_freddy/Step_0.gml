@@ -1,5 +1,6 @@
 /// @description Music Box Volume
 // You can write your code in this editor
+if(obj_fnafguard_client.is_spectating) self.use_ai = false;
 
 if(current_camera != "6") return;
 

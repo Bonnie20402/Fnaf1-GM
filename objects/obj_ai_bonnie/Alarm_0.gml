@@ -26,6 +26,7 @@ if(obj_ai_bonnie.ai_level >= _move) {
 		if(_forward) {
 			obj_ai_bonnie.current_camera = "AttackSuccess";
 			obj_office.left_light = false;
+			obj_fnafguard_client.send_leftlight_update();
 			obj_ai_bonnie.on_animatronic_attack();
 			return;
 		}

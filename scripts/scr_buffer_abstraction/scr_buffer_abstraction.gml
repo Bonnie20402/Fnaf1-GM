@@ -5,8 +5,11 @@
 // Abstract the buffer creation
 
 enum FNAFBUFFER {
-	STRING = 1,
-	INT = 0
+	STRING,
+	INT,
+	ARRAY_STRING,
+	ARRAY_INT,
+	ARRAY_MIX
 }
 
 
@@ -63,16 +66,26 @@ function buffer_fnaf_create_and_send_to_lobby_except(_lobby,_message_type,_messa
 function buffer_fnaf_create(_message_type,_message) {
 	var _buffer = buffer_create(1,buffer_grow,1);
 	buffer_write(_buffer,buffer_string,global.SERVER_GAME_PROTOCOL);
-	buffer_write(_buffer,buffer_u8,_message_type);
-	if(is_string(_message)) {
-		//Used to check if the buffer shall be treated as a string or int
-		buffer_write(_buffer,buffer_u8,FNAFBUFFER.STRING);
+	buffer_write(_buffer,buffer_u16,_message_type);
+	if(is_array(_message) && is_string(_message[0]) ) {
+		//Our fnafbuffer type is a array of strings
+		buffer_write(_buffer,buffer_u16,FNAFBUFFER.ARRAY_STRING);
+		//Write array length
+		buffer_write(_buffer,buffer_u16,array_length(_message));
+		//Write the array
+		for(var _i = 0 ; _i < array_length(_message); _i++) {
+			buffer_write(_buffer,buffer_string,_message[_i]);
+		}
+	}
+	else if(is_string(_message)) {
+		//Our fnafbuffer type is a SINGLE STRING
+		buffer_write(_buffer,buffer_u16,FNAFBUFFER.STRING);
 		buffer_write(_buffer,buffer_string,_message);
 	}
-	else {
-		//Used to check if the buffer shall be treated as a string or int
-		buffer_write(_buffer,buffer_u8,FNAFBUFFER.INT);
-		buffer_write(_buffer,buffer_u8,_message);
+	else if(is_numeric(_message)) {
+		//Our fnafbuffer type is a SINGLE INT
+		buffer_write(_buffer,buffer_u16,FNAFBUFFER.INT);
+		buffer_write(_buffer,buffer_u16,_message);
 	}
 	buffer_seek(_buffer,buffer_seek_start,0);
 	return _buffer;

@@ -88,7 +88,7 @@ function on_animatronic_move() {
 	animatronic_flush_forward_cameras();
 	if(scr_camera_is_camera_up() && obj_office.current_camera == current_camera) obj_camera_current_spr.disable_camera();
 	obj_camera_current_spr.update_current_camera_sprite();
-	
+	obj_fnafguard_client.send_chicacam_update();
 	if(current_camera == "1A") {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("1B");
@@ -132,11 +132,13 @@ function on_animatronic_attack() {
 		animatronic_shuffle_moves();
 		obj_office.right_light_scare = false;
 		current_camera = forward_cameras[0];
+		
 	}
 	else {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("N/A");
 	}
+	obj_fnafguard_client.send_chicacam_update();
 }
 
 function on_animatronic_jumpscare() {

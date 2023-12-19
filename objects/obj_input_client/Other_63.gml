@@ -24,4 +24,8 @@ if(async_load [? "status"] && async_load[? "result"] != ""  && async_load[? "res
 		obj_ipconfig_client.port = async_load[? "result"];
 		obj_ipconfig_client.on_ipconfig_port_update();
 	}
+	if(async_load[? "id"] == input_spectate_target) {
+		var _target = async_load[? "result"];
+		obj_fnafguard_client.send_spectate_request(_target);
+	}
 }

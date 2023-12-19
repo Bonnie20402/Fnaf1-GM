@@ -82,6 +82,7 @@ function on_animatronic_move() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
 	obj_camera_current_spr.update_current_camera_sprite();
+	obj_fnafguard_client.send_foxycam_update();
 	if(current_camera == "1C_0") {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("1C_1");
@@ -116,14 +117,16 @@ function on_foxy_run_finish() {
 function on_animatronic_attack() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
+	if(obj_night.current_power == 0) return;
 	if (current_camera == "AttackSuccess") {
 		on_animatronic_jumpscare(); 
 	}
 	if(current_camera == "AttackFail") {
 		audio_play_sound(snd_foxy_door_pounding,0,false);
-		current_camera = "1C_0";
+		current_camera = "1C_1";
 		//Subtract 1-4% from current power.
 		obj_night.current_power-= irandom_range(10,40);
+		if(obj_night.current_power) < 0 obj_night.current_power = 0;
 		obj_ai_foxy.is_running = false;
 		animatronic_add_forward_camera("1C_1");
 		animatronic_add_backward_camera("N/A");
