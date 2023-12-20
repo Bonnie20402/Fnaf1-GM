@@ -13,15 +13,15 @@ if(obj_ai_chica.ai_level >= _move) {
 	// go back 2 in a 5 chance.
 	var _forward = random(1) <= backwards_chance && obj_ai_chica.backward_cameras[0] != "N/A" ? false : true;
 	
-	if (obj_ai_chica.current_camera == "AttackSuccess") scr_camera_force_down();
+	if (obj_ai_chica.current_camera == "Attack") scr_camera_force_down();
 	//if on right window and right door is closed, always go forward. Else go backwards.
 	if(obj_ai_chica.current_camera == "RightWindow")  {
 		_forward = !obj_office.right_door;
 		if(_forward) {
-			obj_ai_chica.current_camera = "AttackSuccess";
+			obj_ai_chica.current_camera = "Attack";
 			obj_office.right_light = false;
 			obj_fnafguard_client.send_rightlight_update();
-			obj_ai_chica.on_animatronic_attack();
+			obj_fnafguard_client.send_chicacam_update();
 			return;
 		}
 		else {
@@ -47,6 +47,6 @@ if(obj_ai_chica.ai_level >= _move) {
 	
 	}
 }
-else if (obj_ai_chica.current_camera == "AttackSuccess" && scr_camera_is_camera_up() && obj_ai_bonnie.current_camera != "AttackSuccess") {
+else if (obj_ai_chica.current_camera == "Attack" && scr_camera_is_camera_up() && obj_ai_bonnie.current_camera != "Attack") {
 	obj_ai_chica.animtronic_breath();
 }

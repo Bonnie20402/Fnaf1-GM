@@ -121,6 +121,7 @@ function on_animatronic_move() {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("Attack");
 	}
+	if(current_camera) == "AttackSuccess" obj_ai_bonnie.on_animatronic_jumpscare();
 	animatronic_shuffle_moves()
 }
 

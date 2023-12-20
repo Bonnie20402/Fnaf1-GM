@@ -47,8 +47,16 @@ function scr_on_camera_close_start() {
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
 	scr_stop_camera_disable_sound();
-	if(obj_ai_bonnie.current_camera == "AttackSuccess") obj_ai_bonnie.on_animatronic_jumpscare();
-	else if(obj_ai_chica.current_camera == "AttackSuccess") obj_ai_chica.on_animatronic_jumpscare();
+	if(obj_ai_bonnie.current_camera == "Attack")  {
+		obj_ai_bonnie.current_camera = "AttackSuccess";
+		obj_ai_bonnie.on_animatronic_move();
+		obj_ai_bonnie.on_animatronic_attack();
+	}
+	else if(obj_ai_chica.current_camera == "Attack") {
+		obj_ai_chica.current_camera = "AttackSuccess";
+		obj_ai_chica.on_animatronic_move();
+		obj_ai_chica.on_animatronic_attack();
+	}
 
 	//Foxy has a countdown time that's supposed to prevent him from moving until about 1-17.5 seconds after the monitor is put down
 	if(obj_ai_foxy.current_camera != "2A")obj_ai_foxy.camera_down_time = random_range(1,17.5);

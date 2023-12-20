@@ -277,6 +277,9 @@ send_leftdoor_state = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LEFTDOOR_UPDATE,obj_office.left_door);
 }
 
+send_flush_gameplay_request = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FLUSH_GAMEPLAY_REQUEST,1);
+}
 send_rightdoor_state = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.RIGHTDOOR_UPDATE,obj_office.right_door);
 }

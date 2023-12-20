@@ -18,16 +18,16 @@ if(obj_ai_bonnie.ai_level >= _move) {
 	var _forward = random(1) <= backwards_chance && obj_ai_bonnie.backward_cameras[0] != "N/A" ? false : true;
 	
 	
-	if(obj_ai_bonnie.current_camera == "AttackSuccess") { scr_camera_force_down();
+	if(obj_ai_bonnie.current_camera == "Attack") { scr_camera_force_down();
 	}
 	//if on left window and left door is closed, always go forward. Else go backwards.
 	if(obj_ai_bonnie.current_camera == "LeftWindow")  {
 		_forward = !obj_office.left_door;
 		if(_forward) {
-			obj_ai_bonnie.current_camera = "AttackSuccess";
+			obj_ai_bonnie.current_camera = "Attack";
 			obj_office.left_light = false;
 			obj_fnafguard_client.send_leftlight_update();
-			obj_ai_bonnie.on_animatronic_attack();
+			obj_fnafguard_client.send_bonniecam_update();
 			return;
 		}
 		else {
@@ -53,7 +53,7 @@ if(obj_ai_bonnie.ai_level >= _move) {
 	}
 }
 //If succesfully attacked but missed the chance to flip monitor down, play breath sound
-else if (obj_ai_bonnie.current_camera == "AttackSuccess" && scr_camera_is_camera_up()) {
+else if (obj_ai_bonnie.current_camera == "Attack" && scr_camera_is_camera_up()) {
 	obj_ai_bonnie.animtronic_breath();
 }
 

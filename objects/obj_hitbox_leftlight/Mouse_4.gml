@@ -3,7 +3,7 @@ if(obj_office.camera_up || obj_night.current_power == 0) return;
 
 
 //if you have been fucked by bonnie
-if(obj_ai_bonnie.current_camera == "AttackSuccess") {
+if(obj_ai_bonnie.current_camera == "Attack") {
 	audio_play_sound(snd_error,0,false);
 	return;
 }
