@@ -82,6 +82,7 @@ function animtronic_breath() {
 // NOTE: "N/A" for no  cameras available - guranteed to not go to that direction.
 // Bonnie version
 function on_animatronic_move() {
+	if(current_camera == "Attack" || current_camera == "AttackSucess") return;
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
 	if(scr_camera_is_camera_up() && obj_office.current_camera == current_camera) obj_camera_current_spr.disable_camera();

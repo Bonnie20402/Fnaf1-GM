@@ -113,6 +113,7 @@ function on_foxy_run_finish() {
 	if(obj_fnafguard_client.is_spectating) return;
 	current_camera = obj_office.left_door ? "AttackFail" : "AttackSuccess";
 	is_running = false;
+	obj_fnafguard_client.send_foxycam_update();
 	on_animatronic_attack();
 }
 function on_animatronic_attack() {

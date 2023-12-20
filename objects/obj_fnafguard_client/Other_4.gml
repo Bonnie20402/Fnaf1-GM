@@ -16,7 +16,10 @@ if(room == rm_loading) {
 }
 
 if(room = rm_office) {
-	_state = CLIENTSTATE.OFFICE;
+	if(obj_fnafguard_client.is_spectating) {
+		_state = CLIENTSTATE.SPECTATING;
+	}
+	else _state = CLIENTSTATE.OFFICE;
 }
 
 if(obj_fnafguard_client.server_connection != -1) {

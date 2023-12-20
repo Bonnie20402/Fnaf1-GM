@@ -7,7 +7,6 @@ input_spectate_target = "";
 max_string_size = 64;
 
 
-
 run_input_username = function() {
 	input_username = get_string_async("Pick a username","");
 }

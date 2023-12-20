@@ -1,3 +1,4 @@
+spectating_id = -1;
 //SPECTATOR VARIABLES
 left_door = false;
 right_door = false;
@@ -13,6 +14,7 @@ current_freddy_cam = "1A";
 current_goldenfreddy_state = 0;
 current_freddy_powerout_phase = -1;
 current_hours = 12;
+scroll_view = 0;
 power_left = 100;
 power_usage = 1;
 
@@ -38,6 +40,8 @@ flush = function() {
 	current_hours = 12;
 	power_left = 100;
 	power_usage = 1;
+	scroll_view = 0;
+	spectating_id = -1;
 }
 
 to_string = function(){
@@ -130,5 +134,16 @@ on_cameraup_update = function() {
 	if(room == rm_office) {
 		if(camera_up) scr_camera_force_up();
 		else scr_camera_force_down();
+	}
+}
+
+on_currentcamera_update = function() {
+	if(room == rm_office) {
+		obj_camera_current_spr.update_current_camera_sprite();
+		with(obj_camera_button) {
+			if(self.camera_button == obj_spectate_client.current_camera) {
+				self.on_button_click();
+			}
+		}
 	}
 }

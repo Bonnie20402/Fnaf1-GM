@@ -18,17 +18,11 @@ if (obj_office.camera_up && !obj_hitbox_camera.camera_lock && obj_office.current
 if (mouse_check_button_pressed(mb_left)) {
     // Check if the mouse click is within the bounds of the drawn sprite
     if (point_in_rectangle(mouse_gui_x, mouse_gui_y, initial_x, initial_y, initial_x + sprite_width, initial_y + sprite_height)) {
-		//Loop through all button instances and put them in their "desactivated" state.
-		with(obj_camera_button) self.camera_button_frame_on = false;
-		//put this button into activated mode
-		self.camera_button_frame_on = true;
-		//start the blinking timer
-		alarm_set(0,1*game_get_speed(gamespeed_fps));
-		//update game variables
-		obj_office.current_camera = self.camera_button;
-		obj_camera_string.set_camera_current_string(self.camera_text); 
-		//call my event
-		scr_on_camera_change_start();
+		if(obj_fnafguard_client.is_spectating) {
+			audio_play_sound(snd_error,0,false);
+			return;
+		}
+		self.on_button_click();
 	}
 }
 

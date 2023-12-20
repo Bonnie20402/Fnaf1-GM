@@ -4,7 +4,7 @@ var _power_message = "Power left: " + string(obj_night.current_power/10) + "%\n"
 "Usage: " + string(obj_night.current_power_usage);
 
 var _night_message = string(obj_night.current_hours) + " AM\n";
-if(obj_fnafguard_client.is_spectating) _night_message += "SPECTATING";
+if(obj_fnafguard_client.is_spectating) _night_message += "SPECTATING ID " + string(obj_spectate_client.spectating_id);
 else _night_message+="Night " + string(obj_night.current_night);
 draw_set_font(fnt_camera_current);
 draw_set_halign(fa_left);

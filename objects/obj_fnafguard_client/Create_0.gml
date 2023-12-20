@@ -192,9 +192,9 @@ on_server_message_recieved = function(_message_type,_message) {
 	#region Spectating
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_REQUEST_RESPONSE) {
 		if(_message == SPECTATERESPONSE.OK) {
-			obj_fnafguard_client.is_spectating=true;
-			room_goto(rm_loading);
+			return;
 		}
+		if(_message == SPECTATERESPONSE.REJECTED) obj_spectate_client.spectating_id = -1;
 	}
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECATE_UPDATE_FREDDYPOWEROUTPHASE) {
 		obj_spectate_client.current_freddy_powerout_phase = _message;
@@ -227,7 +227,7 @@ on_server_message_recieved = function(_message_type,_message) {
 	}
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CURRENTCAMERA) {
 		obj_spectate_client.current_camera = _message;
-		if(room==rm_office)obj_camera_current_spr.update_current_camera_sprite();
+		obj_spectate_client.on_currentcamera_update();
 	}
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CHICACAM) {
 		obj_spectate_client.current_chica_cam = _message;
@@ -254,6 +254,9 @@ on_server_message_recieved = function(_message_type,_message) {
 	}
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_POWERUSAGE) {
 		obj_spectate_client.power_usage = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_SCROLLVIEW) {
+		obj_spectate_client.scroll_view = _message;
 	}
 	#endregion
 }
@@ -307,7 +310,9 @@ send_powerusage_update = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERUSAGE_UPDATE,obj_night.current_power_usage);
 }
 
-
+send_scrollview_update = function() {
+	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SCROLLVIEW_UPDATE,camera_get_view_x(view_camera[0]))
+}
 send_night_time_update = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
 }
