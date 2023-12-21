@@ -3,7 +3,7 @@
 global.CLIENT_DEBUG = true;
 global.CLIENT_PROTOCOL_VERSION = 1;
 global.SERVER_GAME_PROTOCOL = "ERICO E LARA LINDOS";
-
+out_of_date = false;
 
 
 
@@ -13,6 +13,7 @@ timeout = 3000 + 15000;
 username = "Player";
 client_id = -1;
 server_connection = -1;
+server_socket = -1;
 client_state = CLIENTSTATE.OFFLINE;
 server_state = SERVERSTATE.OPEN
 joining_lobby = "";
@@ -32,16 +33,14 @@ alarm_set(0,0.1*game_get_speed(gamespeed_fps));
 
 #region General actions (connect,disconnect)
 connect_client = function() {
-	network_destroy(server_connection);
-	server_connection = -1;
-	server_connection = network_create_socket(network_socket_tcp);
-	server_connection = network_connect(server_connection,obj_ipconfig_client.ip,obj_ipconfig_client.port);
+	disconnect_client();
+	server_socket = network_create_socket(network_socket_tcp);
+	server_connection = network_connect(server_socket,obj_ipconfig_client.ip,obj_ipconfig_client.port);
 	show_debug_message("Connecting to " + obj_ipconfig_client.ip + ":" + string(obj_ipconfig_client.port) + "...");
 }
 
 disconnect_client = function() {
-	network_destroy(server_connection);
-	server_connection = -1;
+	network_destroy(server_socket);
 }
 
 #endregion
@@ -56,7 +55,10 @@ on_client_connect = function() {
 	show_debug_message("Connected to server")
 }
 
-
+on_clientstate_update = function() {
+	obj_fnafguard_client.send_client_state();
+	if(client_state == CLIENTSTATE.OFFLINE) disconnect_client();
+}
 /**
  * Called when the client disconnects.
  */
@@ -70,13 +72,14 @@ on_client_disconnect = function() {
 	joining_lobby = "";
 	actual_lobby = "";
 	is_spectating = false;
+	on_clientstate_update();
 }
 
 
 on_client_out_of_date = function() {
-	show_debug_message("This client is out of date!");
 	obj_fnafguard_client.disconnect_client();
-	server_connection = -2;
+	client_state = CLIENTSTATE.OUT_OF_DATE;
+	obj_fnafguard_client.on_clientstate_update();
 }
 
 on_client_username_update = function() {
@@ -188,6 +191,20 @@ on_server_message_recieved = function(_message_type,_message) {
 	}
 	#endregion
 	
+	#region Bonnie AI Lobby Update
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_BONNIEAI_UPDATE) {
+		obj_lobby_client.bonnie_ai = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_FREDDYAI_UPDATE) {
+		obj_lobby_client.freddy_ai = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_CHICAAI_UPDATE) {
+		obj_lobby_client.chica_ai = _message;
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_FOXYAI_UPDATE) {
+		obj_lobby_client.foxy_ai = _message;
+	}
+	#endregion
 	
 	#region Spectating
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_REQUEST_RESPONSE) {

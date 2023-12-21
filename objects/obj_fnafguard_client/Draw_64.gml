@@ -8,18 +8,18 @@ var _text = "Connecting..."
 
 draw_set_font(fnt_camera_current)
 draw_set_halign(fa_right);
-if(self.server_connection == -1) {
+if(client_state == CLIENTSTATE.OFFLINE ) {
 	draw_set_color(c_red);
 	_text = "Disconnected";
 }
-else if(self.server_connection == -2) {
-	draw_set_color(c_orange);
-	_text = "Out of date";
+else if(client_state == CLIENTSTATE.OUT_OF_DATE) {
+	draw_set_color(c_orange)
+	_text = "Out of date\nServer and Client protocol version mismatch!";
 }
 else {
 	draw_set_color(c_lime)
 	_text = "Connected";
-	_text+=" (" + string(obj_fnafguard_client.client_id) + ")";
+	_text+=" (Your ID: " + string(obj_fnafguard_client.client_id) + ")";
 	if(obj_lobby_client.in_lobby && room != rm_lobby) {
 		
 		if(obj_lobby_client.lobby_state == LOBBYSTATE.OPEN) {

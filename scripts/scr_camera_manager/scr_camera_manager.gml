@@ -15,6 +15,7 @@ function scr_on_camera_open_finish() {
 	view_visible[1] = true;
 	obj_office.can_scroll = false;
 	obj_camera_hud._camera_change_effect_frame = 0;
+	if(obj_night.current_power == 0) scr_camera_force_down();
 	
 }
 

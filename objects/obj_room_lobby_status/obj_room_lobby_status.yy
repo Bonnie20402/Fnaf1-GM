@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "room_lobby",
-    "path": "folders/Objects/room_lobby.yy",
+    "name": "ui",
+    "path": "folders/Objects/room_lobby/ui.yy",
   },
   "parentObjectId": null,
   "persistent": false,

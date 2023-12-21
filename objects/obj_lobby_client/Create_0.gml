@@ -9,12 +9,32 @@ lobby_state = LOBBYSTATE.ERROR
 usernames_list = array_create(0,"");
 guards_left = 0;
 
+freddy_ai = 1;
+bonnie_ai = 9;
+chica_ai = 8;
+foxy_ai = 7;
+
+
+#region Lobby menu stuff - send to server
+on_bonnie_ai_update = function() {
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_BONNIEAI_UPDATE_REQUEST,bonnie_ai);
+}
+on_chica_ai_update = function() {
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_CHICAAI_UPDATE_REQUEST,chica_ai);
+}
+on_freddy_ai_update = function() {
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_FREDDYAI_UPDATE_REQUEST,freddy_ai);
+}
+on_foxy_ai_update = function() {
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_FOXYAI_UPDATE_REQUEST,foxy_ai);
+}
+#endregion
 on_lobby_state_update = function() {
 	if(lobby_state == LOBBYSTATE.WAITING_FOR_LOADED_CLIENTS) {
 		if(room != rm_office && room != rm_loading) room_goto(rm_loading);
 	}
 	if(lobby_state == LOBBYSTATE.IN_GAME && room == rm_office) {
-		if(!obj_night.run_night) obj_night.on_night_start(6);
+		if(!obj_night.run_night) obj_night.on_night_start(7);
 	}
 }
 

@@ -4,7 +4,7 @@
 
 if(async_load[? "asset_id"] == snd_6_am) {
 
-	room_goto(rm_main_menu);
+	room_goto(rm_lobby);
 }
 
 

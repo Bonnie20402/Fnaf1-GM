@@ -4,9 +4,12 @@
 
 #region CONNECTS/DISCONNECTS
 
-if( async_load[? "type"] == network_type_connect ) {
-	obj_fnafguard_client.on_client_connect();
+if( async_load[? "type"] == network_type_non_blocking_connect ) {
+	if (async_load[? "succeeded"]) obj_fnafguard_client.on_client_connect();
+	else obj_fnafguard_client.on_client_disconnect();
 }
+
+
 
 #endregion
 

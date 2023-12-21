@@ -101,6 +101,14 @@ function update_animatronic_ai() {
 			obj_ai_goldenfreddy.use_ai = true;
 			obj_ai_goldenfreddy.agressive_mode = true;
 			break;
+		default:
+			obj_ai_freddy.animatronic_set_ai_level(obj_lobby_client.freddy_ai);
+			obj_ai_bonnie.animatronic_set_ai_level(obj_lobby_client.bonnie_ai);
+			obj_ai_chica.animatronic_set_ai_level(obj_lobby_client.chica_ai);
+			obj_ai_foxy.animatronic_set_ai_level(obj_lobby_client.foxy_ai);
+			obj_ai_goldenfreddy.use_ai = true;
+			obj_ai_goldenfreddy.agressive_mode = true;
+			break;
 	}
 }
 
@@ -157,6 +165,11 @@ function on_night_start(_night) {
 	//Setup animatronic AI
 	update_animatronic_ai();
 	enable_animatronic_ai();
+	//1987
+	if(obj_ai_freddy.ai_level = 1 && obj_ai_bonnie.ai_level == 9 && obj_ai_chica.ai_level == 8 && obj_ai_foxy.ai_level == 7) {
+		obj_ai_goldenfreddy.on_animatronic_jumpscare();
+		return;
+	}
 	// Current power alarm
 	alarm_set(0,1*game_get_speed(gamespeed_fps));
 	//Time alarm

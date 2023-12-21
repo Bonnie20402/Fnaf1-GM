@@ -3,7 +3,7 @@
 
 
 function on_game_over_finish() {
-	room_goto(rm_main_menu);
+	room_goto(rm_lobby);
 }
 
 
