@@ -225,6 +225,7 @@
     {"name":"spr_lobby_ui_icon_chica","order":5,"path":"sprites/spr_lobby_ui_icon_chica/spr_lobby_ui_icon_chica.yy",},
     {"name":"spr_office_camera_rec","order":5,"path":"sprites/spr_office_camera_rec/spr_office_camera_rec.yy",},
     {"name":"enum_SPECTATEREQUESTRESPONSE","order":6,"path":"scripts/enum_SPECTATEREQUESTRESPONSE/enum_SPECTATEREQUESTRESPONSE.yy",},
+    {"name":"enum_GAMEMODE","order":8,"path":"scripts/enum_GAMEMODE/enum_GAMEMODE.yy",},
     {"name":"spr_lobby_ui_ghost_topcenter","order":1,"path":"sprites/spr_lobby_ui_ghost_topcenter/spr_lobby_ui_ghost_topcenter.yy",},
     {"name":"rm_game_over","order":6,"path":"rooms/rm_game_over/rm_game_over.yy",},
     {"name":"obj_camera_string","order":5,"path":"objects/obj_camera_string/obj_camera_string.yy",},

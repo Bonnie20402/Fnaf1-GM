@@ -179,6 +179,11 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.usernames_list = _message;
 	}
 	#endregion
+	#region Lobby gamemode
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_GAMEMODE_UPDATE) {
+		obj_lobby_client.gamemode = _message;
+	}
+	#endregion
 	#region Lobby state update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_STATE_UPDATE) {
 		obj_lobby_client.lobby_state = _message;

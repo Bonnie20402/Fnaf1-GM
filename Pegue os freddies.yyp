@@ -287,6 +287,7 @@
     {"id":{"name":"enum_SPECTATEREQUESTRESPONSE","path":"scripts/enum_SPECTATEREQUESTRESPONSE/enum_SPECTATEREQUESTRESPONSE.yy",},},
     {"id":{"name":"obj_hitbox_leftlight","path":"objects/obj_hitbox_leftlight/obj_hitbox_leftlight.yy",},},
     {"id":{"name":"obj_office_scroller_left_med","path":"objects/obj_office_scroller_left_med/obj_office_scroller_left_med.yy",},},
+    {"id":{"name":"enum_GAMEMODE","path":"scripts/enum_GAMEMODE/enum_GAMEMODE.yy",},},
     {"id":{"name":"spr_cameras_1b_bonnie1freddy0chica0","path":"sprites/spr_cameras_1b_bonnie1freddy0chica0/spr_cameras_1b_bonnie1freddy0chica0.yy",},},
     {"id":{"name":"spr_lobby_ui_ghost_topcenter","path":"sprites/spr_lobby_ui_ghost_topcenter/spr_lobby_ui_ghost_topcenter.yy",},},
     {"id":{"name":"rm_game_over","path":"rooms/rm_game_over/rm_game_over.yy",},},

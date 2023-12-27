@@ -9,6 +9,7 @@ lobby_state = LOBBYSTATE.ERROR
 usernames_list = array_create(0,"");
 guards_left = 0;
 
+gamemode = GAMEMODE.NONE;
 freddy_ai = 1;
 bonnie_ai = 9;
 chica_ai = 8;
@@ -67,6 +68,7 @@ on_lobby_join = function() {
 }
 
 on_lobby_quit = function() {
+	obj_lobby_client.gamemode = GAMEMODE.NONE;
 	obj_lobby_client.in_lobby = false;
 	obj_lobby_client.lobby_name = "ERROR";
 	obj_lobby_client.lobby_state = LOBBYSTATE.ERROR

@@ -69,6 +69,7 @@ enum FNAFMESSAGE_FROM_SERVER
 	LOBBY_FOXYAI_UPDATE,
 	LOBBY_HOUR_UPDATE,
 	LOBBY_TIMER_UPDATE,
+	LOBBY_GAMEMODE_UPDATE,
 	#endregion
 	
 	#region SPECTATING - should be same for client and server (240-255)
