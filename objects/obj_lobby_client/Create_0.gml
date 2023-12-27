@@ -13,6 +13,8 @@ freddy_ai = 1;
 bonnie_ai = 9;
 chica_ai = 8;
 foxy_ai = 7;
+timer = 0;
+current_hours = 0;
 
 
 #region Lobby menu stuff - send to server
@@ -37,6 +39,16 @@ on_lobby_state_update = function() {
 		if(!obj_night.run_night) obj_night.on_night_start(7);
 	}
 }
+
+on_lobby_hours_update = function() {
+	if(room == rm_office && !obj_fnafguard_client.is_spectating) {
+		obj_night.current_hours = current_hours;
+		obj_night.on_hour_update();
+	} 
+
+}
+
+on_lobby_timer_update = function() { return; } 
 
 get_usernames_list = function() {
 	var _message = "";

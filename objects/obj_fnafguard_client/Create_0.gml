@@ -134,7 +134,14 @@ on_server_message_recieved = function(_message_type,_message) {
 			if(global.CLIENT_PROTOCOL_VERSION == _version) obj_fnafguard_client.on_client_up_to_date();
 			else obj_fnafguard_client.on_client_out_of_date();
 	}
-	
+	#region Server shutdown
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SERVER_SHUTDOWN) {
+		show_message("UPS!\n The server either crashed or shutted down\nYou just recieved a SERVER_SHUTDOWN packet.");
+		
+		obj_fnafguard_client.disconnect_client();
+		obj_fnafguard_client.on_client_disconnect();
+	}
+	#endregion
 	#endregion
 	#region Client id
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_CLIENT_ID) {
@@ -178,7 +185,12 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.on_lobby_state_update();
 	}
 	#endregion
-
+	#region Lobby hour update
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_HOUR_UPDATE) {
+		obj_lobby_client.current_hours = _message;
+		obj_lobby_client.on_lobby_hours_update();
+	}
+	#endregion
 	#region Lobby master update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_MASTER_UPDATE) {
 		obj_lobby_client.lobby_master = _message;
@@ -190,7 +202,18 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.guards_left = _message;
 	}
 	#endregion
+	#region Lobby timer update
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_TIMER_UPDATE) {
+		obj_lobby_client.timer = _message;
+		obj_lobby_client.on_lobby_timer_update();
+	}
+	#endregion
 	
+	#region Lobby hours update
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_HOUR_UPDATE){
+		obj_lobby_client.current_hours = _message;
+		obj_lobby_client.on_lobby_hours_update();
+	}
 	#region Bonnie AI Lobby Update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_BONNIEAI_UPDATE) {
 		obj_lobby_client.bonnie_ai = _message;
@@ -257,6 +280,10 @@ on_server_message_recieved = function(_message_type,_message) {
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_FREDDYCAM) {
 		obj_spectate_client.current_freddy_cam = _message;
 		obj_spectate_client.on_freddy_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_NIGHTEND) {
+		obj_spectate_client.night_state = _message;
+		obj_spectate_client.on_nightstate_update();
 	}
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_GOLDENFREDDYSTATE) {
 		obj_spectate_client.current_goldenfreddy_state = _message;

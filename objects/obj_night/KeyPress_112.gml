@@ -5,7 +5,8 @@ if(room == rm_main_menu) {
 	obj_night.current_night = 6;
 }
 else {
-	obj_night.on_night_finish();
+	obj_night.current_hours = 6;
+	obj_night.on_hour_update();
 }
 
 

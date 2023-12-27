@@ -17,6 +17,7 @@ current_hours = 12;
 scroll_view = 0;
 power_left = 100;
 power_usage = 1;
+night_state = NIGHTEND.DEATH_BONNIE;
 
 #region Util
 
@@ -145,5 +146,11 @@ on_currentcamera_update = function() {
 				self.on_button_click();
 			}
 		}
+	}
+}
+
+on_nightstate_update = function() {
+	if (night_state == NIGHTEND.WIN) {
+		room_goto(rm_6_am);
 	}
 }

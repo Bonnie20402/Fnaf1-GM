@@ -15,6 +15,7 @@ run_night = false;
 //This makes an in-game minute 1.5 seconds, an in-game hour 1 minute and 30 seconds, 
 //and one night 9 minutes.
 current_hours = 12;
+run_hours_client_side = false;
 
 //The current night.
 current_night = 0;

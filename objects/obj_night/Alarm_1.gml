@@ -3,6 +3,7 @@
 if(obj_fnafguard_client.is_spectating) return;
 if(!obj_night.run_night || room != rm_office) return;
 alarm_set(1,90*game_get_speed(gamespeed_fps));
+if(!run_hours_client_side) return;
 if(obj_night.current_hours == 12) obj_night.current_hours = 1;
 else obj_night.current_hours++;
 obj_night.on_hour_update();
