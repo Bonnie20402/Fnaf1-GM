@@ -8,4 +8,5 @@ alarm_set(0,freddy_weird_time*game_get_speed(gamespeed_fps));
 alarm_set(1,freddy_normal_time*game_get_speed(gamespeed_fps));
 
 
-
+options = false;
+options_lock = false;

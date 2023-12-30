@@ -184,6 +184,11 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.gamemode = _message;
 	}
 	#endregion
+	#region Lobby force goto menu
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_FORCE_MENU) {
+		room_goto(rm_lobby);
+	}
+	#endregion
 	#region Lobby state update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_STATE_UPDATE) {
 		obj_lobby_client.lobby_state = _message;

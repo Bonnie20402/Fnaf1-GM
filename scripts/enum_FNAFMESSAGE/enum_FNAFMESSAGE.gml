@@ -70,6 +70,7 @@ enum FNAFMESSAGE_FROM_SERVER
 	LOBBY_HOUR_UPDATE,
 	LOBBY_TIMER_UPDATE,
 	LOBBY_GAMEMODE_UPDATE,
+	LOBBY_FORCE_MENU,
 	#endregion
 	
 	#region SPECTATING - should be same for client and server (240-255)
