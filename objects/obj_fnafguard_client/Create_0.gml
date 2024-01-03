@@ -224,7 +224,7 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.current_hours = _message;
 		obj_lobby_client.on_lobby_hours_update();
 	}
-	#region Bonnie AI Lobby Update
+	#region  AI Lobby Update / Cam Update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_BONNIEAI_UPDATE) {
 		obj_lobby_client.bonnie_ai = _message;
 	}
@@ -237,6 +237,23 @@ on_server_message_recieved = function(_message_type,_message) {
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_FOXYAI_UPDATE) {
 		obj_lobby_client.foxy_ai = _message;
 	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_BONNIECAM_UPDATE) {
+		obj_lobby_client.bonnie_cam = _message;
+		obj_lobby_client.on_bonnie_cam_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_CHICACAM_UPDATE) {
+		obj_lobby_client.chica_cam = _message;
+		obj_lobby_client.on_chica_cam_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_FREDDYCAM_UPDATE) {
+		obj_lobby_client.freddy_cam = _message;
+		obj_lobby_client.on_freddy_cam_update();
+	}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_FOXYCAM_UPDATE) {
+		obj_lobby_client.foxy_cam = _message;
+		obj_lobby_client.on_foxy_cam_update();
+	}
+	
 	#endregion
 	
 	#region Spectating

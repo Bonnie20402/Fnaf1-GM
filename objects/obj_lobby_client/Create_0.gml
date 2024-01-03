@@ -11,14 +11,18 @@ guards_left = 0;
 
 gamemode = GAMEMODE.NONE;
 freddy_ai = 1;
+freddy_cam = "1A";
 bonnie_ai = 9;
+bonnie_cam = "1A";
 chica_ai = 8;
+chica_cam = "1A";
 foxy_ai = 7;
+foxy_cam = "1C_0";
 timer = 0;
 current_hours = 0;
 
 
-#region Lobby menu stuff - send to server
+#region Lobby menu stuff - from client to  to server
 on_bonnie_ai_update = function() {
 	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.LOBBY_BONNIEAI_UPDATE_REQUEST,bonnie_ai);
 }
@@ -46,7 +50,30 @@ on_lobby_hours_update = function() {
 		obj_night.current_hours = current_hours;
 		obj_night.on_hour_update();
 	} 
-
+}
+on_bonnie_cam_update = function() {
+	if(room == rm_office && !obj_fnafguard_client.is_spectating) {
+		obj_ai_bonnie.current_cam = bonnie_cam;
+		obj_ai_bonnie.on_animatronic_move();
+	} 
+}
+on_freddy_cam_update = function() {
+	if(room == rm_office && !obj_fnafguard_client.is_spectating) {
+		obj_ai_freddy.current_cam = freddy_cam;
+		obj_ai_freddy.on_animatronic_move();
+	} 
+}
+on_chica_cam_update = function() {
+	if(room == rm_office && !obj_fnafguard_client.is_spectating) {
+		obj_ai_chica.current_cam = chica_cam;
+		obj_ai_chica.on_animatronic_move();
+	} 
+}
+on_foxy_cam_update = function() {
+	if(room == rm_office && !obj_fnafguard_client.is_spectating) {
+		obj_ai_foxy.current_cam = foxy_cam;
+		obj_ai_foxy.on_animatronic_move();
+	} 
 }
 
 on_lobby_timer_update = function() { return; } 
@@ -76,6 +103,7 @@ on_lobby_quit = function() {
 	obj_lobby_client.guards_left = 0;
 	
 }
+
 
 
 
