@@ -18,7 +18,7 @@ else if(client_state == CLIENTSTATE.OUT_OF_DATE) {
 }
 else {
 	draw_set_color(c_lime)
-	_text = "Connected";
+	_text = "Connected (" + string(obj_ping_client.get_ping()) + " ms)";
 	_text+=" (Your ID: " + string(obj_fnafguard_client.client_id) + ")";
 	if(obj_lobby_client.in_lobby && room != rm_lobby) {
 		

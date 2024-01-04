@@ -119,6 +119,7 @@ on_state_update = function() {
 #endregion
 #region Data recieved from server
 on_server_message_recieved = function(_message_type,_message) {
+	obj_timeout_client.on_packet_recieved();
 	#region DEBUG
 	if(global.CLIENT_DEBUG) {
 	show_debug_message("Message type " + string(_message_type) +
@@ -142,6 +143,12 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_fnafguard_client.on_client_disconnect();
 	}
 	#endregion
+	#endregion
+	#region Pong
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.PONG) {
+		obj_ping_client.pong_timestamp = current_time;
+		obj_ping_client.update_ping();
+	}
 	#endregion
 	#region Client id
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.UPDATE_CLIENT_ID) {

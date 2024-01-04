@@ -8,6 +8,7 @@
 //Almost all constants that don't end with _UPDATE shouldn't be expected to have anything on the mssage.
 enum FNAFMESSAGE_FROM_CLIENT {
 	VERSIONCHECK,
+	PING,
 	SEND_CLIENT_STATE,
 	SEND_CLIENT_OS,
 	REQUEST_CLIENT_ID,
@@ -51,6 +52,7 @@ enum FNAFMESSAGE_FROM_SERVER
 {
 	KEEP_ALIVE,
 	VERSIONCHECK,
+	PONG,
 	UPDATE_CLIENT_ID,
 	SERVER_STATE_UPDATE,
 	UPDATE_ALIVE_GUARDS,
