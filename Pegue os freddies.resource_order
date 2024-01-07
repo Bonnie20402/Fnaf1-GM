@@ -152,6 +152,7 @@
     {"name":"spr_office_ventilator_gif","order":3,"path":"sprites/spr_office_ventilator_gif/spr_office_ventilator_gif.yy",},
     {"name":"spr_main_menu_settings_tablet","order":8,"path":"objects/spr_main_menu_settings_tablet/spr_main_menu_settings_tablet.yy",},
     {"name":"rm_lobby","order":8,"path":"rooms/rm_lobby/rm_lobby.yy",},
+    {"name":"snd_freddy_song_meme","order":31,"path":"sounds/snd_freddy_song_meme/snd_freddy_song_meme.yy",},
     {"name":"snd_6_am","order":28,"path":"sounds/snd_6_am/snd_6_am.yy",},
     {"name":"spr_golden_freddy","order":7,"path":"sprites/spr_golden_freddy/spr_golden_freddy.yy",},
     {"name":"snd_camera_disable1","order":23,"path":"sounds/snd_camera_disable1/snd_camera_disable1.yy",},

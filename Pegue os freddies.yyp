@@ -187,6 +187,7 @@
     {"id":{"name":"spr_office_ventilator_gif","path":"sprites/spr_office_ventilator_gif/spr_office_ventilator_gif.yy",},},
     {"id":{"name":"spr_main_menu_settings_tablet","path":"objects/spr_main_menu_settings_tablet/spr_main_menu_settings_tablet.yy",},},
     {"id":{"name":"rm_lobby","path":"rooms/rm_lobby/rm_lobby.yy",},},
+    {"id":{"name":"snd_freddy_song_meme","path":"sounds/snd_freddy_song_meme/snd_freddy_song_meme.yy",},},
     {"id":{"name":"fnt_warning","path":"fonts/fnt_warning/fnt_warning.yy",},},
     {"id":{"name":"snd_6_am","path":"sounds/snd_6_am/snd_6_am.yy",},},
     {"id":{"name":"spr_golden_freddy","path":"sprites/spr_golden_freddy/spr_golden_freddy.yy",},},
