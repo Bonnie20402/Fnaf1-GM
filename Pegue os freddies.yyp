@@ -111,6 +111,7 @@
     {"id":{"name":"spr_settings_icon","path":"sprites/spr_settings_icon/spr_settings_icon.yy",},},
     {"id":{"name":"spr_cameras_1a_bonnie0freddy1chica1","path":"sprites/spr_cameras_1a_bonnie0freddy1chica1/spr_cameras_1a_bonnie0freddy1chica1.yy",},},
     {"id":{"name":"rm_6_am","path":"rooms/rm_6_am/rm_6_am.yy",},},
+    {"id":{"name":"class_FnafGuard","path":"scripts/class_FnafGuard/class_FnafGuard.yy",},},
     {"id":{"name":"enum_FNAFMESSAGE","path":"scripts/enum_FNAFMESSAGE/enum_FNAFMESSAGE.yy",},},
     {"id":{"name":"obj_camera_current_spr","path":"objects/obj_camera_current_spr/obj_camera_current_spr.yy",},},
     {"id":{"name":"obj_hitbox_leftdoor","path":"objects/obj_hitbox_leftdoor/obj_hitbox_leftdoor.yy",},},

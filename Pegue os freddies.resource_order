@@ -86,6 +86,7 @@
     {"name":"spr_settings_icon","order":4,"path":"sprites/spr_settings_icon/spr_settings_icon.yy",},
     {"name":"spr_cameras_1a_bonnie0freddy1chica1","order":1,"path":"sprites/spr_cameras_1a_bonnie0freddy1chica1/spr_cameras_1a_bonnie0freddy1chica1.yy",},
     {"name":"rm_6_am","order":7,"path":"rooms/rm_6_am/rm_6_am.yy",},
+    {"name":"class_FnafGuard","order":10,"path":"scripts/class_FnafGuard/class_FnafGuard.yy",},
     {"name":"enum_FNAFMESSAGE","order":1,"path":"scripts/enum_FNAFMESSAGE/enum_FNAFMESSAGE.yy",},
     {"name":"obj_camera_current_spr","order":7,"path":"objects/obj_camera_current_spr/obj_camera_current_spr.yy",},
     {"name":"obj_hitbox_leftdoor","order":2,"path":"objects/obj_hitbox_leftdoor/obj_hitbox_leftdoor.yy",},
