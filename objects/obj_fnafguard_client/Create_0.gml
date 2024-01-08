@@ -119,6 +119,7 @@ on_state_update = function() {
 #endregion
 #region Data recieved from server
 on_server_message_recieved = function(_message_type,_message) {
+	var _show_notification = false;
 	obj_timeout_client.on_packet_recieved();
 	#region DEBUG
 	if(global.CLIENT_DEBUG) {
@@ -226,6 +227,9 @@ on_server_message_recieved = function(_message_type,_message) {
 	}
 	#endregion
 	
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.CLASS_GUARDDEATH) {
+		_show_notification = true;
+	}
 	#region Lobby hours update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_HOUR_UPDATE){
 		obj_lobby_client.current_hours = _message;
@@ -337,6 +341,11 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_spectate_client.scroll_view = _message;
 	}
 	#endregion
+	
+	
+	if(_show_notification) {
+		obj_notification_client.decode_and_add_notification(_message_type,_message);
+	}
 }
 #endregion
 
