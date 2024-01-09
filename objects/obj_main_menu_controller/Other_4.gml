@@ -1,6 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
-self.on_button_click();
+
+
+audio_stop_all();
+
+
+
 
 
 

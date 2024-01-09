@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-var _options = obj_main_menu_manager.options;
+var _options = obj_main_menu_controller.options;
 
 
 
