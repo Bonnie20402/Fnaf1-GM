@@ -119,7 +119,8 @@ on_state_update = function() {
 #endregion
 #region Data recieved from server
 on_server_message_recieved = function(_message_type,_message) {
-	var _show_notification = false;
+	var _notifications = [ FNAFMESSAGE_FROM_SERVER.CLASS_FNAFGUARD,FNAFMESSAGE_FROM_SERVER.CLASS_GUARDDEATH, FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYJOIN, FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYQUIT]
+	var _show_notification = array_contains(_notifications,_message_type);
 	obj_timeout_client.on_packet_recieved();
 	#region DEBUG
 	if(global.CLIENT_DEBUG) {
@@ -226,15 +227,13 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.on_lobby_timer_update();
 	}
 	#endregion
-	
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.CLASS_GUARDDEATH) {
-		_show_notification = true;
-	}
 	#region Lobby hours update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_HOUR_UPDATE){
 		obj_lobby_client.current_hours = _message;
 		obj_lobby_client.on_lobby_hours_update();
 	}
+	#region Lobby Join
+	#endregion
 	#region  AI Lobby Update / Cam Update
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_BONNIEAI_UPDATE) {
 		obj_lobby_client.bonnie_ai = _message;

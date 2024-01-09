@@ -9,6 +9,7 @@ busy = false;
 
 
 add_notification = function(_text) {
+	if(array_contains(notification_queue,_text))return;
 	array_push(notification_queue,_text);
 	if(!busy) on_notification_start();
 }
@@ -20,6 +21,12 @@ decode_and_add_notification = function(_messagetype,_message) {
 	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_GUARDDEATH) {
 		add_notification("The guard " + _object.death_username + " has been killed at " + string(_object.death_hours) + " AM"); 
 	}  
+	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYJOIN) {
+		add_notification("[" +string(_object.lobbyjoin_clientid)+"] " + _object.lobbyjoin_username + " joined the lobby");
+	}
+	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYQUIT) {
+		add_notification("[" +string(_object.lobbyquit_clientid)+"] " + _object.lobbyquit_username + " left the lobby");
+	}
 	
 }
 

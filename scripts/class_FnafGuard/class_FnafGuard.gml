@@ -5,4 +5,7 @@ function FnafGuard(_clientid,_platform,_username,_state) constructor {
 	fnafguard_platform = _platform;
 	fnafguard_username = _username;
 	fnafguard_state = _state;
+	
 }
+
+
