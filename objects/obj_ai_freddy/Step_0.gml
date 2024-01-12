@@ -7,10 +7,10 @@ if(current_camera != "6") return;
 var _volume = 0;
 
 if(scr_camera_is_camera_up() ) {
-	if(obj_office.current_camera == "6") _volume = 70;
-	else if(obj_office.current_camera == "7" || obj_office.current_camera == "4A") _volume = 50;
-	else if(obj_office.current_camera == "4B") _volume = 25;
-	else if(obj_office.current_camera == "1B") _volume = 20;
+	if(obj_gameplaycontroller_client.gameplay.current_camera == "6") _volume = 70;
+	else if(obj_gameplaycontroller_client.gameplay.current_camera == "7" || obj_gameplaycontroller_client.gameplay.current_camera == "4A") _volume = 50;
+	else if(obj_gameplaycontroller_client.gameplay.current_camera == "4B") _volume = 25;
+	else if(obj_gameplaycontroller_client.gameplay.current_camera == "1B") _volume = 20;
 	else _volume = 30;
 }else _volume = 10;
 

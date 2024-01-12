@@ -3,7 +3,7 @@
 
 mouse_gui_x = device_mouse_x_to_gui(0);
 mouse_gui_y = device_mouse_y_to_gui(0);
-self.active = obj_office.current_camera == camera_button;
+self.active = obj_gameplaycontroller_client.gameplay.current_camera == camera_button;
 
 #region VISIBLE
 visible = view_visible[1] == true;
@@ -11,9 +11,9 @@ visible = view_visible[1] == true;
 
 #region CLICK HANDLING
 
-if (!obj_office.camera_up) return;
+if (!obj_gameplaycontroller_client.gameplay.camera_up) return;
 // cant click same camera
-if (obj_office.camera_up && !obj_hitbox_camera.camera_lock && obj_office.current_camera == self.camera_button) return;
+if (obj_gameplaycontroller_client.gameplay.camera_up && !obj_hitbox_camera.camera_lock && obj_gameplaycontroller_client.gameplay.current_camera == self.camera_button) return;
 
 if (mouse_check_button_pressed(mb_left)) {
     // Check if the mouse click is within the bounds of the drawn sprite

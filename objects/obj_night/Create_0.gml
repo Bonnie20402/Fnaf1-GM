@@ -36,7 +36,7 @@ current_power_usage = 1;
 // NOTE: Call when door is toggled, camera is open, closed, light is  toggled.
 function update_power_usage() {
 	if(!run_night) return;
-	current_power_usage = 1 + obj_office.left_door + obj_office.right_door + scr_camera_is_camera_up() + obj_office.left_light + obj_office.right_light;
+	current_power_usage = 1 + obj_gameplaycontroller_client.left_door + obj_gameplaycontroller_client.right_door + scr_camera_is_camera_up() + obj_gameplaycontroller_client.left_light + obj_gameplaycontroller_client.right_light;
 	on_power_usage_update();
 }
 
@@ -149,12 +149,12 @@ function on_night_start(_night) {
 	}
 	run_night = true;
 	// Re-init office variables
-	obj_office.left_door = false;
-	obj_office.right_door = false;
-	obj_office.left_light = false;
-	obj_office.right_light = false;
-	obj_office.can_scroll = true;
-	obj_office.jumpscared = false;
+	obj_gameplaycontroller_client.left_door = false;
+	obj_gameplaycontroller_client.right_door = false;
+	obj_gameplaycontroller_client.left_light = false;
+	obj_gameplaycontroller_client.right_light = false;
+	obj_gameplaycontroller_client.can_scroll = true;
+	obj_gameplaycontroller_client.jumpscared = false;
 	scr_camera_force_down();
 	// Re-init night variables
 	current_night = _night;
@@ -201,7 +201,7 @@ function on_night_finish() {
 }
 
 function on_power_update() {
-	if(!obj_fnafguard_client.is_spectating)obj_fnafguard_client.send_powerleft_update();
+	if(!obj_fnafguard_client.is_spectating)obj_fnafguard_client.send_gameplay_update();
 	if(current_power == 0) {
 		on_power_out();
 	}
@@ -209,12 +209,12 @@ function on_power_update() {
 
 function on_power_out() {
 	scr_camera_force_down();
-	obj_office.on_office_power_out();
+	obj_gameplaycontroller_client.on_office_power_out();
 	obj_ai_freddy_power_out.on_power_out();
 }
 
 function on_power_usage_update() {
-	obj_fnafguard_client.send_powerusage_update();
+	obj_fnafguard_client.send_gameplay_update();
 	return;
 }
 

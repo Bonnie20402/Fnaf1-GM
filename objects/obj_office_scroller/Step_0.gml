@@ -5,7 +5,7 @@
 	Formula to get the right part of the view:
 	room_width - camera_get_view_width(view_camera[n];
 */
-if (!obj_office.can_scroll) return;
+if (!obj_gameplaycontroller_client.gameplay.can_scroll) return;
 if( x > room_width - camera_get_view_width(view_camera[0]) ) {
 	x = room_width - camera_get_view_width(view_camera[0]);
 }

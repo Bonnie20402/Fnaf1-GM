@@ -2,19 +2,10 @@
 // You can write your code in this editor
 var _ui_x = 0;
 var _ui_y = 0;
-//TODO: Adjust this value for other rooms
-if(room == rm_boot) {
-	_ui_x = display_get_gui_width()+30000;
-	_ui_y = display_get_gui_height()+40000;
-}
-if(room == rm_main_menu) {
+//if(room == rm_main_menu) {
 	_ui_x = display_get_gui_width() - 25;
 	_ui_y = display_get_gui_height() - 25;
-}
-else {	
-	_ui_x = display_get_gui_width()/2;
-	_ui_y = display_get_gui_height()/2;
-}
+//}
 if(array_length(notification_queue) == 0) return;
 
 draw_set_font(fnt_camera_current);

@@ -362,6 +362,9 @@ send_client_username = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SEND_CLIENT_USERNAME,obj_fnafguard_client.username);
 }
 
+send_gameplay_update = function() {
+	obj_gameplaycontroller_client.send_to_server();
+}
 send_leftdoor_state = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LEFTDOOR_UPDATE,obj_office.left_door);
 }

@@ -33,7 +33,7 @@ function on_button_click() {
 	//start the blinking timer
 	alarm_set(0,1*game_get_speed(gamespeed_fps));
 	//update game variables
-	obj_office.current_camera = self.camera_button;
+	obj_gameplaycontroller_client.gameplay.current_camera = self.camera_button;
 	obj_camera_string.set_camera_current_string(self.camera_text); 
 	//call my event
 	scr_on_camera_change_start();

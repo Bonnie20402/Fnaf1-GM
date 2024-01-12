@@ -144,8 +144,8 @@ function on_animatronic_attack() {
 function on_animatronic_jumpscare() {
 	scr_camera_force_down();
 	audio_play_sound(snd_jumpscare,0,false);
-	obj_office.jumpscared = true;
-	obj_office.on_office_jumpscare();
+	obj_gameplaycontroller_client.gameplay.jumpscared = true;
+	obj_gameplaycontroller_client.on_office_jumpscare();
 	with(obj_office) {
 		self.sprite_index = spr_office_jumpscare_freddy;
 		self.image_index = 0;

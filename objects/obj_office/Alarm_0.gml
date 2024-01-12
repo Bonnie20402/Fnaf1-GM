@@ -3,14 +3,14 @@
 
 alarm_set(0,0.02*game_get_speed(gamespeed_fps));
 
-if( !self.left_light && !self.right_light ) return;
+if( !obj_gameplaycontroller_client.gameplay.left_light && !obj_gameplaycontroller_client.gameplay.right_light ) return;
 
 var _number = irandom(20);
 
 if (_number <= 3) {
-	self.light_flickering = !self.light_flickering;
+	obj_gameplaycontroller_client.gameplay.light_flickering = !obj_gameplaycontroller_client.gameplay.light_flickering;
 }
-else light_flickering = false;
+else obj_gameplaycontroller_client.gameplay.light_flickering = false;
 
 
 

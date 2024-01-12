@@ -14,7 +14,7 @@ function disable_camera() {
 }
 function update_current_camera_sprite() {
 	//TODO: Add foxy and golden freddy
-	var _guard_cam = obj_office.current_camera;
+	var _guard_cam = obj_gameplaycontroller_client.gameplay.current_camera;
 	var _freddy_cam = obj_ai_freddy.current_camera;
 	var _bonnie_cam = obj_ai_bonnie.current_camera;
 	var _chica_cam = obj_ai_chica.current_camera;
@@ -97,7 +97,7 @@ function update_current_camera_sprite() {
 	    } else if(_bonnie_cam != "2A") {
 	        _new_index = spr_cameras_2a_bonnie0foxy0;
 	    }
-		if(_foxy_cam == "2A" && obj_office.camera_up && !obj_ai_foxy.is_running) {
+		if(_foxy_cam == "2A" && obj_gameplaycontroller_client.gameplay.camera_up && !obj_ai_foxy.is_running) {
 			obj_ai_foxy.is_running = true;
 			_new_index = spr_cameras_2a_bonnie0foxy1;
 			image_index = 0;

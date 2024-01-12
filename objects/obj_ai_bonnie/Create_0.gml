@@ -85,7 +85,7 @@ function on_animatronic_move() {
 	if(current_camera == "Attack" || current_camera == "AttackSucess") return;
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
-	if(scr_camera_is_camera_up() && obj_office.current_camera == current_camera) obj_camera_current_spr.disable_camera();
+	if(scr_camera_is_camera_up() && obj_gameplaycontroller_client.gameplay.current_camera == current_camera) obj_camera_current_spr.disable_camera();
 	obj_camera_current_spr.update_current_camera_sprite();
 	obj_fnafguard_client.send_bonniecam_update();
 	if(current_camera == "1A") {
@@ -134,7 +134,7 @@ function on_animatronic_attack() {
 		animatronic_add_forward_camera("1B");
 		animatronic_add_forward_camera("5");
 		animatronic_shuffle_moves();
-		obj_office.left_light_scare = false;
+		obj_gameplaycontroller_client.gameplay.left_light_scare = false;
 		current_camera = forward_cameras[0];
 		
 	}
@@ -146,8 +146,8 @@ function on_animatronic_attack() {
 }
 
 function on_animatronic_jumpscare() {
-	obj_office.jumpscared = true;
-	obj_office.on_office_jumpscare();
+	obj_gameplaycontroller_client.gameplay.jumpscared = true;
+	obj_gameplaycontroller_client.on_office_jumpscare();
 	audio_play_sound(snd_jumpscare,0,false);
 	with(obj_office) {
 			self.sprite_index = spr_office_jumpscare_bonnie;

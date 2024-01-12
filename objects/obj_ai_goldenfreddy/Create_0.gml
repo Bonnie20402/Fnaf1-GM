@@ -58,8 +58,8 @@ function on_phase_update() {
 	if(phase == 0) on_goldenfreddy_disappear();
 }
 function on_animatronic_jumpscare() {
-	obj_office.on_office_jumpscare();
-	obj_office.jumpscared = true;
+	obj_gameplaycontroller_client.gameplay.on_office_jumpscare();
+	obj_gameplaycontroller_client.gameplay.jumpscared = true;
 	in_office = false;
 	with(obj_office) {
 		sprite_index = spr_office_jumpscare_goldenfreddy;
@@ -74,10 +74,10 @@ function on_animatronic_jumpscare() {
 
 function scr_on_camera_change_start() {
 	if(!agressive_mode) {
-		if(obj_office.current_camera == "2B" && !in_office) goldenfreddy_chance();
+		if(obj_gameplaycontroller_client.gameplay.current_camera == "2B" && !in_office) goldenfreddy_chance();
 	}
 	else {
-		if (obj_office.current_camera != "1C" && obj_office.current_camera != "2A") goldenfreddy_chance();
+		if (obj_gameplaycontroller_client.gameplay.current_camera != "1C" && obj_gameplaycontroller_client.gameplay.current_camera != "2A") goldenfreddy_chance();
 	}
 }
 

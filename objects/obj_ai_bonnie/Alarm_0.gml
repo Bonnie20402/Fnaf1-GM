@@ -22,12 +22,11 @@ if(obj_ai_bonnie.ai_level >= _move) {
 	}
 	//if on left window and left door is closed, always go forward. Else go backwards.
 	if(obj_ai_bonnie.current_camera == "LeftWindow")  {
-		_forward = !obj_office.left_door;
+		_forward = !obj_gameplaycontroller_client.gameplay.left_door;
 		if(_forward) {
 			obj_ai_bonnie.current_camera = "Attack";
-			obj_office.left_light = false;
-			obj_fnafguard_client.send_leftlight_update();
-			obj_fnafguard_client.send_bonniecam_update();
+			obj_gameplaycontroller_client.gameplay.left_light = false;
+			obj_fnafguard_client.send_gameplay_update();
 			return;
 		}
 		else {
@@ -40,7 +39,7 @@ if(obj_ai_bonnie.ai_level >= _move) {
 	obj_ai_bonnie.animatronic_shuffle_moves();
 	
 	//Set the current camera
-	if( scr_camera_is_camera_up() && obj_office.current_camera == obj_ai_bonnie.current_camera) obj_camera_current_spr.disable_camera();
+	if( scr_camera_is_camera_up() && obj_gameplaycontroller_client.gameplay.current_camera == obj_ai_bonnie.current_camera) obj_camera_current_spr.disable_camera();
 	if( obj_ai_bonnie.animatronic_is_valid_move(_forward ? obj_ai_bonnie.forward_cameras[0] : obj_ai_bonnie.backward_cameras[0] ) ) {
 		if(obj_ai_bonnie.forward_cameras[0] == "N/A") return;
 

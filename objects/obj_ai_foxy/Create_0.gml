@@ -111,7 +111,7 @@ function on_animatronic_move() {
 //Called after foxy run animation is complete.
 function on_foxy_run_finish() {
 	if(obj_fnafguard_client.is_spectating) return;
-	current_camera = obj_office.left_door ? "AttackFail" : "AttackSuccess";
+	current_camera = obj_gameplaycontroller_client.gameplay.left_door ? "AttackFail" : "AttackSuccess";
 	is_running = false;
 	obj_fnafguard_client.send_foxycam_update();
 	on_animatronic_attack();
@@ -139,8 +139,8 @@ function on_animatronic_attack() {
 function on_animatronic_jumpscare() {
 	scr_camera_force_down();
 	audio_play_sound(snd_jumpscare,0,false);
-	obj_office.jumpscared = true;
-	obj_office.on_office_jumpscare();
+	obj_gameplaycontroller_client.gameplay.jumpscared = true;
+	obj_gameplaycontroller_client.on_office_jumpscare();
 	with(obj_office) {
 		self.sprite_index = spr_office_jumpscare_foxy;
 		self.image_index = 0;
