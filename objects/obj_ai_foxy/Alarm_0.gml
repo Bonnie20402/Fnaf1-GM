@@ -20,7 +20,8 @@ if(obj_ai_foxy.ai_level >= _move && obj_ai_foxy.camera_down_time == 0.0) {
 	if(obj_ai_foxy.current_camera == "2A" && !obj_ai_foxy.is_running)  {
 		if(obj_gameplaycontroller_client.gameplay.left_door) obj_ai_foxy.current_camera = "AttackFail";
 		else obj_ai_foxy.current_camera = "AttackSuccess";
-		obj_fnafguard_client.send_foxycam_update();
+		obj_gameplaycontroller_client.gameplay.current_foxy_cam = current_camera;
+		obj_fnafguard_client.send_gameplay_update();
 		obj_ai_foxy.on_animatronic_attack();
 		return;
 	}

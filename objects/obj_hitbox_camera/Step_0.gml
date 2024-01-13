@@ -1,7 +1,7 @@
 /// @description Only make hitbox appear when user puts mouse in something else
 // You can write your code in this editor
 
-if(obj_gameplaycontroller_client.gameplay.jumpscared) return;
+if(obj_gameplaycontroller_client.gameplay.jumpscared or obj_fnafguard_client.is_spectating ) return;
 
 var _camera_up = obj_gameplaycontroller_client.gameplay.camera_up;
 var _mouse_gui_x = device_mouse_x_to_gui(0);
@@ -20,7 +20,7 @@ if(!obj_fnafguard_client.is_spectating) {
 	camera_lock = true;
 	ui_lock = true;
 	obj_gameplaycontroller_client.gameplay.camera_up = !obj_gameplaycontroller_client.gameplay.camera_up;
-	obj_fnafguard_client.send_cameralock_update();
+	obj_fnafguard_client.send_gameplay_update();
 }
 if(!camera_lock && mouse_out) {
 	ui_lock = false;

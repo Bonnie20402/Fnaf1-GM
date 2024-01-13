@@ -122,7 +122,8 @@ This explains why those three activate when set to 0.
 It also explains why Bonnie doesn't become active until about 2 AM on Night 1.
 */
 function on_hour_update() {
-	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
+	obj_gameplaycontroller_client.gameplay.current_hours = current_hours;
+	obj_fnafguard_client.send_gameplay_update();
 	if(current_hours == 2) {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
 	}
@@ -201,7 +202,8 @@ function on_night_finish() {
 }
 
 function on_power_update() {
-	if(!obj_fnafguard_client.is_spectating)obj_fnafguard_client.send_gameplay_update();
+	obj_gameplaycontroller_client.gameplay.power_left = current_power;
+	obj_fnafguard_client.send_gameplay_update();
 	if(current_power == 0) {
 		on_power_out();
 	}
@@ -214,20 +216,21 @@ function on_power_out() {
 }
 
 function on_power_usage_update() {
+	obj_gameplaycontroller_client.gameplay.power_usage = current_power_usage;
 	obj_fnafguard_client.send_gameplay_update();
 	return;
 }
 
 #endregion
 
-#region I/O OPERATIONS
+#region I/O OPERATIONS DEPRECATED
 function io_boot() {
 	ini_open("config.ini");
 	if(!ini_key_exists("night","level") ) {
 		ini_write_real("night","level",1);
 	}
 	ini_close();
-	
+	 
 }
 function io_load() {
 	ini_open("config.ini");

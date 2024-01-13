@@ -51,14 +51,15 @@ function goldenfreddy_chance() {
 }
 function on_phase_update() {
 	if(!obj_fnafguard_client.is_spectating) {
-		obj_fnafguard_client.send_goldenfreddyphase_update();
+		obj_gameplaycontroller_client.gameplay.current_goldenfreddy_state = phase;
+		obj_fnafguard_client.send_gameplay_update();
 		}
 	if(phase == 1) on_goldenfreddy_appear();
 	if(phase == 2) on_animatronic_jumpscare();
 	if(phase == 0) on_goldenfreddy_disappear();
 }
 function on_animatronic_jumpscare() {
-	obj_gameplaycontroller_client.gameplay.on_office_jumpscare();
+	obj_gameplaycontroller_client.on_office_jumpscare();
 	obj_gameplaycontroller_client.gameplay.jumpscared = true;
 	in_office = false;
 	with(obj_office) {

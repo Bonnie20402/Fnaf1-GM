@@ -1,93 +1,81 @@
-spectating_id = -1;
-//SPECTATOR VARIABLES
-left_door = false;
-right_door = false;
-left_light = false;
-right_light = false;
-camera_up = false;
-current_camera = "N/A";
-camera_lock = false;
-current_bonnie_cam = "1A";
-current_chica_cam = "1A";
-current_foxy_cam = "1C_0";
-current_freddy_cam = "1A";
-current_goldenfreddy_state = 0;
-current_freddy_powerout_phase = -1;
-current_hours = 12;
-scroll_view = 0;
-power_left = 100;
-power_usage = 1;
-night_state = NIGHTEND.DEATH_BONNIE;
 
+
+gameplay = new Gameplay();
+gameplay.can_scroll = false;
 #region Util
 
 /// toString()
 /// Returns a string containing the values of all variables.
 
 flush = function() {
-	left_door = false;
-	right_door = false;
-	left_light = false;
-	right_light = false;
-	camera_up = false;
-	current_camera = "N/A";
-	camera_lock = false;
-	current_bonnie_cam = "1A";
-	current_chica_cam = "1A";
-	current_foxy_cam = "1C_0";
-	current_freddy_cam = "1A";
-	current_goldenfreddy_state = 0;
-	current_freddy_powerout_phase = -1;
-	current_hours = 12;
-	power_left = 100;
-	power_usage = 1;
-	scroll_view = 0;
-	spectating_id = -1;
-}
-
-to_string = function(){
-    var _result = "";
-    
-    // Print each variable and add a newline
-    _result += "left_door = " + string(left_door) + ";\n";
-    _result += "right_door = " + string(right_door) + ";\n";
-    _result += "left_light = " + string(left_light) + ";\n";
-    _result += "right_light = " + string(right_light) + ";\n";
-    _result += "camera_up = " + string(camera_up) + ";\n";
-    _result += "current_camera = " + string(current_camera) + ";\n";
-    _result += "camera_lock = " + string(camera_lock) + ";\n";
-    _result += "current_bonnie_cam = " + string(current_bonnie_cam) + ";\n";
-    _result += "current_chica_cam = " + string(current_chica_cam) + ";\n";
-    _result += "current_foxy_cam = " + string(current_foxy_cam) + ";\n";
-    _result += "current_freddy_cam = " + string(current_freddy_cam) + ";\n";
-    _result += "current_goldenfreddy_state = " + string(current_goldenfreddy_state) + ";\n";
-    _result += "current_freddy_powerout_phase = " + string(current_freddy_powerout_phase) + ";\n";
-    _result += "current_hours = " + string(current_hours) + ";\n";
-    _result += "power_left = " + string(power_left) + ";\n";
-    _result += "power_usage = " + string(power_usage) + ";\n";
-    
-    return _result;
+	gameplay = new Gameplay();
+	gameplay.can_scroll = false;
+	update_gameplay(new Gameplay());
 }
 
 #endregion
 
+update_gameplay = function(_newgameplay) {
+	if(!obj_fnafguard_client.is_spectating) return;
+	var _previousgameplay = variable_clone(gameplay);
+	gameplay = _newgameplay;
+	
+	if(room == rm_office) {
+		obj_gameplaycontroller_client.gameplay = gameplay;
+		if(gameplay.current_bonnie_cam != _previousgameplay.current_bonnie_cam) {
+			on_bonnie_update();
+		}
+		if(gameplay.current_chica_cam != _previousgameplay.current_chica_cam) {
+			on_chica_update();
+		}
+		if(gameplay.current_freddy_cam != _previousgameplay.current_freddy_cam) {
+			on_freddy_update();
+		}
+		if(gameplay.current_foxy_cam != _previousgameplay.current_foxy_cam) {
+			on_foxy_update();
+		}
+		if(gameplay.left_door != _previousgameplay.left_door or gameplay.right_door != _previousgameplay.right_door) {
+			on_door_update();
+		}
+		if(gameplay.current_freddy_powerout_phase != _previousgameplay.current_freddy_powerout_phase) {
+			on_freddy_powerout_update();
+			show_message("freddy sus");
+		}
+		if(gameplay.current_camera != _previousgameplay.current_camera) {
+			on_currentcamera_update();
+		}	
+		if(gameplay.camera_up != _previousgameplay.camera_up) {
+			on_cameraup_update();
+		}	
+	}
+	on_gameplay_update();
+	
+}
+on_gameplay_update = function() {
+	if(room == rm_office) {
+		obj_office_scroller.x = gameplay.scroll_view;
+		obj_night.current_power = gameplay.power_left;
+		obj_night.current_power_usage = gameplay.power_usage;
+		obj_night.current_hours = gameplay.current_hours;
+		obj_night.on_power_update();
+		return;
+	}
+}
 
 //NOTE: As long as camera up in sync, bonnie and chica attacks are actually automatically done.
 on_bonnie_update = function() {
-	if(room == rm_office)   {
-		if(current_bonnie_cam != "AttackSuccess")obj_ai_bonnie.on_animatronic_move();
-		else obj_ai_bonnie.on_animatronic_jumpscare();
-	}
+	if(gameplay.current_bonnie_cam != "AttackSuccess")obj_ai_bonnie.on_animatronic_move();
+	else obj_ai_bonnie.on_animatronic_jumpscare();
 }
 on_chica_update = function() {
 	if(room == rm_office) {
-		if(current_chica_cam != "AttackSuccess")obj_ai_chica.on_animatronic_move();
+		if(gameplay.current_chica_cam != "AttackSuccess")obj_ai_chica.on_animatronic_move();
 		else obj_ai_chica.on_animatronic_jumpscare();
 	}
 }
 on_freddy_update = function() {
 	if(room == rm_office) {
-		if(current_freddy_cam == "AttackSuccess") {
+		if(gameplay.current_freddy_cam == "AttackSuccess") {
 			obj_ai_freddy.on_animatronic_jumpscare();
 		}
 		else {
@@ -103,7 +91,7 @@ on_door_update = function() {
 
 on_foxy_update = function() {
 	if(room == rm_office) {
-		if(current_foxy_cam == "AttackSuccess")obj_ai_foxy.on_animatronic_jumpscare();
+		if(gameplay.current_foxy_cam == "AttackSuccess")obj_ai_foxy.on_animatronic_jumpscare();
 		else obj_ai_foxy.on_animatronic_move();
 	}
 	
@@ -111,15 +99,8 @@ on_foxy_update = function() {
 
 on_freddy_powerout_update = function() {
 	if(room == rm_office) {
-		obj_ai_freddy_power_out.current_phase = self.current_freddy_powerout_phase;
+		obj_ai_freddy_power_out.current_phase = gameplay.current_freddy_powerout_phase;
 		obj_ai_freddy_power_out.on_phase_update();
-	}
-}
-
-on_powerleft_update = function() {
-	if(room == rm_office) {
-		obj_night.current_power = self.power_left;
-		obj_night.on_power_update();
 	}
 }
 
@@ -133,7 +114,7 @@ on_goldenfreddy_update = function() {
 
 on_cameraup_update = function() {
 	if(room == rm_office) {
-		if(camera_up) scr_camera_force_up();
+		if(gameplay.camera_up) scr_camera_force_up();
 		else scr_camera_force_down();
 	}
 }
@@ -142,7 +123,7 @@ on_currentcamera_update = function() {
 	if(room == rm_office) {
 		obj_camera_current_spr.update_current_camera_sprite();
 		with(obj_camera_button) {
-			if(self.camera_button == obj_spectate_client.current_camera) {
+			if(self.camera_button == other.gameplay.current_camera) {
 				self.on_button_click();
 			}
 		}

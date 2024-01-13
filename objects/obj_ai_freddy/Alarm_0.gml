@@ -25,7 +25,8 @@ if(obj_ai_freddy.ai_level >= _move) {
 		else if(obj_gameplaycontroller_client.gameplay.camera_up && obj_gameplaycontroller_client.gameplay.current_camera != "4B") {
 			obj_ai_freddy.current_camera = "AttackSuccess";
 			}
-		obj_fnafguard_client.send_freddycam_update();
+		obj_gameplaycontroller_client.gameplay.current_freddy_cam = current_camera;
+		obj_fnafguard_client.send_gameplay_update();
 		obj_ai_freddy.on_animatronic_attack();
 		return;
 	}

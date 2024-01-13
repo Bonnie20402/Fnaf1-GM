@@ -95,8 +95,8 @@ function on_animatronic_move() {
 	play_freddy_hur(irandom(2));
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
-	obj_camera_current_spr.update_current_camera_sprite();
-	obj_fnafguard_client.send_freddycam_update();
+	obj_gameplaycontroller_client.gameplay.current_freddy_cam = current_camera;
+	obj_fnafguard_client.send_gameplay_update();
 	if (current_camera != "6") audio_stop_sound(snd_freddy_song);
 	if(current_camera == "1A") {
 		animatronic_add_backward_camera("N/A");

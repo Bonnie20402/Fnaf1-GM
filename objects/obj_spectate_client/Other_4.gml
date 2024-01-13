@@ -3,7 +3,9 @@
 
 
 if(room == rm_office && obj_fnafguard_client.is_spectating) {
+	flush();
 	obj_fnafguard_client.send_spectate_request(spectating_id);
+	
 }
 
 

@@ -82,7 +82,8 @@ function on_animatronic_move() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
 	obj_camera_current_spr.update_current_camera_sprite();
-	obj_fnafguard_client.send_foxycam_update();
+	obj_gameplaycontroller_client.gameplay.current_foxy_cam = current_camera;
+	obj_fnafguard_client.send_gameplay_update();
 	if(current_camera == "1C_0") {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("1C_1");
@@ -113,7 +114,8 @@ function on_foxy_run_finish() {
 	if(obj_fnafguard_client.is_spectating) return;
 	current_camera = obj_gameplaycontroller_client.gameplay.left_door ? "AttackFail" : "AttackSuccess";
 	is_running = false;
-	obj_fnafguard_client.send_foxycam_update();
+	obj_gameplaycontroller_client.gameplay.current_foxy_cam = current_camera;
+	obj_fnafguard_client.send_gameplay_update();
 	on_animatronic_attack();
 }
 function on_animatronic_attack() {

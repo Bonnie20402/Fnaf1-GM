@@ -12,7 +12,7 @@ function Gameplay() constructor {
 	light_flickering = false;
 	can_scroll = false;
 	camera_up = false;
-	current_camera = "N/A";
+	current_camera = "1A";
 	camera_lock = false;
 	jumpscared = false;
 	current_bonnie_cam = "1A";

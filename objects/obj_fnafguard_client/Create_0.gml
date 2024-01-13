@@ -273,71 +273,8 @@ on_server_message_recieved = function(_message_type,_message) {
 		}
 		if(_message == SPECTATERESPONSE.REJECTED) obj_spectate_client.spectating_id = -1;
 	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECATE_UPDATE_FREDDYPOWEROUTPHASE) {
-		obj_spectate_client.current_freddy_powerout_phase = _message;
-		obj_spectate_client.on_freddy_powerout_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_BONNIECAM) {
-		obj_spectate_client.current_bonnie_cam = _message;
-		obj_spectate_client.on_bonnie_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CAMERALOCK) {
-		obj_spectate_client.camera_lock = _message;
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CAMERAUP) {
-		obj_spectate_client.camera_up = _message;
-		obj_spectate_client.on_cameraup_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_LEFTDOOR) {
-		obj_spectate_client.left_door = _message;
-		obj_spectate_client.on_door_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_RIGHTDOOR) {
-		obj_spectate_client.right_door = _message;
-		obj_spectate_client.on_door_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_LEFTLIGHT) {
-		obj_spectate_client.left_light = _message;
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_RIGHTLIGHT) {
-		obj_spectate_client.right_light = _message;
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CURRENTCAMERA) {
-		obj_spectate_client.current_camera = _message;
-		obj_spectate_client.on_currentcamera_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CHICACAM) {
-		obj_spectate_client.current_chica_cam = _message;
-		obj_spectate_client.on_chica_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_FOXYCAM) {
-		obj_spectate_client.current_foxy_cam = _message;
-		obj_spectate_client.on_foxy_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_FREDDYCAM) {
-		obj_spectate_client.current_freddy_cam = _message;
-		obj_spectate_client.on_freddy_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_NIGHTEND) {
-		obj_spectate_client.night_state = _message;
-		obj_spectate_client.on_nightstate_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_GOLDENFREDDYSTATE) {
-		obj_spectate_client.current_goldenfreddy_state = _message;
-		obj_spectate_client.on_goldenfreddy_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_CURRENTHOURS) {
-		obj_spectate_client.current_hours = _message;
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_POWERLEFT) {
-		obj_spectate_client.power_left = _message;
-		obj_spectate_client.on_powerleft_update();
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_POWERUSAGE) {
-		obj_spectate_client.power_usage = _message;
-	}
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.SPECTATE_UPDATE_SCROLLVIEW) {
-		obj_spectate_client.scroll_view = _message;
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.GAMEPLAY_UPDATE) {
+		obj_spectate_client.update_gameplay(json_parse(_message));
 	}
 	#endregion
 	
@@ -363,71 +300,12 @@ send_client_username = function() {
 }
 
 send_gameplay_update = function() {
+	if(obj_fnafguard_client.is_spectating) return;
 	obj_gameplaycontroller_client.send_to_server();
-}
-send_leftdoor_state = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LEFTDOOR_UPDATE,obj_office.left_door);
 }
 
 send_flush_gameplay_request = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FLUSH_GAMEPLAY_REQUEST,1);
-}
-send_rightdoor_state = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.RIGHTDOOR_UPDATE,obj_office.right_door);
-}
-
-send_leftlight_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.LEFTLIGHT_UPDATE,obj_office.left_light);
-}
-send_rightlight_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.RIGHTLIGHT_UPDATE,obj_office.right_light);
-}
-
-send_cameraup_state = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CAMERAUP_UPDATE,obj_office.camera_up);
-}
-
-send_currentcamera_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CURRENTCAMERA_UPDATE,obj_office.current_camera);
-}
-
-send_powerleft_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERLEFT_UPDATE,round(obj_night.current_power/10));
-}
-
-send_powerusage_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.POWERUSAGE_UPDATE,obj_night.current_power_usage);
-}
-
-send_scrollview_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.SCROLLVIEW_UPDATE,camera_get_view_x(view_camera[0]))
-}
-send_night_time_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHT_TIME_UPDATE,obj_night.current_hours);
-}
-
-send_bonniecam_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.BONNIECAM_UPDATE,obj_ai_bonnie.current_camera);
-}
-send_freddycam_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FREDDYCAM_UPDATE,obj_ai_freddy.current_camera);
-}
-send_chicacam_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CHICACAM_UPDATE,obj_ai_chica.current_camera);
-}
-send_foxycam_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FOXYCAM_UPDATE,obj_ai_foxy.current_camera);
-}
-
-send_goldenfreddyphase_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.GOLDENFREDDYSTATE_UPDATE,obj_ai_goldenfreddy.phase);
-}
-
-send_cameralock_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.CAMERALOCK_UPDATE,obj_hitbox_camera.camera_lock);
-}
-send_freddypoweroutstate_update = function() {
-	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.FREDDYPOWEROUTPHASE_UPDATE,obj_ai_freddy_power_out.current_phase);
 }
 
 send_spectate_request = function(_target_id) {
@@ -454,7 +332,5 @@ request_client_clientid = function() {
 	buffer_fnaf_create_and_send(server_connection,FNAFMESSAGE_FROM_CLIENT.REQUEST_CLIENT_ID,1);
 }
 #endregion
-
-
 
 
