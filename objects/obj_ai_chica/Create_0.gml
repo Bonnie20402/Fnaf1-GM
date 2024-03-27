@@ -88,6 +88,8 @@ function on_animatronic_move() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
 	if(scr_camera_is_camera_up() && obj_gameplaycontroller_client.gameplay.current_camera == current_camera) obj_camera_current_spr.disable_camera();
+	//spectate
+	if(scr_camera_is_camera_up() && obj_spectate_client.gameplay.current_camera == current_camera) obj_camera_current_spr.disable_camera();
 	obj_camera_current_spr.update_current_camera_sprite();
 	obj_gameplaycontroller_client.gameplay.current_chica_cam = current_camera;
 	obj_fnafguard_client.send_gameplay_update();

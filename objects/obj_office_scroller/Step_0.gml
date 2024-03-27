@@ -13,6 +13,7 @@ if( x > room_width - camera_get_view_width(view_camera[0]) ) {
 if(x < 0) x = 0;
 
 camera_set_view_pos(view_camera[0],x,y)
+
 if(x != xprevious)  {
 	obj_gameplaycontroller_client.gameplay.scroll_view = x;
 	obj_fnafguard_client.send_gameplay_update();

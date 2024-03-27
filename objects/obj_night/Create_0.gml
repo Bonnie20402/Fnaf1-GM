@@ -36,7 +36,7 @@ current_power_usage = 1;
 // NOTE: Call when door is toggled, camera is open, closed, light is  toggled.
 function update_power_usage() {
 	if(!run_night) return;
-	current_power_usage = 1 + obj_gameplaycontroller_client.left_door + obj_gameplaycontroller_client.right_door + scr_camera_is_camera_up() + obj_gameplaycontroller_client.left_light + obj_gameplaycontroller_client.right_light;
+	current_power_usage = 1 + obj_gameplaycontroller_client.gameplay.left_door + obj_gameplaycontroller_client.gameplay.right_door + scr_camera_is_camera_up() + obj_gameplaycontroller_client.gameplay.left_light + obj_gameplaycontroller_client.gameplay.right_light;
 	on_power_usage_update();
 }
 
