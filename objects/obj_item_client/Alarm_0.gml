@@ -1,8 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-phase = 1;
-on_phase_update();
+alarm_set(0,1*game_get_speed(gamespeed_fps));
+if(item_cooldown>0)item_cooldown--;
+
+
+
 
 
 

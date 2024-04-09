@@ -112,7 +112,7 @@ function scr_camera_setup() {
 	camera_button_1b.set_camera_button("1B");
 	camera_button_1b.set_camera_text("Dinning Area");
 	camera_button_1c.set_camera_button("1C");
-	camera_button_1c.set_camera_text("Mewo's Cove");
+	camera_button_1c.set_camera_text("Pirate's Cove");
 	camera_button_2a.set_camera_button("2A");
 	camera_button_2a.set_camera_text("West Hall");
 	camera_button_2b.set_camera_button("2B");
@@ -129,7 +129,7 @@ function scr_camera_setup() {
 	camera_button_7.set_camera_text("Restroom");
 	//TODO: Update this value 
 	camera_button_6.set_camera_button("6");
-	camera_button_6.set_camera_text("Sulartzo's Kitchen");
+	camera_button_6.set_camera_text("Lara's Kitchen");
 	
 	obj_camera_string.set_camera_current_string("Show Stage");
 	obj_camera_current_spr.update_current_camera_sprite();
