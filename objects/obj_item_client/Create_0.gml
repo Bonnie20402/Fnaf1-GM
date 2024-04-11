@@ -8,11 +8,12 @@ item_cooldown = 10;
 alarm_set(0,1*game_get_speed(gamespeed_fps));
 
 enum ITEM {
-	ITEM_MOREPOWER, // Gains a random amount of power
+	ITEM_ELETRICITYBILL, // Gains  or takes a random amount of power
 	ITEM_SWAPLIGHT, // Toggle's a random opponent's light
 	ITEM_FORCEFOXYPHASE, // Forces a foxy  next phase in a random opponent
-	ITEM_SPAWNGOLDENFREDDY, // Spawns golden freddy forcefully.
 	ITEM_CAMERASWAP, // Swaps location of two random cameras.
+	ITEM_RESETAI, // Resets a animatronic AI (Like respawns a animatronic)
+	ITEM_ANIMATRONICOVERLOAD, // Adds or takes away a random value of the robot AI. Hardcaps to 20 and 0.
 	ITEM_FORCETABLETDOWN, // Puts the tablet of a random nigntguard down
 	ITEM_HIDECURRENTPOWER // Hides the current power of a random nightguard for a random amount of time
 	
@@ -24,10 +25,12 @@ enum ITEM {
 function on_item_use(_item) {
 	
 	//power gain
-	if(_item ==ITEM.ITEM_MOREPOWER && obj_night.current_power > 0) {
+	if(_item ==ITEM.ITEM_ELETRICITYBILL && obj_night.current_power > 0) {
 	_power_gain = irandom_range(10,80);
-	obj_night.current_power+=_power_gain;
-	obj_notification_client.add_notification("You recieved " + string(_power_gain / 10) + "% of additional power!");
+	_take = irandom(1);
+	obj_night.current_power = _take == 1 ? obj_night.current_power-_power_gain : obj_night.current_power+_power_gain;
+	_verb = _take == 1 ? "lost " : "gained ";
+	obj_notification_client.add_notification("You " + _verb + string(_power_gain / 10) + "% of power!");
 	}
 	
 	//Light swap
@@ -61,10 +64,6 @@ function on_item_use(_item) {
 		obj_notification_client.add_notification("A Foxy phase has been forced!");
 	}
 	
-	if(_item == ITEM.ITEM_SPAWNGOLDENFREDDY && obj_night.current_power > 0) {
-		obj_ai_goldenfreddy.phase = 1;
-		obj_ai_goldenfreddy.phase = 1;on_phase_update();
-	}
 	
 	
 	if(_item == ITEM.ITEM_CAMERASWAP ) {
@@ -97,9 +96,87 @@ function on_item_use(_item) {
 			}
 		}
 		
-		obj_notification_client.add_notification(_camera_from + " camera swapped with camera " + _camera_to);
+		obj_notification_client.add_notification("Camera " + _camera_from + " swapped with camera " + _camera_to+".");
 		
 		}
 	}
+	
+	if(_item == ITEM.ITEM_RESETAI) {
+		_animatronic = irandom(3);
+		if(_animatronic == 0) {
+			obj_ai_freddy.current_camera = "1A";
+			obj_ai_freddy.on_animatronic_move();
+			obj_notification_client.add_notification("Freddy has been reset back to 1A!");
+		}
+		if(_animatronic == 1) {
+			obj_ai_bonnie.current_camera = obj_ai_freddy.current_camera == "1A" ? "1A" : "1B";
+			
+			obj_ai_bonnie.on_animatronic_move();
+			obj_notification_client.add_notification("Bonnie has been reset back to " +obj_ai_bonnie.current_camera + "!");
+		}
+		if(_animatronic == 2) {
+			obj_ai_chica.current_camera = obj_ai_freddy.current_camera == "1A" ? "1A" : "1B";
+			obj_ai_chica.on_animatronic_move();
+			obj_notification_client.add_notification("Chica has been reset back to " +obj_ai_chica.current_camera + "!");
+		}
+		if(_animatronic == 3) {
+			obj_ai_foxy.current_camera = "1C_0";
+			obj_ai_foxy.on_animatronic_move();
+			obj_notification_client.add_notification("Foxy has been reset back to phase 0!");
+		}
+	}
+	
+	if(_item == ITEM.ITEM_ANIMATRONICOVERLOAD) {
+		var _robot = irandom(3);
+		var _amount = 1 + irandom(5);
+		var _add = irandom(1);
+		if(_robot == 0) {
+			if(_add) {
+				obj_ai_freddy.ai_level+=_amount;
+				if(obj_ai_freddy.ai_level>20) obj_ai_freddy.ai_level=20;
+				obj_notification_client.add_notification("The AI level of Freddy has been raised to " + string(obj_ai_freddy.ai_level));
+			}
+			else {
+				obj_ai_freddy.ai_level-=_amount;
+				if(obj_ai_freddy.ai_level<0) obj_ai_freddy.ai_level=0;
+				obj_notification_client.add_notification("The AI level of Freddy has been reduced to " + string(obj_ai_freddy.ai_level));
+			}
+		}
+		if(_robot == 1) {
+			if(_add) {
+				obj_ai_bonnie.ai_level+=_amount;
+				if(obj_ai_bonnie.ai_level>20) obj_ai_bonnie.ai_level=20;
+				obj_notification_client.add_notification("The AI level of Bonnie has been raised to " + string(obj_ai_bonnie.ai_level));
+			}
+			else {
+				obj_ai_bonnie.ai_level-=_amount;
+				if(obj_ai_bonnie.ai_level<0) obj_ai_bonnie.ai_level=0;
+				obj_notification_client.add_notification("The AI level of Bonnie has been reduced to " + string(obj_ai_bonnie.ai_level));
+			}
+		}
+		if(_robot == 2) {
+		    if(_add) {
+		        obj_ai_chica.ai_level+=_amount;
+		        if(obj_ai_chica.ai_level>20) obj_ai_chica.ai_level=20;
+		        obj_notification_client.add_notification("The AI level of Chica has been raised to " + string(obj_ai_chica.ai_level));
+		    }
+		    else {
+		        obj_ai_chica.ai_level-=_amount;
+		        if(obj_ai_chica.ai_level<0) obj_ai_chica.ai_level=0;
+		        obj_notification_client.add_notification("The AI level of Chica has been reduced to " + string(obj_ai_chica.ai_level));
+		    }
+		}
+		if(_robot == 3) {
+			if(_add) {
+				obj_ai_foxy.ai_level+=_amount;
+				if(obj_ai_foxy.ai_level>20) obj_ai_foxy.ai_level=20;
+				obj_notification_client.add_notification("The AI level of Foxy has been raised to " + string(obj_ai_foxy.ai_level));
+			}
+			else {
+				obj_ai_foxy.ai_level-=_amount;
+				if(obj_ai_foxy.ai_level<0) obj_ai_foxy.ai_level=0;
+				obj_notification_client.add_notification("The AI level of Foxy has been reduced to " + string(obj_ai_foxy.ai_level));
+			} 
+		}
+	}
 }
-

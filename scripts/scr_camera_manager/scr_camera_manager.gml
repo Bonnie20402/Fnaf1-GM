@@ -11,6 +11,7 @@ function scr_on_camera_open_finish() {
 	obj_night.update_power_usage();
 	audio_play_sound(snd_blop,0,false);
 	view_visible[0] = false;
+	obj_camera_current_spr.update_current_camera_sprite()
 	view_visible[1] = true;
 	obj_gameplaycontroller_client.gameplay.can_scroll = false;
 	obj_camera_hud._camera_change_effect_frame = 0;
@@ -149,7 +150,7 @@ function scr_toggle_camera_buttons_visibility() {
 
 function scr_disable_camera_buttons() {
 		for( var _i =0; _i < instance_number(obj_camera_button);_i++ )  {
-		var _inst = instance_find(obj_camera_button,_i);
-		_inst.active = false;
+			var _inst = instance_find(obj_camera_button,_i);
+			_inst.active = false;
 	}
 }
