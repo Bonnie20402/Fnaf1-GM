@@ -1,5 +1,5 @@
 {
-  "FolderOrderSettings": [
+  "FolderOrderSettings":[
     {"name":"Animation Curves","order":10,"path":"folders/Animation Curves.yy",},
     {"name":"Extensions","order":12,"path":"folders/Extensions.yy",},
     {"name":"Fonts","order":6,"path":"folders/Fonts.yy",},
@@ -65,7 +65,7 @@
     {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":7,"path":"folders/Timelines.yy",},
   ],
-  "ResourceOrderSettings": [
+  "ResourceOrderSettings":[
     {"name":"spr_cameras_1a_bonnie0freddy1chica0","order":2,"path":"sprites/spr_cameras_1a_bonnie0freddy1chica0/spr_cameras_1a_bonnie0freddy1chica0.yy",},
     {"name":"spr_panel_left_light1door1","order":3,"path":"sprites/spr_panel_left_light1door1/spr_panel_left_light1door1.yy",},
     {"name":"obj_room_lobby_chica_minus","order":5,"path":"objects/obj_room_lobby_chica_minus/obj_room_lobby_chica_minus.yy",},

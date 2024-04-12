@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_loading",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "room_loading",
-    "path": "folders/Scripts/room_loading.yy",
+  "$GMScript":"",
+  "%Name":"scr_loading",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_loading",
+  "parent":{
+    "name":"room_loading",
+    "path":"folders/Scripts/room_loading.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

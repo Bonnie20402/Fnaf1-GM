@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "enum_NIGHTEND",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "client-server",
-    "path": "folders/Scripts/client-server.yy",
+  "$GMScript":"",
+  "%Name":"enum_NIGHTEND",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"enum_NIGHTEND",
+  "parent":{
+    "name":"client-server",
+    "path":"folders/Scripts/client-server.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "class_FnafGuard",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "client-server",
-    "path": "folders/Scripts/client-server.yy",
+  "$GMScript":"",
+  "%Name":"class_FnafGuard",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_FnafGuard",
+  "parent":{
+    "name":"client-server",
+    "path":"folders/Scripts/client-server.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
