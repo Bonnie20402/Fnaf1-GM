@@ -14,11 +14,13 @@
     {"name":"inst_7EF7B44F","path":"rooms/rm_main_menu/rm_main_menu.yy",},
     {"name":"inst_5B87C313","path":"rooms/rm_main_menu/rm_main_menu.yy",},
     {"name":"inst_275703F5","path":"rooms/rm_main_menu/rm_main_menu.yy",},
+    {"name":"inst_3EAA6EFB","path":"rooms/rm_main_menu/rm_main_menu.yy",},
   ],
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"night_config","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_6D440FE4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6D440FE4","objectId":{"name":"obj_night","path":"objects/obj_night/obj_night.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-192.0,"y":128.0,},
+        {"$GMRInstance":"","%Name":"inst_3EAA6EFB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3EAA6EFB","objectId":{"name":"obj_powerup_cooldown","path":"objects/obj_powerup_cooldown/obj_powerup_cooldown.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":768.0,"y":384.0,},
       ],"layers":[],"name":"night_config","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"settings_bg_tablet","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"","%Name":"inst_5B87C313","colour":4294967295,"frozen":true,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5B87C313","objectId":{"name":"spr_main_menu_settings_tablet","path":"objects/spr_main_menu_settings_tablet/spr_main_menu_settings_tablet.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.5647194,"scaleY":1.1360947,"x":0.0,"y":0.0,},

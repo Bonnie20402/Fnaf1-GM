@@ -11,8 +11,8 @@
   "name":"obj_item_client",
   "overriddenProperties":[],
   "parent":{
-    "name":".client",
-    "path":"folders/Objects/.client.yy",
+    "name":"ui",
+    "path":"folders/Objects/.client/ui.yy",
   },
   "parentObjectId":null,
   "persistent":true,

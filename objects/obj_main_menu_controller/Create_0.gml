@@ -11,20 +11,7 @@ enum MENU {
 	QUIT
 }
 
-powerup_countdown = 0;
-powerup_active = false;
-sequence = "";
-function test_powerup(_sec) {
-	powerup_countdown = _sec;
-	powerup_active = true;
-	alarm_set(3,1*game_get_speed(gamespeed_fps));
-	sequence = layer_sequence_create(layer,room_width/2,room_height/2,seq_test);
-	layer_sequence_headpos(sequence,0)
-	layer_sequence_xscale(sequence,0.3);
-	layer_sequence_yscale(sequence,0.3);
-	layer_sequence_speedscale(sequence,1/_sec) 
-	layer_sequence_play(sequence);
-}
+
 freddy_weird_time = 2;
 freddy_normal_time = 0.3;
 
