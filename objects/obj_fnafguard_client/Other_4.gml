@@ -15,6 +15,10 @@ if(room == rm_loading) {
 	_state = CLIENTSTATE.LOADING;
 }
 
+if(room == rm_settings) {
+	_state = CLIENTSTATE.MAIN_MENU;
+}
+
 if(room == rm_lobby) {
 	_state = CLIENTSTATE.LOBBY_MENU;
 }

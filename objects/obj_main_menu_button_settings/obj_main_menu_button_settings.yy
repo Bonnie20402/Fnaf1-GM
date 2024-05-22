@@ -2,6 +2,8 @@
   "$GMObject":"",
   "%Name":"obj_main_menu_button_settings",
   "eventList":[
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
@@ -30,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_settings_icon",
-    "path":"sprites/spr_settings_icon/spr_settings_icon.yy",
+    "name":"spr_main_menu_button_hitbox",
+    "path":"sprites/spr_main_menu_button_hitbox/spr_main_menu_button_hitbox.yy",
   },
   "spriteMaskId":null,
   "visible":true,
