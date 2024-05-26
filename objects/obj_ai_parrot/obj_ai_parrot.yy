@@ -1,12 +1,14 @@
 {
   "$GMObject":"",
-  "%Name":"obj_ai_rockstarfoxy",
+  "%Name":"obj_ai_parrot",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":75,"eventType":9,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_ai_rockstarfoxy",
+  "name":"obj_ai_parrot",
   "overriddenProperties":[],
   "parent":{
     "name":"ai",
@@ -31,9 +33,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ucn_rockstarfoxy_appear",
-    "path":"sprites/spr_ucn_rockstarfoxy_appear/spr_ucn_rockstarfoxy_appear.yy",
+    "name":"spr_ucn_parrot",
+    "path":"sprites/spr_ucn_parrot/spr_ucn_parrot.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

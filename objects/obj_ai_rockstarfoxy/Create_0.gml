@@ -7,7 +7,7 @@ foxy_visible = false;
 talked=false;
 
 
-function show_foxy() {
+function show_rockstar_foxy() {
 	if(foxy_visible == false) {
 		foxy_visible = true
 		talked=false;

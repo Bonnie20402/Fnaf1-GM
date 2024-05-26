@@ -79,6 +79,7 @@
     {"name":"obj_ai_freddy_power_out","order":4,"path":"objects/obj_ai_freddy_power_out/obj_ai_freddy_power_out.yy",},
     {"name":"obj_ai_freddy","order":2,"path":"objects/obj_ai_freddy/obj_ai_freddy.yy",},
     {"name":"obj_ai_goldenfreddy","order":5,"path":"objects/obj_ai_goldenfreddy/obj_ai_goldenfreddy.yy",},
+    {"name":"obj_ai_parrot","order":7,"path":"objects/obj_ai_parrot/obj_ai_parrot.yy",},
     {"name":"obj_ai_rockstarfoxy","order":6,"path":"objects/obj_ai_rockstarfoxy/obj_ai_rockstarfoxy.yy",},
     {"name":"obj_camera_button","order":4,"path":"objects/obj_camera_button/obj_camera_button.yy",},
     {"name":"obj_camera_current_spr","order":7,"path":"objects/obj_camera_current_spr/obj_camera_current_spr.yy",},

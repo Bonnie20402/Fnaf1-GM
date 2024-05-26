@@ -85,7 +85,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.4.0.137",
   },
   "name":"Pegue os freddies",
   "resources":[
@@ -103,6 +103,7 @@
     {"id":{"name":"obj_ai_freddy_power_out","path":"objects/obj_ai_freddy_power_out/obj_ai_freddy_power_out.yy",},},
     {"id":{"name":"obj_ai_freddy","path":"objects/obj_ai_freddy/obj_ai_freddy.yy",},},
     {"id":{"name":"obj_ai_goldenfreddy","path":"objects/obj_ai_goldenfreddy/obj_ai_goldenfreddy.yy",},},
+    {"id":{"name":"obj_ai_parrot","path":"objects/obj_ai_parrot/obj_ai_parrot.yy",},},
     {"id":{"name":"obj_ai_rockstarfoxy","path":"objects/obj_ai_rockstarfoxy/obj_ai_rockstarfoxy.yy",},},
     {"id":{"name":"obj_camera_button","path":"objects/obj_camera_button/obj_camera_button.yy",},},
     {"id":{"name":"obj_camera_current_spr","path":"objects/obj_camera_current_spr/obj_camera_current_spr.yy",},},
