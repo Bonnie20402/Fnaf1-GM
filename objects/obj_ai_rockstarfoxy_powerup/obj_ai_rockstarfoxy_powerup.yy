@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_ai_rockstarfoxy",
+  "%Name":"obj_ai_rockstarfoxy_powerup",
   "eventList":[
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_ai_rockstarfoxy",
+  "name":"obj_ai_rockstarfoxy_powerup",
   "overriddenProperties":[],
   "parent":{
     "name":"ai",
@@ -34,9 +32,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ucn_rockstarfoxy_appear",
-    "path":"sprites/spr_ucn_rockstarfoxy_appear/spr_ucn_rockstarfoxy_appear.yy",
+    "name":"spr_powerup_eletricitybill",
+    "path":"sprites/spr_powerup_eletricitybill/spr_powerup_eletricitybill.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
