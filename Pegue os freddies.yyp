@@ -85,7 +85,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.4.0.137",
   },
   "name":"Pegue os freddies",
   "resources":[
@@ -205,7 +205,7 @@
     {"id":{"name":"scr_camera_manager","path":"scripts/scr_camera_manager/scr_camera_manager.yy",},},
     {"id":{"name":"scr_door_sound","path":"scripts/scr_door_sound/scr_door_sound.yy",},},
     {"id":{"name":"scr_loading","path":"scripts/scr_loading/scr_loading.yy",},},
-    {"id":{"name":"seq_test","path":"sequences/seq_test/seq_test.yy",},},
+    {"id":{"name":"seq_powerup_select","path":"sequences/seq_powerup_select/seq_powerup_select.yy",},},
     {"id":{"name":"sh_office","path":"shaders/sh_office/sh_office.yy",},},
     {"id":{"name":"snd_6_am_yay","path":"sounds/snd_6_am_yay/snd_6_am_yay.yy",},},
     {"id":{"name":"snd_6_am","path":"sounds/snd_6_am/snd_6_am.yy",},},
