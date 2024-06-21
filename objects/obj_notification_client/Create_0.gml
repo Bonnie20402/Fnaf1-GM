@@ -27,7 +27,6 @@ decode_and_add_notification = function(_messagetype,_message) {
 	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYQUIT) {
 		add_notification("[" +string(_object.lobbyquit_clientid)+"] " + _object.lobbyquit_username + " left the lobby");
 	}
-	
 }
 
 

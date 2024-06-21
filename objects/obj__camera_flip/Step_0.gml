@@ -8,9 +8,18 @@ if(_lock && _camera_up) {
 		scr_on_camera_open_start();
 	}
 	if(image_index == image_number-1) {
-		image_speed = 0;
-		obj_hitbox_camera.camera_lock = false;
-		scr_on_camera_open_finish();
+		if(os_browser == browser_not_a_browser) {
+			image_speed = 0;
+			obj_hitbox_camera.camera_lock = false;
+			scr_on_camera_open_finish();
+		}
+		else {
+			image_index = 0;
+			image_speed = 0;
+			obj_hitbox_camera.camera_lock = false;
+			scr_on_camera_open_finish();
+		}
+
 
 		
 

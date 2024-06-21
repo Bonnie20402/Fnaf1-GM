@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"class_FnafAttack",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_FnafAttack",
+  "parent":{
+    "name":"client-server",
+    "path":"folders/Scripts/client-server.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

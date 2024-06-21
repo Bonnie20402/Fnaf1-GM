@@ -166,17 +166,20 @@ on_server_message_recieved = function(_message_type,_message) {
 	#endregion
 	#endregion
 	
-	#region Got ass attacked
+	#region FnafAttack CLASS
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.NEW_FNAF_ATTACK) {
-		if(_message == FNAFATTACK.SPAWN_GOLDEN_FREDDY) {
-			obj_ai_goldenfreddy.on_goldenfreddy_appear();
+		if(_message == FNAFMESSAGE_FROM_SERVER.CLASS_FNAFATTACK) {
+			var _object = json_parse(_message);
+			obj_ai_rockstarfoxy_powerup.run_powerup(_object.powerup_constant);
 		}
 	}
 	#endregion
 	
 	#region Lobby 
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_JOIN_RESPONSE) {
+		
 		if(_message == LOBBY_JOIN_RESPONSE.ACCEPT) {
+
 			obj_lobby_client.on_lobby_join();
 		}
 		if(_message == LOBBY_JOIN_RESPONSE.REJECTED) {

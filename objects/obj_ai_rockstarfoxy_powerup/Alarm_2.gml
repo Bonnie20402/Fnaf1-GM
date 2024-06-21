@@ -3,6 +3,7 @@
 if(blinks >= max_blinks) {
 	visible=true;
 	blinking = false;
+	obj_ai_rockstarfoxy.show_rockstar_foxy();
 	return;
 }
 

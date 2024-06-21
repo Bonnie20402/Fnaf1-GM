@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+if(os_browser != browser_not_a_browser) return;
 
 var _ui_x = 1250;
 var _ui_y = 35;

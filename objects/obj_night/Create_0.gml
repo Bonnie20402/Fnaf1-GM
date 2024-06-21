@@ -157,6 +157,7 @@ function on_night_start(_night) {
 	obj_gameplaycontroller_client.can_scroll = true;
 	obj_gameplaycontroller_client.jumpscared = false;
 	scr_camera_force_down();
+	if(os_browser != browser_not_a_browser) run_hours_client_side = true;
 	// Re-init night variables
 	current_night = _night;
 	current_hours = 12;
