@@ -3,12 +3,19 @@
 og_x = x;
 og_y = y;
 enabled = true;
+// appear chance 60%
+appear_chance = 0.6;
+//30 sec i think
+move_timer = 30;
+alarm_set(1,move_timer*game_get_speed(gamespeed_fps));
 visible = false;
 // low depth to be above the doors
 depth = -1
 flying = false;
 parrot_speed = 14;
 show_rockstarfoxy_parrot = function() {
+	if(!obj_night.run_night) return;
+	else if(obj_ai_rockstarfoxy.foxy_visible) return;
 	if(!flying) {
 		x = og_x;
 		visible = true;
