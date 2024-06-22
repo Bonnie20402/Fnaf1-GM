@@ -167,11 +167,9 @@ on_server_message_recieved = function(_message_type,_message) {
 	#endregion
 	
 	#region FnafAttack CLASS
-	if(_message_type == FNAFMESSAGE_FROM_SERVER.NEW_FNAF_ATTACK) {
-		if(_message == FNAFMESSAGE_FROM_SERVER.CLASS_FNAFATTACK) {
-			var _object = json_parse(_message);
-			obj_ai_rockstarfoxy_powerup.run_powerup(_object.powerup_constant);
-		}
+	if(_message_type == FNAFMESSAGE_FROM_SERVER.CLASS_FNAFATTACK) {
+		var _object = json_parse(_message);
+		obj_ai_powerup_runner.run_powerup(_object.attack_id);
 	}
 	#endregion
 	
