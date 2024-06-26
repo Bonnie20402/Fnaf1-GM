@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"class_GameplaySettings",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_GameplaySettings",
+  "parent":{
+    "name":"client-server",
+    "path":"folders/Scripts/client-server.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

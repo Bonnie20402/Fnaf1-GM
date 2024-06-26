@@ -38,6 +38,8 @@ switch(self.current_option) {
 		break;
 }
 
+
+_text = string(obj_lobby_client.lobby_gameplay_settings);
 if(self.text != _text) {
 	self.text=_text;
 	audio_play_sound(snd_blop,0,false);

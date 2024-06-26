@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureGroup>
+  <texture scale="1" mipsToGenerate="0" texwidth="1024" texheight="1024">main_menu_0.bz2</texture>
+  <texture scale="1" mipsToGenerate="0" texwidth="1024" texheight="1024">main_menu_1.bz2</texture>
+  <tpe x="2" y="2" tpage="main_menu_0.bz2">spr_main_menu_freddy_48aefe91-a5db-4a06-9f65-f2227e7f490c.tpe</tpe>
+  <tpe x="2" y="456" tpage="main_menu_0.bz2">spr_main_menu_freddy_88b1ecad-fb7c-40f5-a013-c6aa71653a8d.tpe</tpe>
+  <tpe x="2" y="2" tpage="main_menu_1.bz2">spr_main_menu_freddy_d88e1118-c932-4c0f-bae2-1f8e92e2a251.tpe</tpe>
+  <tpe x="2" y="456" tpage="main_menu_1.bz2">spr_main_menu_freddy_fc796d96-f06e-4fb0-a68e-20637f43796c.tpe</tpe>
+  <tpe x="2" y="910" tpage="main_menu_0.bz2">spr_main_menu_button_hitbox_39f8caea-9957-4b82-b30c-77caf9d405a2.tpe</tpe>
+  <tpe x="70" y="910" tpage="main_menu_0.bz2">spr_main_menu_title_box_39f8caea-9957-4b82-b30c-77caf9d405a2.tpe</tpe>
+</TextureGroup>

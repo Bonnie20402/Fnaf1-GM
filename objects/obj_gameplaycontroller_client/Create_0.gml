@@ -15,6 +15,7 @@ flush = function() {
 
 send_to_server = function() {
 	var _json = json_stringify(gameplay,true);
+	
 	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.GAMEPLAY_UPDATE,_json);
 }
 

@@ -8,7 +8,7 @@ lobby_name = "ERROR";
 lobby_state = LOBBYSTATE.ERROR
 usernames_list = array_create(0,"");
 guards_left = 0;
-
+lobby_gameplay_settings = new GameplaySettings();
 gamemode = GAMEMODE.NONE;
 freddy_ai = 1;
 freddy_cam = "1A";
@@ -86,7 +86,9 @@ get_usernames_list = function() {
 	return _message;
 }
 
-
+update_gameplay_settings = function(_settings) {
+	self.lobby_gameplay_settings = _settings;
+}
 on_lobby_join = function() {
 	room_goto(rm_lobby);
 	obj_lobby_client.in_lobby = true;
