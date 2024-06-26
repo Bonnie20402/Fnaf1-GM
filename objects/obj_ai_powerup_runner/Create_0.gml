@@ -19,6 +19,7 @@ function run_powerup(_item) {
 		var _power_gain = irandom_range(10,80);
 		var _take = irandom(1);
 		obj_night.current_power = _take == 1 ? obj_night.current_power-_power_gain : obj_night.current_power+_power_gain;
+		if(obj_night.current_power<=0) obj_night.current_power = 1;
 		var _verb = _take == 1 ? "lost " : "gained ";
 		obj_notification_client.add_notification("You " + _verb + string(_power_gain / 10) + "% of power!");
 	}

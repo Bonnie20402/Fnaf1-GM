@@ -152,6 +152,8 @@ function on_animatronic_attack() {
 
 function on_animatronic_jumpscare() {
 	obj_gameplaycontroller_client.gameplay.jumpscared = true;
+	var _death = json_stringify(new GuardDeath(obj_fnafguard_client.client_id,0,GUARDDEATHCAUSE.BY_BONNIE,obj_fnafguard_client.username),true);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CLASS_GUARDDEATH,_death);
 	obj_gameplaycontroller_client.on_office_jumpscare();
 	audio_play_sound(snd_jumpscare,0,false);
 	with(obj_office) {

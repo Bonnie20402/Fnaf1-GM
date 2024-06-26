@@ -24,7 +24,7 @@
     {"$GMFolder":"","%Name":"ui","folderPath":"folders/Objects/room_lobby/ui.yy","name":"ui","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"btn","folderPath":"folders/Objects/room_lobby/ui/btn.yy","name":"btn","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"robot_ai","folderPath":"folders/Objects/room_lobby/ui/btn/robot_ai.yy","name":"robot_ai","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"room_main_menu","folderPath":"folders/Objects/room_main_menu.yy","name":"room_main_menu","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"room_main_menu","folderPath":"folders/Objects/.client/room_main_menu.yy","name":"room_main_menu","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"room_office","folderPath":"folders/Objects/room_office.yy","name":"room_office","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ai","folderPath":"folders/Objects/room_office/ai.yy","name":"ai","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"camera","folderPath":"folders/Objects/room_office/camera.yy","name":"camera","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -85,7 +85,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.0.137",
+    "IDEVersion":"2024.2.0.132",
   },
   "name":"Pegue os freddies",
   "resources":[

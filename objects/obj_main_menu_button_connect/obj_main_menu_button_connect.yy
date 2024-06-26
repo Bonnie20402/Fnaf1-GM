@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"room_main_menu",
-    "path":"folders/Objects/room_main_menu.yy",
+    "path":"folders/Objects/.client/room_main_menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -19,7 +19,16 @@ add_notification = function(_text) {
 decode_and_add_notification = function(_messagetype,_message) {
 	var _object = json_parse(_message);
 	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_GUARDDEATH) {
-		add_notification("The guard " + _object.death_username + " has been killed at " + string(_object.death_hours) + " AM"); 
+			var _by = "";
+			if(_object.death_cause==0) _by = "Bonnie";
+			if(_object.death_cause==1) _by = "Golden Freddy";
+			if(_object.death_cause==2) _by = "Freddy";
+			if(_object.death_cause==3) _by = "Chica";
+			if(_object.death_cause==4) _by = "Foxy";
+			if(_object.death_cause==5) _by = "Freddy (Power out)";
+			if(_object.death_cause==6) _by = "leaving the game";
+			
+		add_notification("The guard " + _object.death_username + " has been killed by " + _by + " at " + string(_object.death_hours) + " AM"); 
 	}  
 	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYJOIN) {
 		add_notification("[" +string(_object.lobbyjoin_clientid)+"] " + _object.lobbyjoin_username + " joined the lobby");

@@ -61,6 +61,8 @@ function on_phase_update() {
 function on_animatronic_jumpscare() {
 	obj_gameplaycontroller_client.on_office_jumpscare();
 	obj_gameplaycontroller_client.gameplay.jumpscared = true;
+	var _death = json_stringify(new GuardDeath(obj_fnafguard_client.client_id,0,GUARDDEATHCAUSE.BY_GOLDEN,obj_fnafguard_client.username),true);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CLASS_GUARDDEATH,_death);
 	in_office = false;
 	with(obj_office) {
 		sprite_index = spr_office_jumpscare_goldenfreddy;

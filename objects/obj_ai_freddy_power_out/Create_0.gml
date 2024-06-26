@@ -96,6 +96,8 @@ function on_miss_update() {
 
 function on_animatronic_jumpscare() {
 	audio_play_sound(snd_jumpscare,0,false);
+	var _death = json_stringify(new GuardDeath(obj_fnafguard_client.client_id,0,GUARDDEATHCAUSE.BY_FREDDY_POWEROUT,obj_fnafguard_client.username),true);
+	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CLASS_GUARDDEATH,_death);
 	with (obj_office) {
 		depth = -1987;
 		sprite_index = spr_office_jumpscare_freddy_powerout;

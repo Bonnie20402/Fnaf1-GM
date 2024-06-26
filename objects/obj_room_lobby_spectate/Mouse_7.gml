@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+return;
 if(obj_lobby_client.lobby_state == LOBBYSTATE.IN_GAME) {
 	obj_input_client.run_input_spectate_target();
 }

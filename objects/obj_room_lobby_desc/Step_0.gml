@@ -13,10 +13,28 @@ switch(self.current_option) {
 		_text = "Go to main menu, but stay in lobby.";
 		break;
 	case ROOMLOBBY_OPTION.QUIT:
-		_text = "Leave the lobby.\n(If the lobby is empty after you leave, it will be deleted)";
+		_text = "Leave the lobby.\nIf the lobby is empty after you leave, it will be deleted";
 		break;
 	case ROOMLOBBY_OPTION.SPECTATE:
-		_text = "Spectate a nightguard.\n(The match must be started already)";
+		_text = "Spectate a nightguard.\n(The match must be started already)\NDISABLED BECAUSE IT'S STILL WIP";
+		break;
+	case ROOMLOBBY_OPTION.BONNIEHOVER:
+		_text = "Bonnie appears at the left window.\n Use the left door to avoid them.";
+		break;
+	case ROOMLOBBY_OPTION.CHICAHOVER:
+		_text = "Chica appears at the right window.\n Use the right door to avoid them.";
+		break;
+	case ROOMLOBBY_OPTION.FOXYHOVER:
+		_text = "Foxy attacks from the left hall, running from their pirate cove.\nCarefully watch camera 1C once in a while to stun them. You lose power each time they attack.";
+		break;
+	case ROOMLOBBY_OPTION.FREDDYHOVER:
+		_text = "Freddy attacks from the right door. Doesn't appear in right window.\nIf he is being watched, he gets stunned. He never goes back.";
+		break;
+	case ROOMLOBBY_OPTION.GOLDENHOVER:
+		_text = "Golden Freddy pulls your camera tablet down.\nGo back to the cameras to get them away, or they will attack you.";
+		break;
+	case ROOMLOBBY_OPTION.PARROTHOVER:
+		_text = "Toggles Rockstar Foxy\nRockstar foxy helps you by giving you a powerup that either attacks opponents or helps your shift." 
 		break;
 }
 
