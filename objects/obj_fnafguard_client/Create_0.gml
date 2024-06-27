@@ -189,7 +189,7 @@ on_server_message_recieved = function(_message_type,_message) {
 		obj_lobby_client.usernames_list = _message;
 	}
 	if(_message_type == FNAFMESSAGE_FROM_SERVER.LOBBY_GAMEPLAYSETTINGS_UPDATE) {
-		obj_lobby_client.update_gameplay_settings(json_decode(_message));
+		obj_lobby_client.update_gameplay_settings(_message);
 	}
 	#endregion
 	#region Lobby gamemode

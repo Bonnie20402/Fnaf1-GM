@@ -6,7 +6,7 @@ visible = false;
 depth = obj_office.depth-1;
 phase = 0;
 in_office = false;
-use_ai = false;
+use_ai = true;
 
 // Agressive mode : Triggers on any camera but 1C and 2A
 agressive_mode = true;
@@ -33,6 +33,7 @@ function on_goldenfreddy_disappear() {
 
 function goldenfreddy_chance() {
 	if(!use_ai) return;
+	if(!obj_lobby_client.lobby_gameplay_settings.golden_freddy_enabled) return
     // 80% chance of appearing
     if (!in_office) {
         var _number = random(1);

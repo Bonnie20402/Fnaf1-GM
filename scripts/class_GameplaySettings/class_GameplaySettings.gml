@@ -1,9 +1,9 @@
 /// 
 
 enum GAMEPLAYSETTINGS_GAMEMODE {
-    BATTLEROYALE,
-    COOP,
-    VERSUS
+    BATTLEROYALE=1,
+    COOP=2,
+    VERSUS=3
 }
 
 

@@ -179,7 +179,8 @@ function on_night_start(_night) {
 	alarm_set(1,90*game_get_speed(gamespeed_fps));
 	//Extra power drain
 	alarm_set(2,power_extra_drain_rate*game_get_speed(gamespeed_fps));
-		
+	// The message
+	obj_notification_client.add_notification(string(current_hours) + " AM\n Survive the night 'till 6 AM\nWhoever survives wins.")
 }
 
 function enable_animatronic_ai() {

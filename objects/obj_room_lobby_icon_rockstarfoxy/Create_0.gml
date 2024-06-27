@@ -6,6 +6,9 @@ initial_y = y;
 enabled = false;
 
 
+function update() {
+    enabled = obj_lobby_client.get_rockstarfoxyenabled_status();
+}
 
 
 

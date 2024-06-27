@@ -34,12 +34,11 @@ switch(self.current_option) {
 		_text = "Golden Freddy pulls your camera tablet down.\nGo back to the cameras to get them away, or they will attack you.";
 		break;
 	case ROOMLOBBY_OPTION.PARROTHOVER:
-		_text = "Toggles Rockstar Foxy\nRockstar foxy helps you by giving you a powerup that either attacks opponents or helps your shift." 
+		_text = "Toggles Rockstar Foxy. Rockstar foxy helps you by giving you a powerup\n that either attacks opponents or helps your shift." 
 		break;
 }
 
 
-_text = string(obj_lobby_client.lobby_gameplay_settings);
 if(self.text != _text) {
 	self.text=_text;
 	audio_play_sound(snd_blop,0,false);

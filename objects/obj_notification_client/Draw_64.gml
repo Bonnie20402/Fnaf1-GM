@@ -9,7 +9,7 @@ var _ui_y = 0;
 if(array_length(notification_queue) == 0) return;
 
 draw_set_font(fnt_camera_current);
-draw_set_halign(fa_right);
+draw_set_halign(fa_center);
 if(room != rm_office)draw_text_color(_ui_x,_ui_y,text,c_white,c_white,c_white,c_white,current_alpha);
 else draw_text_color(900,180,text,c_white,c_white,c_white,c_white,current_alpha);
 draw_set_halign(fa_center);

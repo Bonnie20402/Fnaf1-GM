@@ -87,15 +87,25 @@ get_usernames_list = function() {
 }
 
 update_gameplay_settings = function(_settings) {
-	self.lobby_gameplay_settings = _settings;
+	self.lobby_gameplay_settings = json_parse(_settings);
+	with(obj_room_lobby_icon_rockstarfoxy) { update() }
+	with(obj_room_lobby_icon_goldenfreddy) { update() }
 }
 on_lobby_join = function() {
 	room_goto(rm_lobby);
+	lobby_gameplay_settings = new GameplaySettings();
 	obj_lobby_client.in_lobby = true;
 	obj_lobby_client.lobby_name = obj_fnafguard_client.joining_lobby;
 	obj_fnafguard_client.send_client_username();
 }
 
+
+function get_rockstarfoxyenabled_status() {
+	return self.lobby_gameplay_settings.rockstar_foxy_enabled;
+}
+function get_goldenfreddyenabled_status() {
+	return self.lobby_gameplay_settings.golden_freddy_enabled;
+}
 on_lobby_quit = function() {
 	obj_lobby_client.gamemode = GAMEMODE.NONE;
 	obj_lobby_client.in_lobby = false;
