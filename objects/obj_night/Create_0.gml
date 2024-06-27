@@ -131,6 +131,7 @@ function on_hour_update() {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
 		obj_ai_foxy.animatronic_add_ai_level(1);
 		obj_ai_chica.animatronic_add_ai_level(1);
+		obj_notification_client.add_notification("It's 3 AM!\n3 more hours to go. You can do this!");
 	}
 	if(current_hours == 4) {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
@@ -180,7 +181,7 @@ function on_night_start(_night) {
 	//Extra power drain
 	alarm_set(2,power_extra_drain_rate*game_get_speed(gamespeed_fps));
 	// The message
-	obj_notification_client.add_notification(string(current_hours) + " AM\n Survive the night 'till 6 AM\nWhoever survives wins.")
+	obj_notification_client.add_notification(string(current_hours) + " AM\n Survive the night 'till 6 AM")
 }
 
 function enable_animatronic_ai() {

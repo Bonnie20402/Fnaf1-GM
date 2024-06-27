@@ -28,7 +28,8 @@ decode_and_add_notification = function(_messagetype,_message) {
 			if(_object.death_cause==5) _by = "Freddy (Power out)";
 			if(_object.death_cause==6) _by = "leaving the game";
 			
-		add_notification("The guard " + _object.death_username + " has been killed by " + _by + " at " + string(_object.death_hours) + " AM"); 
+		add_notification("The guard " + _object.death_username + " has been killed by " + _by + " at " + string(_object.death_hours) + " AM\n" + 
+		string(obj_lobby_client.guards_left-1) + " players remaining."); 
 	}  
 	if(_messagetype == FNAFMESSAGE_FROM_SERVER.CLASS_LOBBYJOIN) {
 		add_notification("[" +string(_object.lobbyjoin_clientid)+"] " + _object.lobbyjoin_username + " joined the lobby");
