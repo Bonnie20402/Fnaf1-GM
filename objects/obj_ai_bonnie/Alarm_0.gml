@@ -7,9 +7,6 @@ if(!obj_ai_bonnie.use_ai) return;
 
 var _move = 1 + irandom(20);
 
-show_debug_message(obj_ai_bonnie.current_camera);
-
-
 
 //Check for movement opportunity.
 if(obj_ai_bonnie.ai_level >= _move) {

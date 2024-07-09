@@ -131,7 +131,6 @@ function on_hour_update() {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
 		obj_ai_foxy.animatronic_add_ai_level(1);
 		obj_ai_chica.animatronic_add_ai_level(1);
-		obj_notification_client.add_notification("It's 3 AM!\n3 more hours to go. You can do this!");
 	}
 	if(current_hours == 4) {
 		obj_ai_bonnie.animatronic_add_ai_level(1);

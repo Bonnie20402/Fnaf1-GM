@@ -14,7 +14,7 @@ depth = -1
 flying = false;
 parrot_speed = 14;
 show_rockstarfoxy_parrot = function() {
-	if(!obj_night.run_night) return;
+	if(!obj_night.run_night || obj_night.current_power <= 1) return;
 	else if(obj_ai_rockstarfoxy.foxy_visible) return;
 	if(!flying) {
 		x = og_x;

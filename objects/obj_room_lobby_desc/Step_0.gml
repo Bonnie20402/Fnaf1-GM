@@ -36,6 +36,9 @@ switch(self.current_option) {
 	case ROOMLOBBY_OPTION.PARROTHOVER:
 		_text = "Rockstar Foxy gives you a powerup\n It either attacks opponents, debuffs you or helps your shift." 
 		break;
+	case ROOMLOBBY_OPTION.PAPHOVER:
+		_text = "Modo de apresentacao PAP"
+		break;
 }
 
 

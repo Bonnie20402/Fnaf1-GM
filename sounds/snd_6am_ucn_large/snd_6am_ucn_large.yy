@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"snd_6am_ucn_large.mp3",
   "type":0,
-  "volume":0.13,
+  "volume":1.0,
 }

@@ -1,6 +1,6 @@
 /// @description Declare Global Protocol Variables and Client-specific variables.
 // You can write your code in this editor
-global.CLIENT_DEBUG = false;
+global.CLIENT_DEBUG = true;
 global.CLIENT_PROTOCOL_VERSION = 1;
 global.SERVER_GAME_PROTOCOL = "ERICO E LARA LINDOS";
 out_of_date = false;

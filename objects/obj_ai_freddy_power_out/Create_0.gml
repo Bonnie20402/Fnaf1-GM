@@ -63,7 +63,7 @@ function on_phase_update() {
 	}
 	if(current_phase == 1) {
 		audio_stop_sound(snd_walk);
-		audio_play_sound(snd_freddy_song_meme,0,false,1);
+		audio_play_sound(snd_freddy_song,0,false,1);
 
 		
 	}

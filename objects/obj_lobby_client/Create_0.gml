@@ -90,6 +90,7 @@ update_gameplay_settings = function(_settings) {
 	self.lobby_gameplay_settings = json_parse(_settings);
 	with(obj_room_lobby_icon_rockstarfoxy) { update() }
 	with(obj_room_lobby_icon_goldenfreddy) { update() }
+	with(obj_room_lobby_icon_papmode) { update() }
 }
 on_lobby_join = function() {
 	room_goto(rm_lobby);
@@ -105,6 +106,10 @@ function get_rockstarfoxyenabled_status() {
 }
 function get_goldenfreddyenabled_status() {
 	return self.lobby_gameplay_settings.golden_freddy_enabled;
+}
+
+function get_papenabled_status() {
+	return self.lobby_gameplay_settings.pap_mode;
 }
 on_lobby_quit = function() {
 	obj_lobby_client.gamemode = GAMEMODE.NONE;
