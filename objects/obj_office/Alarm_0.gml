@@ -3,14 +3,14 @@
 
 alarm_set(0,0.02*game_get_speed(gamespeed_fps));
 
-if( !obj_gameplaycontroller_client.gameplay.left_light && !obj_gameplaycontroller_client.gameplay.right_light ) return;
+if( !obj_core_gameplay.gameplay.left_light && !obj_core_gameplay.gameplay.right_light ) return;
 
 var _number = irandom(20);
 
 if (_number <= 3) {
-	obj_gameplaycontroller_client.gameplay.light_flickering = !obj_gameplaycontroller_client.gameplay.light_flickering;
+	obj_core_gameplay.gameplay.light_flickering = !obj_core_gameplay.gameplay.light_flickering;
 }
-else obj_gameplaycontroller_client.gameplay.light_flickering = false;
+else obj_core_gameplay.gameplay.light_flickering = false;
 
 
 

@@ -7,7 +7,7 @@ if(obj_ai_freddy_power_out.current_phase == -1 || obj_ai_freddy_power_out.curren
 
 
 alarm_set(0,5*game_get_speed(gamespeed_fps));
-if(obj_fnafguard_client.is_spectating) return;
+
 var _number = random(1);
 
 if(_number <= 0.20 || obj_ai_freddy_power_out.misses == 3) {

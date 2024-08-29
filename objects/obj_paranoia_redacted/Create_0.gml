@@ -76,7 +76,8 @@ function generate_setence() {
 			text = "Adoro-te, Lara!";
 			break;
 		case 19:
-			text = "Adoro-te, Tiago!";
+			text = "Yasmin boa sorte na tua terapia tu consegues <3";
+			text += "\nTens todo o meu apoio!";
 			break;
 	}
 }

@@ -1,7 +1,7 @@
 
 
 var _lock = obj_hitbox_camera.camera_lock;
-var _camera_up = obj_gameplaycontroller_client.gameplay.camera_up;
+var _camera_up = obj_core_gameplay.gameplay.camera_up;
 if(_lock && _camera_up) {
 	if(image_index == 0 && image_speed == 0) {
 		image_speed = 1;

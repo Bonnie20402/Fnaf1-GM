@@ -2,7 +2,9 @@
 // You can write your code in this editor
 
 
-if(obj_lobby_client.bonnie_ai < 20 &&  obj_lobby_client.lobby_state == LOBBYSTATE.OPEN && obj_lobby_client.lobby_master == obj_fnafguard_client.client_id) {
+if(obj_lobby_client.bonnie_ai < 20 &&  
+obj_lobby_client.lobby_state == LOBBYSTATE.OPEN && 
+obj_lobby_client.lobby_master == obj_fnafguard_client.client_id) {
 	obj_lobby_client.bonnie_ai++;
 	obj_lobby_client.on_bonnie_ai_update();
 }

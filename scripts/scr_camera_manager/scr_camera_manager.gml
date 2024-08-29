@@ -2,9 +2,6 @@ function scr_on_camera_open_start(){
 	audio_sound_gain(snd_fan,0.3,250);
 	audio_play_sound(snd_camera_up,0,false);
 	obj_ai_goldenfreddy.scr_on_camera_open_start();
-	if(!obj_fnafguard_client.is_spectating) {
-		obj_fnafguard_client.send_gameplay_update();
-	}
 }
 
 function scr_on_camera_open_finish() {
@@ -13,7 +10,6 @@ function scr_on_camera_open_finish() {
 	view_visible[0] = false;
 	obj_camera_current_spr.update_current_camera_sprite()
 	view_visible[1] = true;
-	obj_gameplaycontroller_client.gameplay.can_scroll = false;
 	obj_camera_hud._camera_change_effect_frame = 0;
 	if(obj_night.current_power == 0) scr_camera_force_down();
 	
@@ -42,8 +38,7 @@ function scr_stop_camera_disable_sound() {
 function scr_on_camera_close_start() {
 	view_visible[0] = true;
 	view_visible[1] = false;
-	obj_fnafguard_client.send_gameplay_update();
-	obj_gameplaycontroller_client.gameplay.can_scroll = true;
+	
 	audio_sound_gain(snd_fan,0.8,250);
 	audio_play_sound(snd_camera_down,0,false);
 	audio_stop_sound(snd_camera_up);
@@ -75,8 +70,6 @@ function scr_on_camera_change_start() {
 	obj_camera_current_spr.update_current_camera_sprite();
 	obj_ai_goldenfreddy.scr_on_camera_change_start();
 	audio_play_sound(snd_blop,0,0);
-	if(!obj_fnafguard_client.is_spectating)obj_fnafguard_client.send_gameplay_update();
-	
 }
 
 
@@ -91,7 +84,7 @@ function scr_camera_force_down() {
 	//prevent infinite loop
 	if(obj_hitbox_camera.camera_lock) return;
 	
-	if(obj_gameplaycontroller_client.gameplay.camera_up) obj_gameplaycontroller_client.gameplay.camera_up = false;
+
 	if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
 }
 
@@ -99,12 +92,12 @@ function scr_camera_force_up() {
 	//prevent infinite loop
 	if(obj_hitbox_camera.camera_lock) return;
 	
-	if(!obj_gameplaycontroller_client.gameplay.camera_up) obj_gameplaycontroller_client.gameplay.camera_up = true;
+	
 	if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
 }
 
 function scr_camera_is_camera_up () {
-	return obj_gameplaycontroller_client.gameplay.camera_up && !obj_hitbox_camera.camera_lock;
+	return !obj_hitbox_camera.camera_lock;
 }
 
 function scr_camera_setup() {

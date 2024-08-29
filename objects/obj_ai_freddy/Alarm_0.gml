@@ -9,24 +9,24 @@ var _move = 1 + irandom(20);
 
 
 // If freddy is on 4b, and guard is looking at 4b, freeze.
-if(obj_ai_freddy.current_camera == "4B" && obj_gameplaycontroller_client.gameplay.current_camera == "4B") return;
+if(obj_ai_freddy.current_camera == "4B" && obj_core_gameplay.gameplay.current_camera == "4B") return;
 
 //Check for movement opportunity.
 if(obj_ai_freddy.ai_level >= _move) {
 	//Freddy doesn't move if camera is up, unless if freddy is at 4B
-	if(obj_gameplaycontroller_client.gameplay.camera_up && current_camera != "4B") return;
+	if(obj_core_gameplay.gameplay.camera_up && current_camera != "4B") return;
 	// Freddy always goes forward.
 	var _forward = true;
 	
 	
 	//Freddy only attacks if the right door is open and the camera is not looking at him, while the camera is up.
 	if(obj_ai_freddy.current_camera == "4B")  {
-		if(obj_gameplaycontroller_client.gameplay.right_door) obj_ai_freddy.current_camera = "AttackFail";
-		else if(obj_gameplaycontroller_client.gameplay.camera_up && obj_gameplaycontroller_client.gameplay.current_camera != "4B") {
+		if(obj_core_gameplay.gameplay.right_door) obj_ai_freddy.current_camera = "AttackFail";
+		else if(obj_core_gameplay.gameplay.camera_up && obj_core_gameplay.gameplay.current_camera != "4B") {
 			obj_ai_freddy.current_camera = "AttackSuccess";
 			}
-		obj_gameplaycontroller_client.gameplay.current_freddy_cam = current_camera;
-		obj_fnafguard_client.send_gameplay_update();
+		obj_core_gameplay.gameplay.current_freddy_cam = current_camera;
+		
 		obj_ai_freddy.on_animatronic_attack();
 		return;
 	}

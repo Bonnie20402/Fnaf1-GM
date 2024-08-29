@@ -1,7 +1,7 @@
 /// @description Toggling doorS
 // You can write your code in this editor
 
-var _right_door = obj_gameplaycontroller_client.gameplay.right_door;
+var _right_door = obj_core_gameplay.gameplay.right_door;
 if( image_index == 0 && image_speed != 0 || image_index == image_number-1 && image_speed != 0) {
 	image_speed = 0;
 	obj_hitbox_rightdoor.door_lock = false;

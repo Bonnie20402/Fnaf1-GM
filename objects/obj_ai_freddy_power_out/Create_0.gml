@@ -48,10 +48,8 @@ function on_power_out() {
 function on_phase_update() {
 	misses = 0;
 	
-	if(!obj_fnafguard_client.is_spectating) {
-		obj_gameplaycontroller_client.gameplay.current_freddy_powerout_phase = current_phase;
-		obj_fnafguard_client.send_gameplay_update();
-	}
+	obj_core_gameplay.gameplay.current_freddy_powerout_phase = current_phase;
+	
 
 
 	if(current_phase == 0) {

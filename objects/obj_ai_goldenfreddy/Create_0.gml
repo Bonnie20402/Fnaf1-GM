@@ -33,7 +33,6 @@ function on_goldenfreddy_disappear() {
 
 function goldenfreddy_chance() {
 	if(!use_ai) return;
-	if(!obj_lobby_client.lobby_gameplay_settings.golden_freddy_enabled) return
     // 80% chance of appearing
     if (!in_office) {
         var _number = random(1);
@@ -51,19 +50,12 @@ function goldenfreddy_chance() {
     }
 }
 function on_phase_update() {
-	if(!obj_fnafguard_client.is_spectating) {
-		obj_gameplaycontroller_client.gameplay.current_goldenfreddy_state = phase;
-		obj_fnafguard_client.send_gameplay_update();
-		}
 	if(phase == 1) on_goldenfreddy_appear();
 	if(phase == 2) on_animatronic_jumpscare();
 	if(phase == 0) on_goldenfreddy_disappear();
 }
 function on_animatronic_jumpscare() {
-	obj_gameplaycontroller_client.on_office_jumpscare();
-	obj_gameplaycontroller_client.gameplay.jumpscared = true;
-	var _death = json_stringify(new GuardDeath(obj_fnafguard_client.client_id,0,GUARDDEATHCAUSE.BY_GOLDEN,obj_fnafguard_client.username),true);
-	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CLASS_GUARDDEATH,_death);
+
 	in_office = false;
 	with(obj_office) {
 		sprite_index = spr_office_jumpscare_goldenfreddy;
@@ -78,13 +70,12 @@ function on_animatronic_jumpscare() {
 
 function scr_on_camera_change_start() {
 	if(!agressive_mode) {
-		if(obj_gameplaycontroller_client.gameplay.current_camera == "2B" && !in_office) goldenfreddy_chance();
+		if(obj_core_gameplay.gameplay.current_camera == "2B" && !in_office) goldenfreddy_chance();
 	}
 	else {
-		if (obj_gameplaycontroller_client.gameplay.current_camera != "1C" && obj_gameplaycontroller_client.gameplay.current_camera != "2A") goldenfreddy_chance();
+		if (obj_core_gameplay.gameplay.current_camera != "1C" && obj_core_gameplay.gameplay.current_camera != "2A") goldenfreddy_chance();
 	}
 }
-
 function scr_on_camera_open_start() {
 	if(phase == 1) {
 		phase = 0;

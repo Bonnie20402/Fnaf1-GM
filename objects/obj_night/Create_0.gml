@@ -36,7 +36,7 @@ current_power_usage = 1;
 // NOTE: Call when door is toggled, camera is open, closed, light is  toggled.
 function update_power_usage() {
 	if(!run_night) return;
-	current_power_usage = 1 + obj_gameplaycontroller_client.gameplay.left_door + obj_gameplaycontroller_client.gameplay.right_door + scr_camera_is_camera_up() + obj_gameplaycontroller_client.gameplay.left_light + obj_gameplaycontroller_client.gameplay.right_light;
+	current_power_usage = 1 + obj_core_gameplay.gameplay.left_door + obj_core_gameplay.gameplay.right_door + scr_camera_is_camera_up() + obj_core_gameplay.gameplay.left_light + obj_core_gameplay.gameplay.right_light;
 	on_power_usage_update();
 }
 
@@ -122,8 +122,7 @@ This explains why those three activate when set to 0.
 It also explains why Bonnie doesn't become active until about 2 AM on Night 1.
 */
 function on_hour_update() {
-	obj_gameplaycontroller_client.gameplay.current_hours = current_hours;
-	obj_fnafguard_client.send_gameplay_update();
+	obj_core_gameplay.gameplay.current_hours = current_hours;
 	if(current_hours == 2) {
 		obj_ai_bonnie.animatronic_add_ai_level(1);
 	}
@@ -150,12 +149,12 @@ function on_night_start(_night) {
 	}
 	run_night = true;
 	// Re-init office variables
-	obj_gameplaycontroller_client.left_door = false;
-	obj_gameplaycontroller_client.right_door = false;
-	obj_gameplaycontroller_client.left_light = false;
-	obj_gameplaycontroller_client.right_light = false;
-	obj_gameplaycontroller_client.can_scroll = true;
-	obj_gameplaycontroller_client.jumpscared = false;
+	obj_core_gameplay.left_door = false;
+	obj_core_gameplay.right_door = false;
+	obj_core_gameplay.left_light = false;
+	obj_core_gameplay.right_light = false;
+	obj_core_gameplay.can_scroll = true;
+	obj_core_gameplay.jumpscared = false;
 	scr_camera_force_down();
 	if(os_browser != browser_not_a_browser) run_hours_client_side = true;
 	// Re-init night variables
@@ -199,13 +198,12 @@ function disable_animatronic_ai() {
 }
 function on_night_finish() {
 	run_night = false;
-	if(!obj_fnafguard_client.is_spectating)buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.NIGHTEND_UPDATE,NIGHTEND.WIN);
 	room_goto(rm_6_am);
 }
 
 function on_power_update() {
-	obj_gameplaycontroller_client.gameplay.power_left = current_power;
-	obj_fnafguard_client.send_gameplay_update();
+	obj_core_gameplay.gameplay.power_left = current_power;
+	
 	if(current_power == 0) {
 		on_power_out();
 	}
@@ -213,13 +211,13 @@ function on_power_update() {
 
 function on_power_out() {
 	scr_camera_force_down();
-	obj_gameplaycontroller_client.on_office_power_out();
+	obj_core_gameplay.on_office_power_out();
 	obj_ai_freddy_power_out.on_power_out();
 }
 
 function on_power_usage_update() {
-	obj_gameplaycontroller_client.gameplay.power_usage = current_power_usage;
-	obj_fnafguard_client.send_gameplay_update();
+	obj_core_gameplay.gameplay.power_usage = current_power_usage;
+	
 	return;
 }
 

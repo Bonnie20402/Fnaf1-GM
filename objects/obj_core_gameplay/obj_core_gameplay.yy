@@ -1,16 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_lobby_client",
+  "%Name":"obj_core_gameplay",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_lobby_client",
+  "name":"obj_core_gameplay",
   "overriddenProperties":[],
   "parent":{
-    "name":".client",
-    "path":"folders/Objects/.client.yy",
+    "name":".core",
+    "path":"folders/Objects/.core.yy",
   },
   "parentObjectId":null,
   "persistent":true,

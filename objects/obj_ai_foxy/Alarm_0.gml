@@ -10,7 +10,7 @@ var _move = 1 + irandom(20);
 //Check for movement opportunity.
 if(obj_ai_foxy.ai_level >= _move && obj_ai_foxy.camera_down_time == 0.0) {
 	//foxy doesn't move if camera is up, unless they are at 2A and "camera timer", which is now a tolerance timer, ran out..
-	if(obj_gameplaycontroller_client.gameplay.camera_up && obj_ai_foxy.current_camera != "2A") return;
+	if(obj_core_gameplay.gameplay.camera_up && obj_ai_foxy.current_camera != "2A") return;
 	// foxy always goes forward.
 	var _forward = true;
 	
@@ -18,10 +18,10 @@ if(obj_ai_foxy.ai_level >= _move && obj_ai_foxy.camera_down_time == 0.0) {
 	//foxy only attacks if the right door is open and the camera is not looking at him, while the camera is up.
 	// Foxzy also attacks if he has not ran after getting out of pirate cove.
 	if(obj_ai_foxy.current_camera == "2A" && !obj_ai_foxy.is_running)  {
-		if(obj_gameplaycontroller_client.gameplay.left_door) obj_ai_foxy.current_camera = "AttackFail";
+		if(obj_core_gameplay.gameplay.left_door) obj_ai_foxy.current_camera = "AttackFail";
 		else obj_ai_foxy.current_camera = "AttackSuccess";
-		obj_gameplaycontroller_client.gameplay.current_foxy_cam = current_camera;
-		obj_fnafguard_client.send_gameplay_update();
+		obj_core_gameplay.gameplay.current_foxy_cam = current_camera;
+		
 		obj_ai_foxy.on_animatronic_attack();
 		return;
 	}

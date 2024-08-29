@@ -3,7 +3,7 @@
 
 mouse_gui_x = device_mouse_x_to_gui(0);
 mouse_gui_y = device_mouse_y_to_gui(0);
-self.active = obj_gameplaycontroller_client.gameplay.current_camera == camera_button;
+self.active = obj_core_gameplay.gameplay.current_camera == camera_button;
 
 #region VISIBLE
 visible = view_visible[1] == true;
@@ -11,17 +11,13 @@ visible = view_visible[1] == true;
 
 #region CLICK HANDLING
 
-if (!obj_gameplaycontroller_client.gameplay.camera_up) return;
+if (!obj_core_gameplay.gameplay.camera_up) return;
 // cant click same camera
-if (obj_gameplaycontroller_client.gameplay.camera_up && !obj_hitbox_camera.camera_lock && obj_gameplaycontroller_client.gameplay.current_camera == self.camera_button) return;
+if (obj_core_gameplay.gameplay.camera_up && !obj_hitbox_camera.camera_lock && obj_core_gameplay.gameplay.current_camera == self.camera_button) return;
 
 if (mouse_check_button_pressed(mb_left)) {
     // Check if the mouse click is within the bounds of the drawn sprite
     if (point_in_rectangle(mouse_gui_x, mouse_gui_y, initial_x, initial_y, initial_x + sprite_width, initial_y + sprite_height)) {
-		if(obj_fnafguard_client.is_spectating) {
-			audio_play_sound(snd_error,0,false);
-			return;
-		}
 		self.on_button_click();
 	}
 }
