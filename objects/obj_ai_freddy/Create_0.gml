@@ -95,7 +95,7 @@ function on_animatronic_move() {
 	play_freddy_hur(irandom(2));
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
-	obj_core_gameplay.gameplay.current_freddy_cam = current_camera;
+	obj_core.gameplay.current_freddy_cam = current_camera;
 	
 	if (current_camera != "6") audio_stop_sound(snd_freddy_song);
 	if(current_camera == "1A") {
@@ -145,8 +145,8 @@ function on_animatronic_jumpscare() {
 	scr_camera_force_down();
 	var _death = json_stringify(new GuardDeath(obj_fnafguard_client.client_id,0,GUARDDEATHCAUSE.BY_FREDDY,obj_fnafguard_client.username),true);
 	audio_play_sound(snd_jumpscare,0,false);
-	obj_core_gameplay.gameplay.jumpscared = true;
-	obj_core_gameplay.on_office_jumpscare();
+	obj_core.gameplay.jumpscared = true;
+	obj_core.on_office_jumpscare();
 	with(obj_office) {
 		self.sprite_index = spr_office_jumpscare_freddy;
 		self.image_index = 0;

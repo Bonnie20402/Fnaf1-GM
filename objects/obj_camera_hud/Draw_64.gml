@@ -1,7 +1,7 @@
 /// @description Manual draw hud and recording icon.
 // You can write your code in this editor
 
-if(obj_core_gameplay.gameplay.camera_up && !obj_hitbox_camera.camera_lock) {
+if(obj_core.gameplay.camera.camera_up && !obj_hitbox_camera.camera_lock) {
 	draw_sprite(sprite_index,image_index,0,0);
 	
 	

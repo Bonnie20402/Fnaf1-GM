@@ -1,3 +1,2 @@
 audio_stop_all();
-scr_camera_setup();
-
+obj_core.gameplay.camera.init();

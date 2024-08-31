@@ -3,23 +3,25 @@
 
 #region Sprite updating 
 
-if(obj_night.current_power <= 0 || obj_core_gameplay.gameplay.jumpscared) return;
+if(obj_night.current_power <= 0 || obj_core.gameplay.jumpscared) return;
 
 var _sprite;
 
+var _left_light = obj_core.gameplay.office.left_light;
+var _right_light = obj_core.gameplay.office.right_light;
 var _left_light_sprite = obj_ai_bonnie.current_camera == "LeftWindow" ? spr_office_left_bonnie : spr_office_left_empty;
 var _right_light_sprite = obj_ai_chica.current_camera == "RightWindow" ? spr_office_right_chica : spr_office_right_empty;
-if(!obj_core_gameplay.gameplay.left_light && !obj_core_gameplay.gameplay.right_light) {
+if(!_left_light && !_right_light) {
 	_sprite = spr_office;
 	
 }
-if (obj_core_gameplay.gameplay.left_light ) {
-	_sprite = obj_core_gameplay.gameplay.light_flickering ? spr_office : _left_light_sprite;
+if (_left_light ) {
+	_sprite = obj_core.gameplay.office.light_flickering ? spr_office : _left_light_sprite;
 }
 
-if (obj_core_gameplay.gameplay.right_light ) {
+if (_right_light ) {
 	//TODO: Change when adding animatronics!
-	_sprite = obj_core_gameplay.gameplay.light_flickering ? spr_office : _right_light_sprite;
+	_sprite = obj_core.gameplay.office.light_flickering ? spr_office : _right_light_sprite;
 }
 
 

@@ -87,11 +87,11 @@ function on_animatronic_move() {
 	if(current_camera == "Attack" || current_camera == "AttackSucess") return;
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
-	if(scr_camera_is_camera_up() && obj_core_gameplay.gameplay.current_camera == current_camera) obj_camera_current_spr.disable_camera();
+	if(scr_camera_is_camera_up() && obj_core.gameplay.camera.current_camera == current_camera) obj_camera_current_spr.disable_camera();
 	//spectate
 	if(scr_camera_is_camera_up() && obj_spectate_client.gameplay.current_camera == current_camera) obj_camera_current_spr.disable_camera();
 	obj_camera_current_spr.update_current_camera_sprite();
-	obj_core_gameplay.gameplay.current_chica_cam = current_camera;
+	obj_core.gameplay.current_chica_cam = current_camera;
 	
 	if(current_camera == "1A") {
 		animatronic_add_backward_camera("N/A");
@@ -135,7 +135,7 @@ function on_animatronic_attack() {
 		animatronic_add_forward_camera("1B");
 		animatronic_add_forward_camera("7");
 		animatronic_shuffle_moves();
-		obj_core_gameplay.gameplay.right_light_scare = false;
+		obj_core.gameplay.right_light_scare = false;
 		current_camera = forward_cameras[0];
 		
 	}
@@ -143,14 +143,14 @@ function on_animatronic_attack() {
 		animatronic_add_backward_camera("N/A");
 		animatronic_add_forward_camera("N/A");
 	}
-	obj_core_gameplay.gameplay.current_chica_cam = current_camera;
+	obj_core.gameplay.current_chica_cam = current_camera;
 	
 }
 
 function on_animatronic_jumpscare() {
 	audio_play_sound(snd_jumpscare,0,false);
-	obj_core_gameplay.gameplay.jumpscared = true;
-	obj_core_gameplay.on_office_jumpscare();
+	obj_core.gameplay.jumpscared = true;
+	obj_core.on_office_jumpscare();
 	with(obj_office) {
 			self.sprite_index = spr_office_jumpscare_chica;
 			self.image_index = 0;

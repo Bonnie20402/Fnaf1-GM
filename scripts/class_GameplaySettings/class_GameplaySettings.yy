@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"class_GameplaySettings",
   "parent":{
-    "name":"client-server",
-    "path":"folders/Scripts/client-server.yy",
+    "name":"gameplay",
+    "path":"folders/Scripts/gameplay.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -82,7 +82,7 @@ function on_animatronic_move() {
 	animatronic_flush_backward_cameras();
 	animatronic_flush_forward_cameras();
 	obj_camera_current_spr.update_current_camera_sprite();
-	obj_core_gameplay.gameplay.current_foxy_cam = current_camera;
+	obj_core.gameplay.current_foxy_cam = current_camera;
 	
 	if(current_camera == "1C_0") {
 		animatronic_add_backward_camera("N/A");
@@ -112,9 +112,9 @@ function on_animatronic_move() {
 //Called after foxy run animation is complete.
 function on_foxy_run_finish() {
 	
-	current_camera = obj_core_gameplay.gameplay.left_door ? "AttackFail" : "AttackSuccess";
+	current_camera = obj_core.gameplay.left_door ? "AttackFail" : "AttackSuccess";
 	is_running = false;
-	obj_core_gameplay.gameplay.current_foxy_cam = current_camera;
+	obj_core.gameplay.current_foxy_cam = current_camera;
 	
 	on_animatronic_attack();
 }
@@ -143,8 +143,8 @@ function on_animatronic_jumpscare() {
 	audio_play_sound(snd_jumpscare,0,false);
 	var _death = json_stringify(new GuardDeath(obj_fnafguard_client.client_id,0,GUARDDEATHCAUSE.BY_FOXY,obj_fnafguard_client.username),true);
 	buffer_fnaf_create_and_send(obj_fnafguard_client.server_connection,FNAFMESSAGE_FROM_CLIENT.CLASS_GUARDDEATH,_death);
-	obj_core_gameplay.gameplay.jumpscared = true;
-	obj_core_gameplay.on_office_jumpscare();
+	obj_core.gameplay.jumpscared = true;
+	obj_core.on_office_jumpscare();
 	with(obj_office) {
 		self.sprite_index = spr_office_jumpscare_foxy;
 		self.image_index = 0;

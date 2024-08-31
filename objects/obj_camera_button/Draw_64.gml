@@ -1,6 +1,6 @@
 /// @description Manual draw buttons
 // You can write your code in this editor
-if(!obj_core_gameplay.gameplay.camera_up || obj_hitbox_camera.camera_lock) return;
+if(!obj_core.gameplay.camera.camera_up || obj_hitbox_camera.camera_lock) return;
 
 draw_set_font(fnt_camera_button);
 draw_set_halign(fa_left);

@@ -70,10 +70,10 @@ function on_animatronic_jumpscare() {
 
 function scr_on_camera_change_start() {
 	if(!agressive_mode) {
-		if(obj_core_gameplay.gameplay.current_camera == "2B" && !in_office) goldenfreddy_chance();
+		if(obj_core.gameplay.camera.current_camera == "2B" && !in_office) goldenfreddy_chance();
 	}
 	else {
-		if (obj_core_gameplay.gameplay.current_camera != "1C" && obj_core_gameplay.gameplay.current_camera != "2A") goldenfreddy_chance();
+		if (obj_core.gameplay.camera.current_camera != "1C" && obj_core.gameplay.camera.current_camera != "2A") goldenfreddy_chance();
 	}
 }
 function scr_on_camera_open_start() {

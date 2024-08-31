@@ -8,22 +8,26 @@
 
 // door0light0
 var _sprite = spr_panel_right_light0door0;
-if( !obj_core_gameplay.gameplay.right_door && !obj_core_gameplay.gameplay.right_light ) {
+
+var _right_door = obj_core.gameplay.office.right_door;
+var _right_light = obj_core.gameplay.office.right_light;
+
+if( !_right_door && !_right_light ) {
 	_sprite = spr_panel_right_light0door0;
 }
 
 //door1light0
-if( obj_core_gameplay.gameplay.right_door && !obj_core_gameplay.gameplay.right_light) {
+if( _right_door && !_right_light) {
 	_sprite = spr_panel_right_light0door1;
 }
 
 //door0light1
-if( !obj_core_gameplay.gameplay.right_door && obj_core_gameplay.gameplay.right_light) {
+if( !_right_door && _right_light) {
 	_sprite = spr_panel_right_light1door0;
 }
 
 //door1light1
-if( obj_core_gameplay.gameplay.right_door && obj_core_gameplay.gameplay.right_light) {
+if( _right_door && _right_light) {
 	_sprite = spr_panel_right_light1door1;
 }
 
