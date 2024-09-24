@@ -42,7 +42,9 @@ function OfficeModel() constructor {
 		instance_destroy(obj_hitbox_rightlight);
 	}
 
-	function on_office_powerout() {
+	/// @description  Called when the play runs out of power
+	/// @param {Struct.Gameplay} _gameplay  An reference of the gameplay constructor.
+	function on_office_powerout(_gameplay) {
 		state = OFFICESTATE.POWERDOWN;
 		audio_stop_sound(snd_fan);
 		instance_destroy(obj_office_ventilator_gif);
@@ -57,10 +59,10 @@ function OfficeModel() constructor {
 		close_right_door()
 		close_left_light()
 		close_right_light()
-
+		_gameplay.camera.force_down();
+		// Update the pwer usage and close the camera
 
 		obj_night.update_power_usage();
-		scr_camera_force_down();
 		audio_stop_sound(snd_light);
 		audio_play_sound(snd_power_out,0,false);
 	}
@@ -125,7 +127,6 @@ function OfficeModel() constructor {
 		self.right_door = !self.right_door;
 	}  
 	function toggle_right_light() {
-		//pov:  you have been fucked by chica
 		if(obj_ai_chica.current_camera == "Attack") {
 			audio_play_sound(snd_error,0,false);
 			return;

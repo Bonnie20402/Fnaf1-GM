@@ -14,42 +14,11 @@ run_night = false;
 //The time passes by advancing the hour number by 1 every 90 seconds.
 //This makes an in-game minute 1.5 seconds, an in-game hour 1 minute and 30 seconds, 
 //and one night 9 minutes.
-current_hours = 12;
-run_hours_client_side = false;
+night_timer = new NightTimerModel();
+power_left = new PowerModel();
 
 //The current night.
 current_night = 0;
-
-//The current power left.
-current_power = 999;
-
-
-// - 0.1% every power_extra_drain_rate seconds.
-// 0 to disable. (Night 1)
-power_extra_drain_rate = 0;
-
-current_power_usage = 1;
-
-
-
-
-// NOTE: Call when door is toggled, camera is open, closed, light is  toggled.
-function update_power_usage() {
-	if(!run_night) return;
-	current_power_usage = 1 + obj_core.gameplay.left_door + obj_core.gameplay.right_door + scr_camera_is_camera_up() + obj_core.gameplay.left_light + obj_core.gameplay.right_light;
-	on_power_usage_update();
-}
-
-//The power drains faster as the nights go on. 
-//An additional 0.1% power drain is present on all nights except Night 1,
-//at smaller increments depending on the night.
-function update_power_extra_drain_rate() {
-	if(current_night == 1) power_extra_drain_rate = 0;
-	else if(current_night == 2) power_extra_drain_rate = 6;
-	else if (current_night == 3) power_extra_drain_rate = 5;
-	else if (current_night == 4) power_extra_drain_rate = 4;
-	else if (current_night >= 5) power_extra_drain_rate = 3;
-}
 
 function update_animatronic_ai() {
 	switch(current_night) {
@@ -149,20 +118,17 @@ function on_night_start(_night) {
 	}
 	run_night = true;
 	// Re-init office variables
-	obj_core.left_door = false;
-	obj_core.right_door = false;
-	obj_core.left_light = false;
-	obj_core.right_light = false;
+	obj_core.gameplay.office.close_left_door()
+	obj_core.gameplay.office.close_right_door()
+	obj_core.gameplay.office.close_left_light()
+	obj_core.gameplay.office.close_right_light()
 	obj_core.can_scroll = true;
 	obj_core.jumpscared = false;
-	scr_camera_force_down();
-	if(os_browser != browser_not_a_browser) run_hours_client_side = true;
+	obj_core.gameplay.camera.force_down();
 	// Re-init night variables
 	current_night = _night;
-	current_hours = 12;
 	current_power = 999;
 	current_power_usage = 1;
-	update_power_extra_drain_rate();
 	
 	//Setup animatronic AI
 	update_animatronic_ai();
@@ -199,48 +165,6 @@ function disable_animatronic_ai() {
 function on_night_finish() {
 	run_night = false;
 	room_goto(rm_6_am);
-}
-
-function on_power_update() {
-	obj_core.gameplay.power_left = current_power;
-	
-	if(current_power == 0) {
-		on_power_out();
-	}
-}
-
-function on_power_out() {
-	scr_camera_force_down();
-	obj_core.on_office_power_out();
-	obj_ai_freddy_power_out.on_power_out();
-}
-
-function on_power_usage_update() {
-	obj_core.gameplay.power_usage = current_power_usage;
-	
-	return;
-}
-
-#endregion
-
-#region I/O OPERATIONS DEPRECATED
-function io_boot() {
-	ini_open("config.ini");
-	if(!ini_key_exists("night","level") ) {
-		ini_write_real("night","level",1);
-	}
-	ini_close();
-	 
-}
-function io_load() {
-	ini_open("config.ini");
-	current_night = ini_read_real("night","level",1);
-	ini_close();
-}
-function io_save() {
-	ini_open("config.ini");
-	ini_write_real("night","level",current_night);
-	ini_close();
 }
 #endregion
 

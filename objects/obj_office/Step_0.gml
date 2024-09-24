@@ -3,7 +3,7 @@
 
 #region Sprite updating 
 
-if(obj_night.current_power <= 0 || obj_core.gameplay.jumpscared) return;
+if(obj_night.power_left.power_out) return;
 
 var _sprite;
 

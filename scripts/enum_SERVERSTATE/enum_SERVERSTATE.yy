@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"enum_SERVERSTATE",
   "isCompatibility":false,
   "isDnD":false,

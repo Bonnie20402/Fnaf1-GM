@@ -91,7 +91,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.0.137",
+    "IDEVersion":"2024.8.1.171",
   },
   "name":"Pegue os freddies",
   "resources":[
@@ -189,7 +189,9 @@
     {"id":{"name":"class_GameplaySettings","path":"scripts/class_GameplaySettings/class_GameplaySettings.yy",},},
     {"id":{"name":"class_GuardDeath","path":"scripts/class_GuardDeath/class_GuardDeath.yy",},},
     {"id":{"name":"class_LobbyJoin","path":"scripts/class_LobbyJoin/class_LobbyJoin.yy",},},
+    {"id":{"name":"class_NightTimer","path":"scripts/class_NightTimer/class_NightTimer.yy",},},
     {"id":{"name":"class_Office","path":"scripts/class_Office/class_Office.yy",},},
+    {"id":{"name":"class_Power","path":"scripts/class_Power/class_Power.yy",},},
     {"id":{"name":"enum_CLIENTSTATE","path":"scripts/enum_CLIENTSTATE/enum_CLIENTSTATE.yy",},},
     {"id":{"name":"enum_FNAFMESSAGE","path":"scripts/enum_FNAFMESSAGE/enum_FNAFMESSAGE.yy",},},
     {"id":{"name":"enum_GAMEMODE","path":"scripts/enum_GAMEMODE/enum_GAMEMODE.yy",},},

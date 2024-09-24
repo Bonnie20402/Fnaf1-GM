@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_buffer_abstraction",
   "isCompatibility":false,
   "isDnD":false,

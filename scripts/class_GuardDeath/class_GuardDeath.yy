@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"class_GuardDeath",
   "isCompatibility":false,
   "isDnD":false,

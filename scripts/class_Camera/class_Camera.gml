@@ -88,6 +88,23 @@ function CameraModel() constructor {
     }
 
 
+
+    function force_down() {
+        //prevent infinite loop
+        if(obj_hitbox_camera.camera_lock) return;
+        if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
+    }
+
+    function force_up() {
+        //prevent infinite loop
+        if(obj_hitbox_camera.camera_lock) return;
+        
+        if(!obj_hitbox_camera.camera_lock)obj_hitbox_camera.camera_lock = true;
+    }
+
+    function is_camera_up() {
+        return !obj_hitbox_camera.camera_lock;
+    }
     function play_disable_sound() {
         var _sound = irandom(2);
         switch(_sound) {

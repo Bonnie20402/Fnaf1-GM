@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"class_NightTimer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_NightTimer",
+  "parent":{
+    "name":"gameplay",
+    "path":"folders/Scripts/gameplay.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

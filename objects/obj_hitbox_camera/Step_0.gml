@@ -16,7 +16,7 @@ mouse_out = !mouse_in && _mouse_gui_y < initial_y + sprite_height;
 
 #region Hover event
 if(!ui_lock && mouse_in) {
-	if(obj_core.gameplay.jumpscared || obj_night.current_power == 0) return;
+	//if(obj_core.gameplay.jumpscared || obj_night.current_power == 0) return;
 	camera_lock = true;
 	ui_lock = true;
 	obj_core.gameplay.camera.camera_up = !obj_core.gameplay.camera.camera_up;

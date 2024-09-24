@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"class_LobbyJoin",
   "isCompatibility":false,
   "isDnD":false,

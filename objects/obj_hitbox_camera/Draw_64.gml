@@ -3,7 +3,7 @@
 
 draw_text(800,600,"Mouse in:" + string(mouse_in) + " and " + string(mouse_out));
 draw_text(800,700,"UI LOCK: " + string(ui_lock) );
-if(camera_lock || mouse_in || ui_lock || obj_night.current_power == 0) return;
+if(camera_lock || mouse_in || ui_lock) return;
 
 
 
