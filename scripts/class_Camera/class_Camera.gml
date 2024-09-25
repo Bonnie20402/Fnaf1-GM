@@ -42,13 +42,12 @@ function CameraModel() constructor {
     
 
     function on_open_finish() {
-        obj_night.update_power_usage();
         audio_play_sound(snd_blop,0,false);
         view_visible[0] = false;
         obj_camera_current_spr.update_current_camera_sprite()
         view_visible[1] = true;
         obj_camera_hud._camera_change_effect_frame = 0;
-        if(obj_night.current_power == 0) scr_camera_force_down();
+        if(obj_night.power_left.get_current_power_divided() == 0) obj_core.gameplay.camera.force_down();
         
     }
     function on_close_start() {
@@ -74,7 +73,7 @@ function CameraModel() constructor {
         if(obj_ai_foxy.current_camera != "2A")obj_ai_foxy.camera_down_time = random_range(1,17.5);
     }
     function on_close_finish() {
-        obj_night.update_power_usage();
+		return;
     }
 
     function on_change_start() {

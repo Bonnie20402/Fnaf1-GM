@@ -62,7 +62,6 @@ function OfficeModel() constructor {
 		_gameplay.camera.force_down();
 		// Update the pwer usage and close the camera
 
-		obj_night.update_power_usage();
 		audio_stop_sound(snd_light);
 		audio_play_sound(snd_power_out,0,false);
 	}
@@ -116,7 +115,6 @@ function OfficeModel() constructor {
 
 		self.left_light = !self.left_light;
 		close_right_light()
-		obj_night.update_power_usage();
 	}  
 	function toggle_right_door() {
 		if(obj_ai_chica.current_camera == "Attack") {
@@ -140,6 +138,5 @@ function OfficeModel() constructor {
 
 		self.right_light = !self.right_light;
 		close_left_light()
-		obj_night.update_power_usage();
 	}  
 }
