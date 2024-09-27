@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"class_BonnieAnimatronicModel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_BonnieAnimatronicModel",
+  "parent":{
+    "name":"animatronics",
+    "path":"folders/Scripts/gameplay/animatronics.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

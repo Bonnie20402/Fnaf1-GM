@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"class_AnimatronicCameraModel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_AnimatronicCameraModel",
+  "parent":{
+    "name":"gameplay",
+    "path":"folders/Scripts/gameplay.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

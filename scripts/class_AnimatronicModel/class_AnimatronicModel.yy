@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"class_AnimatronicModel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"class_AnimatronicModel",
+  "parent":{
+    "name":"gameplay",
+    "path":"folders/Scripts/gameplay.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
