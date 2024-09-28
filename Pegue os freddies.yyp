@@ -183,6 +183,7 @@
     {"id":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"id":{"name":"rm_office","path":"rooms/rm_office/rm_office.yy",},},
     {"id":{"name":"rm_settings","path":"rooms/rm_settings/rm_settings.yy",},},
+    {"id":{"name":"AnimatronicCameraInstances","path":"scripts/AnimatronicCameraInstances/AnimatronicCameraInstances.yy",},},
     {"id":{"name":"class_AnimatronicCameraModel","path":"scripts/class_AnimatronicCameraModel/class_AnimatronicCameraModel.yy",},},
     {"id":{"name":"class_AnimatronicModel","path":"scripts/class_AnimatronicModel/class_AnimatronicModel.yy",},},
     {"id":{"name":"class_BonnieAnimatronicModel","path":"scripts/class_BonnieAnimatronicModel/class_BonnieAnimatronicModel.yy",},},

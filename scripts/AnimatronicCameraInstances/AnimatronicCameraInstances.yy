@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"class_AnimatronicCameraModel",
+  "%Name":"AnimatronicCameraInstances",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"class_AnimatronicCameraModel",
+  "name":"AnimatronicCameraInstances",
   "parent":{
     "name":"animatronics",
     "path":"folders/Scripts/gameplay/animatronics.yy",

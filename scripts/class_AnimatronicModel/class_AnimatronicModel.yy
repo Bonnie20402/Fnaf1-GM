@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"class_AnimatronicModel",
   "parent":{
-    "name":"gameplay",
-    "path":"folders/Scripts/gameplay.yy",
+    "name":"animatronics",
+    "path":"folders/Scripts/gameplay/animatronics.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

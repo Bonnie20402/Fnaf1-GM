@@ -14,7 +14,7 @@
     overlaps_animatronics = false;
     moves_backwards = false;
     start_camera = "N/A";
-    current_camera = start_camera;
+    current_camera = new AnimatronicCameraModel(start_camera);
     // amount of forward cameras 8as
     forward_cameras = ["N/A"];
     // backward cameras
@@ -53,7 +53,7 @@
 
 
     /// @description Tries to get a sucessful movement opportunity
-    /// @param {Integer} _level The level to considerate.
+    /// @param {Real} _level The level to considerate.
     /// @returns {Bool} Wether the movement was successful or not.
     function move_chance(_level) {
         return ( 1 + irandom(20) <= _level )  
@@ -76,18 +76,27 @@
     /// @param {Struct.AnimatronicCameraModel} _to Where to go.
     /// @returns {Bool} Wether the animatronic was able to move there or not. It
     function move(_to) {
+        current_camera.remove_animatronic(self);
         if(!enhabled) return false;
         // If the camera only has this animatronic he should be able to move there again as he got stunned
         if( array_contains(_to.current_animatronics,self)) {
             on_stun();
+            _to.add_animatronic(self);
+            current_camera = _to;
             return true;
         }
         //IF the camera is empty move their ass
         else if ( array_length(_to.current_animatronics) == 0 ) {
+            _to.add_animatronic(self);
+            current_camera = _to;
             return true;
         }
         // if this animatronic overlaps other ones, also move their ass
-        else if (overlaps_animatronics) return true;
+        else if (overlaps_animatronics) {
+            _to.add_animatronic(self);
+            current_camera = _to;
+            return true;
+        }
         return false;
         
     }
@@ -100,9 +109,31 @@
     }
 
      function populate_camera_arrays() {
-        show_message("pai");
+    
         return;
     }
+
+    /// @description  Adds a AnimatronicCameraModel into the forward cameras array.
+    /// @param {Struct.AnimatronicCameraModel} _camera The camera to add.
+    function add_forward_camera(_camera) {
+        array_push(forward_cameras,_camera);
+        if(array_get_index(forward_cameras,0) != -1) {
+            var _index = array_get_index(forward_cameras,0);
+            array_delete(forward_cameras,_index,1);
+        }
+    }
+    
+    /// @description  Adds a AnimatronicCameraModel into the backward cameras array.
+    /// @param {Struct.AnimatronicCameraModel} _camera The camera to add.
+    function add_backward_camera(_camera) {
+        array_push(backward_cameras,_camera);
+        if(array_get_index(backward_cameras,0) != -1) {
+            var _index = array_get_index(backward_cameras,0);
+            array_delete(backward_cameras,_index,1);
+        }
+    }
+
+
     function flush_backward_cameras() {
         backward_cameras = array_create(1)
     }
@@ -130,13 +161,13 @@
 
 
     /// @description Called when to enable the animatronic AI.
-    /// @param {Integer} _level The AI level
+    /// @param {Real} _level The AI level
     /// @param {Struct.AnimatronicCameraModel} _start 
     function enable_animatronic(_level,_start) {
         enhabled = true;
         attacking = false;
         attacked = false;
-        current_camera = _start;
+        current_camera = new AnimatronicCameraModel(_start);
         level = _level
 
     }
