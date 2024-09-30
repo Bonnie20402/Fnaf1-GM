@@ -7,8 +7,7 @@ global.ANIMATRONIC_FINDER = function(_element,_index) {
 /// @description  A camera that has animatronics on it
 /// @param {String} _id  The camera String (SOON TO BE REPLACED WITH A CAMERA OBJECT)
 function AnimatronicCameraModel(_id) constructor {
-    id = _id;
-
+    camid = string(_id);
     //Contains the references of the animatronics
     current_animatronics = array_create(0,0);
 
@@ -37,4 +36,6 @@ function AnimatronicCameraModel(_id) constructor {
         }
         return false;
     }
+
+    toString = function() { return camid }
 }

@@ -3,7 +3,7 @@
 
 
 gameplay = new Gameplay();
-
+bonnie = new BonnieAnimatronicModel();
 gameplay.can_scroll = true;
 
 

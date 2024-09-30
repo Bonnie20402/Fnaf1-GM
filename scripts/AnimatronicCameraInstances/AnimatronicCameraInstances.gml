@@ -1,10 +1,9 @@
 /// 
 
 
+/// @description Contains all of the game animatronic camera instances statically. Some of them are not viewable by the guard.
 function AnimatronicCameraInstances() constructor {
 
-    show_message("welcome")
-    static cNULL = new AnimatronicCameraModel("N/A")
     static c1A = new AnimatronicCameraModel("1A");
     static c1B = new AnimatronicCameraModel("1B");
     static c1C = new AnimatronicCameraModel("1C");
@@ -16,8 +15,12 @@ function AnimatronicCameraInstances() constructor {
     static c2B = new AnimatronicCameraModel("2B");
     static c4A = new AnimatronicCameraModel("4A");
     static c4B = new AnimatronicCameraModel("4B");
+    static cLeftWindow = new AnimatronicCameraModel("LeftWindow");
+    static cRightWindow = new AnimatronicCameraModel("RightWindow");
     static cPreAttack = new AnimatronicCameraModel("PreAttack");
     static cAttack = new AnimatronicCameraModel("Attack");
+    static cAttackFail = new AnimatronicCameraModel("AttackFail");
+    static cNULL = new AnimatronicCameraModel("N/A");
     
 }
 

@@ -13,12 +13,12 @@
     //Wether this animatronic moves to a camera that alrready has an animatronic in it.
     overlaps_animatronics = false;
     moves_backwards = false;
-    start_camera = "N/A";
-    current_camera = new AnimatronicCameraModel(start_camera);
+    start_camera = AnimatronicCameraInstances.cNULL;
+    current_camera = AnimatronicCameraInstances.cNULL;
     // amount of forward cameras 8as
-    forward_cameras = ["N/A"];
+    forward_cameras = array_create(1);
     // backward cameras
-    backward_cameras = ["N/A"];
+    backward_cameras = array_create(1);
     
     // the move timer of the animatronic
  
@@ -53,10 +53,9 @@
 
 
     /// @description Tries to get a sucessful movement opportunity
-    /// @param {Real} _level The level to considerate.
     /// @returns {Bool} Wether the movement was successful or not.
-    function move_chance(_level) {
-        return ( 1 + irandom(20) <= _level )  
+    function move_chance() {
+        return ( 1 + irandom(20) <= level )  
     }
 
     function shuffle_moves() {
@@ -69,7 +68,7 @@
     /// @description Returns wether will move forward (true) or backward (false)
     function move_direction () {
         return !( moves_backwards && 
-            (backwards_chance && backward_cameras[0] != "N/A") );
+            (backwards_chance && backward_cameras[0] != AnimatronicCameraInstances.cNULL) );
 
     }
     /// @description Tries to move the animatronic to the designed camera.
@@ -77,9 +76,21 @@
     /// @returns {Bool} Wether the animatronic was able to move there or not. It
     function move(_to) {
         current_camera.remove_animatronic(self);
+        show_message("Moving to " + _to.camid);
         if(!enhabled) return false;
+
+        // Check if it's trying to  attack
+        if(_to == AnimatronicCameraInstances.cPreAttack) on_pre_attack();
+
+        //check if it's attacking
+        if(_to == AnimatronicCameraInstances.cAttack) try_to_attack();
+
+        
+        // Increase the counters
+        if(array_contains(backward_cameras,_to)) on_backward_move();
+        else if (array_contains(forward_cameras,_to)) on_forward_move();
         // If the camera only has this animatronic he should be able to move there again as he got stunned
-        if( array_contains(_to.current_animatronics,self)) {
+        if( current_camera == _to) {
             on_stun();
             _to.add_animatronic(self);
             current_camera = _to;
@@ -102,14 +113,18 @@
     }
 
     function on_move_complete() {
-        flush_backward_cameras();
-        flush_forward_cameras();
+
         populate_camera_arrays();
+
+        attacking = current_camera == AnimatronicCameraInstances.cPreAttach;
+        attacked = current_camera == AnimatronicCameraInstances.cAttack;
 
     }
 
+    /// @description  Populates the ``forward_cameras`` and ``backward_cameras`` arrays depending on the current value of the ``current_camera`` variable. This method is supposed to be overriden
      function populate_camera_arrays() {
-    
+        flush_backward_cameras();
+        flush_forward_cameras();
         return;
     }
 
@@ -135,10 +150,21 @@
 
 
     function flush_backward_cameras() {
+        if(array_contains(backward_cameras, instanceof(AnimatronicCameraModel)) ) {
+            array_foreach(backward_cameras,function(_element,_index) {
+                _element.remove_animatronic(self);
+            })
+        }
+
         backward_cameras = array_create(1)
     }
     function flush_forward_cameras() {
-        forward_cameras_cameras = array_create(1)
+        if(array_contains(forward_cameras, instanceof(AnimatronicCameraModel)) ) {
+            array_foreach(forward_cameras,function(_element,_index) {
+                _element.remove_animatronic(self);
+            })
+        }
+        forward_cameras = array_create(1)
     }
 
 
@@ -165,20 +191,54 @@
     /// @param {Struct.AnimatronicCameraModel} _start 
     function enable_animatronic(_level,_start) {
         enhabled = true;
-        attacking = false;
-        attacked = false;
-        current_camera = new AnimatronicCameraModel(_start);
+        current_camera = _start;
         level = _level
+        populate_camera_arrays();
 
     }
 
+
+    /// @description  Called when the animatronic starts an attack (e.g the next successful move will fuck the guard up)
+    function on_pre_attack(){
+        global_attack_counter++;
+        attack_counter++;
+        return;
+    }
+    /// @description  Called after PreAttack. Should have the logic of this animatronic's attack conditions and forward to attack_success or attack_miss
+    function try_to_attack() {
+        attacking = false;
+        global_attack_counter++;
+    
+    }
+
+    /// @description  Called whenever a successful attack was made. Contains the logic to kill the guard and shit.
+    function on_attack_success() {
+        attacked=true;
+        return
+    }
+    /// @description Called whenever a attack has been missed. Should contain the logic to move ass back to initial position or smth
+    function on_attack_miss() {
+        attacking=false;
+        attacked=false;
+        return;
+    }
     function disable_animatronic() {
         enhabled = false;
     }
 
 
+    function toString() {
 
-
+        return name + " Level[" + string(level) + "/20]" + "\n" +
+            "Current: " + current_camera.camid + "\n" + // Added "Start: " if needed
+            (moves_backwards ? "Moves backwards" : "Doesn't move backwards") + "\n"  +
+            "Forward: " + string(forward_cameras) + "\n" +
+            "Backward: " + string(backward_cameras) + "\n" +
+            "Chance Timer: " + string(ai_move_timer) + 
+            " Stuns: " + string(stun_counter) + " (" + string(global_stun_counter) + ")" + "\n" +
+            "FRD Count.: " + string(move_forward_counter) + " (" + string(global_move_forward_counter) + ")" + "\n" +
+            "BRD Count.: " + string(move_backward_counter) + " (" + string(global_move_backward_counter) + ")" + "\n";
+    }
 }
 
 
