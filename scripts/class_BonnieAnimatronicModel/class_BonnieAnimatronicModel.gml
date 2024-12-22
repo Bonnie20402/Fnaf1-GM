@@ -10,9 +10,9 @@ function BonnieAnimatronicModel() : AniamtronicModel() constructor {
 
 
 
-    _super = populate_camera_arrays;
+    _superA = populate_camera_arrays;
     function populate_camera_arrays() {
-        _super(); 
+        _superA(); 
         switch (current_camera.camid) {
             case "1A":
                 add_forward_camera(AnimatronicCameraInstances.c1B);
@@ -70,25 +70,25 @@ function BonnieAnimatronicModel() : AniamtronicModel() constructor {
         }
     }
 
-    _super = try_to_attack
+    _superB = try_to_attack
     function try_to_attack() {
-        _super();
+        _superB();
         if(obj_core.gameplay.office.left_door) on_attack_miss();
 		else on_attack_success();
     }
 
-    _super = on_attack_miss;
+    _superC = on_attack_miss;
     function on_attack_miss() {
-        _super();
+        _superC();
         shuffle_moves();
         current_camera = forward_cameras[0];
         move(forward_cameras[0]);
         on_move_complete();
     }
 
-    _super = on_attack_success;
+    _superD = on_attack_success;
     function on_attack_success() {
-        _super();
+        _superD();
         //TODO: Put jumpscare logic in here.
     }
 }

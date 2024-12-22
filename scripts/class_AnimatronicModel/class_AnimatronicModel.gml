@@ -121,6 +121,7 @@
 
     }
 
+    
     /// @description  Populates the ``forward_cameras`` and ``backward_cameras`` arrays depending on the current value of the ``current_camera`` variable. This method is supposed to be overriden
      function populate_camera_arrays() {
         flush_backward_cameras();
